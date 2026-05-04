@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="th">
+<head>
+    <meta charset="utf-8">
+    <title>Floratech | CMCAT Flagship Pitch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+        :root { 
+            --primary: #1d1d1f; 
+            --accent: #0066cc; /* Deep Apple Blue */
+            --gold: #f56300; 
+            --text-main: #1d1d1f; 
+            --text-muted: #86868b; 
+            --card-bg: rgba(255, 255, 255, 0.85); 
+        }
+        
+        /* 🌌 1. Animated Gradient Background */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Sarabun'; 
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #f5f7fa, #c3cfe2, #e0c3fc, #8ec5fc);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-main); 
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* ✨ 2. Floating Particles Effect */
+        .area {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* ให้อยู่หลังสุด */
+        }
+
+        .circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .circles li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.4);
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+            border-radius: 50%;
+        }
+
+        .circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+        .circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+        .circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+        .circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+        .circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+        .circles li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+        .circles li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+        .circles li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+        .circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+        .circles li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+
+        @keyframes animate {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+        
+        .reveal { background: transparent; }
+        
+        /* 🍎 Typography Enhancement */
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Sarabun';
+            font-weight: 700; 
+            text-transform: none; 
+            color: var(--text-main); 
+            letter-spacing: -0.015em; 
+        }
+        
+        .reveal h1 { font-size: 3em; font-weight: 800; letter-spacing: -0.03em; }
+        .reveal h2 { font-size: 1.8em; margin-bottom: 1.2em; font-weight: 700; border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 15px; display: inline-block; }
+        
+        .reveal p, .reveal li { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Sarabun';
+            color: var(--text-muted); 
+        }
+
+        /* 🃏 Premium Cards */
+        .stat-card { 
+            background: var(--card-bg); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px); 
+            padding: 35px; 
+            border-radius: 24px; 
+            border: 1px solid rgba(255,255,255,0.8); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.04), 0 5px 15px rgba(0,0,0,0.02); 
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease; 
+        }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
+        
+        .highlight-num { font-size: 2.8em; font-weight: 800; color: var(--text-main); display: block; letter-spacing: -0.04em; line-height: 1; margin: 10px 0; }
+        .sub-text { font-size: 0.5em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; }
+        
+        .logo-header { position: absolute; top: 40px; left: 40px; display: flex; align-items: center; gap: 15px; z-index: 100; }
+        .logo-dot { width: 14px; height: 14px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(0,102,204,0.4); }
+        
+        /* 📐 Layouts */
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .chart-container { width: 100%; height: 300px; margin-top: 25px; }
+        
+        .feature-icon { color: var(--text-main); margin-bottom: 20px; font-size: 1.8em; opacity: 0.85; background: #f5f5f7; padding: 15px; border-radius: 16px; display: inline-block; }
+        .highlight { color: var(--accent); font-weight: 700; }
+        
+        .prompt-info { display: none; }
+</style>
+</head>
+<body>
+    <!-- 🎇 HTML สำหรับละอองแสงลอยตัว (Floating Particles) -->
+    <div class="area" >
+        <ul class="circles">
+            <li></li><li></li><li></li><li></li><li></li>
+            <li></li><li></li><li></li><li></li><li></li>
+        </ul>
+    </div>
+
+    <div class="logo-header">
+        <div class="logo-dot"></div>
+        <div style="color: var(--text-main); font-size: 0.6em; font-weight: 700; opacity: 0.8;">CMCAT x ADB | FLORATECH & FuengFu</div>
+    </div>
+    
+    <div class="reveal">
+        <div class="slides">
+        
+<!-- Slide 1: Title & Identity -->
+<section data-transition="fade">
+    <p class="sub-text" style="color: var(--accent); letter-spacing: 5px; font-weight: 700; margin-bottom: 15px;">ADB FLAGSHIP ENTERPRISE PITCH</p>
+    
+    <!-- 1. ลด padding บน-ล่าง จาก 60px เหลือ 40px เพื่อเพิ่มพื้นที่แนวตั้ง -->
+    <div style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 40px 60px; border-radius: 40px; border: 1px solid rgba(0,0,0,0.05); display: inline-block; box-shadow: 0 20px 60px rgba(0,0,0,0.08);">
+        
+        <!-- 2. ลดขนาดโลโก้ลงเล็กน้อย และลด margin-bottom ให้กระชับขึ้น -->
+        <img src="src/logo.png" alt="CMCAT Logo" style="width: 70px; height: 70px; margin: 0 auto 15px auto; display: block; border-radius: 50%; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+
+        <!-- 3. ปรับขนาด Font Size หัวข้อให้เล็กลง (2.4em) และเพิ่ม Line-height ป้องกันสระจม -->
+        <h1 style="font-size: 2.4em; margin-bottom: 15px; color: var(--text-main); line-height: 1.2; padding-bottom: 5px;">Floratech & FuengFu</h1>
+        
+        <!-- 4. ลดขนาดคำคมลง (0.9em) และเพิ่ม line-height ช่วยให้ภาษาไทยดูโปร่ง อ่านง่าย -->
+        <p style="color: var(--accent); font-weight: 600; font-size: 0.9em; margin-bottom: 25px; line-height: 1.5;">"การผลิตพืชพรรณมูลค่าสูงด้วยนวัตกรรมดิจิทัลเพื่อความยั่งยืน"</p>
+        
+        <div style="padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.1);">
+            <p style="font-size: 0.65em; max-width: 800px; margin: 0 auto; line-height: 1.6; font-weight: 400; color: var(--text-main);">ศูนย์เรียนรู้โรงเรือนอัจฉริยะและการทำฟาร์มเชิงธุรกิจ <br>เพื่อการผลิตและแปรรูปไม้ดอกมูลค่าสูงครบวงจร</p>
+            <p style="font-size: 0.45em; margin-top: 15px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">วิทยาลัยเกษตรและเทคโนโลยีเชียงใหม่</p>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 2: Commercial Viability & Sustainability -->
+<section>
+    <!-- ลดขนาดฟอนต์ลงเล็กน้อยและบังคับให้อยู่บรรทัดเดียวด้วย white-space: nowrap -->
+    <h2 style="font-size: 1.4em; margin-bottom: 25px; white-space: nowrap; letter-spacing: -0.02em;">Commercial Viability & Sustainability</h2>
+    
+    <div class="grid-layout" style="grid-template-columns: 1fr 1.3fr; gap: 30px; align-items: stretch;">
+        
+        <!-- ฝั่งซ้าย: ข้อมูลตัวเลข (Stat Cards) -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- 🌟 ปรับให้อยู่กึ่งกลาง (Center) เพื่อความสวยงามของตัวเลข KPI -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="stat-card" style="border-left: 6px solid var(--accent); padding: 20px 15px; text-align: center;">
+                    <span class="sub-text">Gross Margin</span>
+                    <span class="highlight-num" style="font-size: 2em; margin: 5px 0;">71.46%</span>
+                    <p style="font-size: 0.4em; margin: 0; line-height: 1.4;">อัตรากำไรขั้นต้นโดดเด่นกว่าอุตสาหกรรม</p>
+                </div>
+                <div class="stat-card" style="border-left: 6px solid var(--gold); padding: 20px 15px; text-align: center;">
+                    <span class="sub-text">Payback Period</span>
+                    <span class="highlight-num" style="font-size: 2em; margin: 5px 0;">2.3 <span style="font-size: 0.4em; font-weight: 400; color: var(--text-muted);">Years</span></span>
+                    <p style="font-size: 0.4em; margin: 0; line-height: 1.4;">คืนทุนไว ภายใน 28 เดือน</p>
+                </div>
+            </div>
+
+            <!-- เพิ่มลูกเล่นพื้นหลังไล่สี (Gradient) อ่อนๆ ให้ดูมีมิติ -->
+            <div class="stat-card" style="background: linear-gradient(135deg, rgba(0, 113, 227, 0.08) 0%, rgba(0, 113, 227, 0.01) 100%); border: 1px solid rgba(0, 113, 227, 0.2); padding: 25px 20px; text-align: center;">
+                <p style="font-size: 0.55em; font-weight: 700; color: var(--accent); margin-bottom: 10px; letter-spacing: 1px;">
+                    <i class="fas fa-redo-alt"></i> REINVESTMENT POLICY
+                </p>
+                <p style="font-size: 0.45em; margin: 0; line-height: 1.5; color: var(--text-main);">
+                    จัดสรรกำไร <span class="highlight">50% ลงทุนซ้ำ</span> ในเทคโนโลยีและนวัตกรรมเพื่อรักษาขีดความสามารถระยะยาว
+                </p>
+            </div>
+        </div>
+        
+        <!-- ฝั่งขวา: Business Model และ กราฟ (Chart) -->
+        <div class="stat-card" style="display: flex; flex-direction: column; padding: 30px; height: 100%;">
+            <!-- ส่วนข้อความ -->
+            <div style="margin-bottom: 10px;">
+                <p style="font-size: 0.6em; text-align: left; color: var(--text-main); font-weight: 700; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 10px; margin-bottom: 15px;">
+                    <i class="fas fa-hand-holding-usd" style="color: var(--accent); margin-right: 5px;"></i> Core Business Model
+                </p>
+                <ul style="font-size: 0.45em; text-align: left; line-height: 1.7; list-style: none; padding: 0; margin: 0; color: var(--text-main);">
+                    <!-- บังคับความกว้างไอคอน (width: 20px) ให้แถวตรงกันเป๊ะ -->
+                    <li style="margin-bottom: 8px;"><i class="fas fa-check-circle" style="color: var(--accent); width: 20px;"></i> <b>Flagship:</b> Edible Flowers & Premium Chrysanthemum</li>
+                    <li style="margin-bottom: 8px;"><i class="fas fa-bullseye" style="color: var(--accent); width: 20px;"></i> <b>Target:</b> โรงแรมระดับพรีเมียม และร้านอาหาร Fine Dining</li>
+                    <li><i class="fas fa-arrow-up" style="color: var(--gold); width: 20px;"></i> <b>Expansion:</b> สตรอว์เบอร์รี & เมลอนพรีเมียม (ปีที่ 3-5)</li>
+                </ul>
+            </div>
+            
+            <!-- ส่วนกราฟ (ควบคุมความสูงไม่ให้ล้น) -->
+            <div style="flex-grow: 1; position: relative; min-height: 160px; max-height: 220px; width: 100%; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 15px; margin-top: 10px;">
+                <canvas id="revenueChart"></canvas>
+            </div>
+            <p style="font-size: 0.35em; text-align: center; margin-top: 12px; color: var(--text-muted); font-weight: 600;">
+                ประมาณการการเติบโตของกำไรสุทธิภายใน 5 ปี (หน่วย: พันบาท)
+            </p>
+        </div>
+        
+    </div>
+</section>
+
+<!-- Slide 3: Curriculum Integration -->
+<section>
+    <h2 style="margin-bottom: 5px;">Curriculum Integration</h2>
+    <p class="sub-text" style="color: var(--accent); margin-bottom: 30px;">การบูรณาการ 5 สาขาวิชาเพื่อสมรรถนะแห่งอนาคต</p>
+    
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+        
+        <!-- ส่วนที่ 1: กลุ่ม 4 สาขาวิชาหลัก (ปรับเป็นแนวนอนแบบ Pill) -->
+        <div style="display: flex; justify-content: space-between; gap: 15px;">
+            <div class="stat-card text-center" style="flex: 1; padding: 15px;">
+                <i class="fas fa-seedling" style="color: var(--accent); font-size: 1.2em; margin-bottom: 8px;"></i>
+                <h4 style="font-size: 0.55em; margin: 0 0 5px 0;">พืชศาสตร์</h4>
+                <p style="font-size: 0.38em; margin: 0;">จัดการพืชและสภาวะโรงเรือนแม่นยำ</p>
+            </div>
+            <div class="stat-card text-center" style="flex: 1; padding: 15px;">
+                <i class="fas fa-utensils" style="color: var(--accent); font-size: 1.2em; margin-bottom: 8px;"></i>
+                <h4 style="font-size: 0.55em; margin: 0 0 5px 0;">เทคโนโลยีอาหาร</h4>
+                <p style="font-size: 0.38em; margin: 0;">นวัตกรรมแปรรูปและมาตรฐาน GMP</p>
+            </div>
+            <div class="stat-card text-center" style="flex: 1; padding: 15px;">
+                <i class="fas fa-chart-pie" style="color: var(--accent); font-size: 1.2em; margin-bottom: 8px;"></i>
+                <h4 style="font-size: 0.55em; margin: 0 0 5px 0;">ธุรกิจเกษตร</h4>
+                <p style="font-size: 0.38em; margin: 0;">การคิดเชิงออกแบบและการจัดการธุรกิจ</p>
+            </div>
+            <div class="stat-card text-center" style="flex: 1; padding: 15px;">
+                <i class="fas fa-cogs" style="color: var(--accent); font-size: 1.2em; margin-bottom: 8px;"></i>
+                <h4 style="font-size: 0.55em; margin: 0 0 5px 0;">ช่างกลเกษตร</h4>
+                <p style="font-size: 0.38em; margin: 0;">วิศวกรรมชลประทานและระบบอัตโนมัติ</p>
+            </div>
+        </div>
+        
+        <!-- ส่วนที่ 2: สาขาเกษตรอัจฉริยะ (ชูเป็นหัวใจหลัก) -->
+        <div class="stat-card text-center" style="background: rgba(0, 113, 227, 0.05); border: 2px solid var(--accent); padding: 20px;">
+            <h4 style="font-size: 0.7em; color: var(--accent); margin: 0 0 8px 0; font-weight: 800;">
+                <i class="fas fa-microchip"></i> เกษตรอัจฉริยะ (Smart Agri)
+            </h4>
+            <p style="font-size: 0.5em; margin: 0; line-height: 1.4; color: var(--text-main); font-weight: 500;">
+                บูรณาการทั้ง 4 สาขา ด้วยการจัดการข้อมูลขนาดใหญ่ (Big Data) และระบบควบคุม AI/IoT ในฟาร์ม
+            </p>
+        </div>
+        
+        <!-- ส่วนที่ 3: รูปแบบการเรียนการสอน (แบ่ง 2 คอลัมน์) -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;">
+            <div class="stat-card text-left" style="border-left: 5px solid var(--accent); padding: 20px;">
+                <p style="font-size: 0.6em; font-weight: 700; margin-bottom: 12px; color: var(--text-main);">
+                    <i class="fas fa-graduation-cap highlight"></i> Experiential Learning
+                </p>
+                <div style="font-size: 0.48em; line-height: 1.6; color: var(--text-muted);">
+                    <p style="margin-bottom: 5px;">• <b>ปวช.:</b> โครงงานเป็นฐาน <span class="highlight">(PjBL)</span> สร้างสรรค์ผลผลิตจริง</p>
+                    <p style="margin: 0;">• <b>ปวส.:</b> การวิจัยเป็นฐาน <span class="highlight">(RBL)</span> ยกระดับสู่นวัตกรรมธุรกิจ</p>
+                </div>
+            </div>
+            
+            <div class="stat-card text-left" style="background: rgba(245, 99, 0, 0.05); border-left: 5px solid var(--gold); padding: 20px;">
+                <p style="font-size: 0.6em; color: var(--gold); font-weight: 700; margin-bottom: 12px;">
+                    <i class="fas fa-lightbulb"></i> From Theory to Commercial
+                </p>
+                <p style="font-size: 0.48em; margin: 0; line-height: 1.6; color: var(--text-muted);">
+                    เปลี่ยนการเรียนในตำรา สู่การตัดสินใจในสถานการณ์ธุรกิจจริงที่ตอบสนองความต้องการของคู่ค้าอุตสาหกรรม
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- Slide 4: Workplace Learning Ecosystem -->
+<section>
+    <h2 style="margin-bottom: 5px;">Workplace Learning Ecosystem</h2>
+    <p class="sub-text" style="color: var(--accent); margin-bottom: 30px;">แหล่งฝึกประสบการณ์สมรรถนะวิชาชีพตลอดห่วงโซ่คุณค่า</p>
+    
+    <div class="grid-layout" style="grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch;">
+        <!-- Card 1: Lab -->
+        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 25px;">
+            <div style="text-align: left;">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: rgba(0,0,0,0.04); border-radius: 12px; margin-bottom: 15px;">
+                    <i class="fas fa-vial" style="font-size: 1.6em; color: var(--text-main);"></i>
+                </div>
+                <h4 style="font-size: 0.65em; color: var(--text-main); margin: 0 0 10px 0;">Lab & Propagation</h4>
+                <p style="font-size: 0.42em; line-height: 1.5; color: var(--text-main);">
+                    ฝึกเพาะเลี้ยงเนื้อเยื่อพืชในห้องปฏิบัติการ (Clean Zone) เพื่อผลิตต้นพันธุ์ปลอดโรคมาตรฐานสากล
+                </p>
+            </div>
+            <div style="border-top: 1px solid rgba(0,0,0,0.08); padding-top: 15px; margin-top: 15px; text-align: left;">
+                <span class="sub-text" style="font-size: 0.38em; color: var(--text-muted);">Focus: Aseptic Technique</span>
+            </div>
+        </div>
+        
+        <!-- Card 2: Smart Production -->
+        <div class="stat-card" style="border-top: 4px solid var(--accent); display: flex; flex-direction: column; justify-content: space-between; padding: 25px;">
+            <div style="text-align: left;">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: rgba(0, 113, 227, 0.1); border-radius: 12px; margin-bottom: 15px;">
+                    <i class="fas fa-project-diagram" style="font-size: 1.6em; color: var(--accent);"></i>
+                </div>
+                <h4 style="font-size: 0.65em; color: var(--text-main); margin: 0 0 10px 0;">Smart Production</h4>
+                <p style="font-size: 0.42em; line-height: 1.5; color: var(--text-main);">
+                    ควบคุม IoT ในโรงเรือนอัจฉริยะ และฝึกสมรรถนะในระบบ <span class="highlight">Aquaponics</span> เพื่อสมดุลธรรมชาติ
+                </p>
+            </div>
+            <div style="border-top: 1px solid rgba(0,0,0,0.08); padding-top: 15px; margin-top: 15px; text-align: left;">
+                <span class="sub-text" style="font-size: 0.38em; color: var(--text-muted);">Focus: Resource Optimization</span>
+            </div>
+        </div>
+        
+        <!-- Card 3: Value Addition -->
+        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 25px;">
+            <div style="text-align: left;">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: rgba(0,0,0,0.04); border-radius: 12px; margin-bottom: 15px;">
+                    <i class="fas fa-store-alt" style="font-size: 1.6em; color: var(--text-main);"></i>
+                </div>
+                <h4 style="font-size: 0.65em; color: var(--text-main); margin: 0 0 10px 0;">Value Addition</h4>
+                <p style="font-size: 0.42em; line-height: 1.5; color: var(--text-main);">
+                    จัดการหลังการเก็บเกี่ยว คัดบรรจุมาตรฐาน GMP และการตลาดดิจิทัลบนสมาร์ทโฟน
+                </p>
+            </div>
+            <div style="border-top: 1px solid rgba(0,0,0,0.08); padding-top: 15px; margin-top: 15px; text-align: left;">
+                <span class="sub-text" style="font-size: 0.38em; color: var(--text-muted);">Focus: Commercial Readiness</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer Highlight Card -->
+    <div class="stat-card" style="margin-top: 20px; background: rgba(0, 113, 227, 0.04); border: 1px solid rgba(0, 113, 227, 0.15); padding: 18px;">
+        <p style="font-size: 0.5em; line-height: 1.5; margin: 0; color: var(--text-main);">
+            <i class="fas fa-sync-alt highlight" style="margin-right: 10px;"></i> <b>Structured Learning Ecosystem:</b> 
+            วิทยาลัยบูรณาการโครงการให้เป็นพื้นที่ "Learning by Doing" ครบทั้งห่วงโซ่มูลค่า
+        </p>
+    </div>
+</section>
+
+<!-- Slide 5: Industry & Community Linkages -->
+<section>
+    <h2 style="margin-bottom: 5px;">Industry & Community Linkages</h2>
+    <p class="sub-text" style="color: var(--accent); margin-bottom: 25px;">บูรณาการเครือข่ายเพื่อสร้างคุณค่าร่วมกัน (Shared Value)</p>
+    
+    <div class="grid-layout" style="grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: stretch;">
+        
+        <!-- ฝั่งซ้าย: ข้อมูลเครือข่าย 2 กล่อง -->
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <!-- กล่องที่ 1: อุตสาหกรรม -->
+            <div class="stat-card" style="text-align: left; padding: 20px;">
+                <h3 style="font-size: 0.65em; color: var(--text-main); margin-bottom: 12px; font-weight: 700;">
+                    <i class="fas fa-handshake" style="color: var(--accent); margin-right: 8px;"></i> Strategic Industry Network
+                </h3>
+                <ul style="font-size: 0.45em; line-height: 1.6; list-style: none; padding: 0; margin: 0; color: var(--text-main);">
+                    <li style="margin-bottom: 8px;">
+                        <i class="fas fa-file-contract highlight" style="width: 20px;"></i> <b>Pre-order Contracts:</b> ทำสัญญากับโรงแรมพรีเมียม อาทิ ทัช สตาร์ รีสอร์ท
+                    </li>
+                    <li style="margin-bottom: 8px;">
+                        <i class="fas fa-microscope highlight" style="width: 20px;"></i> <b>R&D Collaboration:</b> ร่วมวิจัยกับสันป่าตอง ดิสทิลเลอร์รี่ และ บ.ซาทีวาโกลว์
+                    </li>
+                    <li>
+                        <i class="fas fa-truck-loading highlight" style="width: 20px;"></i> <b>Supply Chain:</b> ห่วงโซ่ความเย็น (เชียงใหม่บูรพาห้องเย็น) และคูโบต้า
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- กล่องที่ 2: ชุมชน -->
+            <div class="stat-card" style="text-align: left; border-left: 5px solid var(--gold); padding: 20px;">
+                <h3 style="font-size: 0.65em; color: var(--text-main); margin-bottom: 12px; font-weight: 700;">
+                    <i class="fas fa-users-cog" style="color: var(--gold); margin-right: 8px;"></i> Community Tech Station
+                </h3>
+                <ul style="font-size: 0.45em; line-height: 1.6; list-style: none; padding: 0; margin: 0; color: var(--text-main);">
+                    <li style="margin-bottom: 8px;">
+                        <i class="fas fa-chalkboard-teacher" style="color: var(--gold); width: 20px;"></i> <b>Mentorship:</b> เป็น "พี่เลี้ยง" ถ่ายทอดโมเดลโรงเรือนอัจฉริยะสู่ชุมชน
+                    </li>
+                    <li style="margin-bottom: 8px;">
+                        <i class="fas fa-user-friends" style="color: var(--gold); width: 20px;"></i> <b>Outgrower Network:</b> บริหารกลุ่มเกษตรกร <span class="highlight">10 ราย</span> (Young Smart Farmers)
+                    </li>
+                    <li>
+                        <i class="fas fa-chart-line" style="color: var(--gold); width: 20px;"></i> <b>Economic Impact:</b> จัดสรรโควตาผลิตตามสั่ง ลดความเสี่ยงราคา
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- ฝั่งขวา: รูปภาพและข้อความสรุป -->
+        <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <!-- เพิ่มความสูงของรูปภาพให้สอดคล้องกับกล่องทางซ้าย -->
+            <div style="height: 300px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.8); flex-grow: 1;">
+                <img src="src/mou.png" style="width: 100%; height: 100%; object-fit: cover; margin: 0; display: block;">
+            </div>
+            
+            <div class="stat-card" style="margin-top: 15px; padding: 15px 20px; background: rgba(0, 113, 227, 0.04); border: 1px solid rgba(0, 113, 227, 0.15);">
+                <p style="font-size: 0.45em; line-height: 1.5; color: var(--text-main); margin: 0;">
+                    <i class="fas fa-project-diagram highlight" style="margin-right: 8px;"></i> <b>Smart Floral Platform:</b> ศูนย์กลางห่วงโซ่คุณค่า ที่เปลี่ยน "ความรู้" เป็น "รายได้" แก่อุตสาหกรรมและชุมชน
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- Slide 6: Sustainability & Resilience -->
+<section>
+    <h2 style="margin-bottom: 20px;">Sustainability & Resilience</h2>
+    <p class="sub-text" style="color: var(--accent); margin-bottom: 40px;">ความยั่งยืนเชิงนิเวศและการปรับตัวต่อความท้าทายในอนาคต</p>
+    
+    <div class="grid-layout" style="grid-template-columns: 1fr 1.2fr; gap: 30px; align-items: stretch;">
+        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center; text-align: left; background: var(--card-bg);">
+            <i class="fas fa-cloud-sun-rain feature-icon" style="font-size: 3em; color: var(--accent);"></i>
+            <h4 style="font-size: 0.9em; color: var(--text-main); margin: 20px 0 10px 0;">Climate Resilience</h4>
+            <p style="font-size: 0.55em; line-height: 1.6; color: var(--text-main);">
+                ระบบโรงเรือนอัจฉริยะควบคุมอุณหภูมิและสภาพแวดล้อมได้เบ็ดเสร็จ 
+                ทลายข้อจำกัดทางภูมิอากาศเพื่อให้สามารถ <span class="highlight">ผลิตสินค้านอกฤดูกาล (Off-season) ได้ตลอดปี</span>
+            </p>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="stat-card" style="display: flex; align-items: center; gap: 25px; text-align: left; border-left: 5px solid var(--gold);">
+                <i class="fas fa-solar-panel" style="font-size: 2.5em; color: var(--gold);"></i>
+                <div>
+                    <span class="highlight-num" style="font-size: 1.4em; color: var(--text-main);">30 kW Solar Power</span>
+                    <p style="font-size: 0.45em; margin: 5px 0 0 0; color: var(--text-main);">ติดตั้ง Solar Rooftop เพื่อผลิตพลังงานสะอาด ทดแทนการใช้ไฟฟ้าช่วงกลางวันได้ร้อยละ 70-80</p>
+                </div>
+            </div>
+            <div class="stat-card" style="display: flex; align-items: center; gap: 25px; text-align: left; border-left: 5px solid var(--accent);">
+                <i class="fas fa-recycle" style="font-size: 2.5em; color: var(--accent);"></i>
+                <div>
+                    <span class="highlight-num" style="font-size: 1.4em; color: var(--text-main);">80-90% Water Recycle</span>
+                    <p style="font-size: 0.45em; margin: 5px 0 0 0; color: var(--text-main);">ระบบบำบัดและหมุนเวียนน้ำในระบบปิด (Closed-loop) เพื่อประสิทธิภาพสูงสุดในการใช้ทรัพยากร</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="stat-card" style="margin-top: 35px; background: rgba(0,0,0,0.02); border: 1px dashed rgba(0,0,0,0.1); padding: 20px;">
+        <div style="display: flex; justify-content: space-around; font-size: 0.55em; font-weight: 600; color: var(--text-main);">
+            <span><i class="fas fa-shield-virus highlight" style="margin-right: 10px;"></i> BIOSECURITY: มาตรฐานความปลอดภัยเกรดอาหาร</span>
+            <span><i class="fas fa-leaf highlight" style="margin-right: 10px;"></i> ZERO WASTE: บริหารจัดการของเสียตามหลักเศรษฐกิจหมุนเวียน</span>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 7: Future Workforce Appeal -->
+<section>
+    <h2 style="margin-bottom: 20px;">Future Workforce Appeal</h2>
+    <p class="sub-text" style="color: var(--accent); margin-bottom: 40px;">เปลี่ยนนิยามอาชีพเกษตรกรรมสู่เส้นทางอาชีพยุคดิจิทัล</p>
+    
+    <div class="grid-layout" style="grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center;">
+        <!-- จุดใส่รูป: ภาพนักศึกษาคนรุ่นใหม่ในฟาร์ม -->
+        <div class="stat-card" style="padding: 0; overflow: hidden; border: none; border-radius: 20px;">
+            <img src="src/IMG_6937.JPG" style="width: 100%; display: block; object-fit: cover; height: 350px;">
+            <div style="padding: 15px; background: var(--text-main); color: white; font-weight: 600; font-size: 0.45em; text-align: center; letter-spacing: 1px;">
+                REDEFINING THE NEXT-GEN AGRI-PRENEUR
+            </div>
+        </div>
+        
+        <div style="text-align: left;">
+            <div class="stat-card" style="margin-bottom: 20px;">
+                <h4 style="font-size: 0.75em; color: var(--text-main); margin-bottom: 10px;">อาชีพใหม่: "Agri-Tech"</h4>
+                <p style="font-size: 0.5em; line-height: 1.6; color: var(--text-main);">
+                    ยกระดับเกษตรกรสู่ <span class="highlight">นักจัดการเทคโนโลยี (Technology Manager)</span> ที่ทำงานในสภาพแวดล้อมที่สะอาด ปลอดภัย และใช้สมองเป็นหลักในการตัดสินใจผ่านข้อมูล
+                </p>
+            </div>
+            <div class="stat-card" style="background: rgba(245, 99, 0, 0.05);">
+                <h4 style="font-size: 0.75em; color: var(--text-main); margin-bottom: 15px;">ศักยภาพรายได้และความมั่นคง</h4>
+                <div style="font-size: 0.5em; line-height: 1.8; color: var(--text-main);">
+                    <p><i class="fas fa-plus-circle" style="color: var(--gold); margin-right: 10px;"></i> <b>Premium Income:</b> รายได้ที่สูงขึ้นอย่างมีนัยสำคัญจากผลิตภัณฑ์พืชพรรณเกรดพรีเมียมและดอกไม้กินได้</p>
+                    <p style="margin-top: 10px;"><i class="fas fa-sync" style="color: var(--gold); margin-right: 10px;"></i> <b>Global Master Skills:</b> ทักษะการจัดการระบบอัตโนมัติที่สามารถประยุกต์ใช้เพื่อปลูกพืชเศรษฐกิจชนิดใหม่ได้ทุกประเภททั่วโลก</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 8: Data-Driven Operations -->
+<section>
+    <h2 style="margin-bottom: 20px;">Data-Driven Operations</h2>
+    <p class="sub-text" style="color: var(--accent); margin-bottom: 40px;">การตัดสินใจบนฐานข้อมูลและเทคโนโลยีอัจฉริยะ</p>
+    
+    <div class="grid-layout" style="grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: stretch;">
+        <div class="stat-card" style="text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h3 style="font-size: 0.85em; color: var(--text-main); margin-bottom: 20px;">
+                    <i class="fas fa-microchip feature-icon" style="font-size: 1.2em;"></i> Precision Agriculture
+                </h3>
+                <p style="font-size: 0.5em; line-height: 1.6; margin-bottom: 20px; color: var(--text-main);">
+                    ขับเคลื่อนการจัดการฟาร์มด้วยระบบ <span class="highlight">Decision Support System</span> โดยรวบรวมข้อมูลเรียลไทม์จากเครือข่ายเซนเซอร์ IoT ทั่วทั้งโรงเรือน
+                </p>
+                
+                <div style="background: rgba(245,245,247,0.8); padding: 20px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+                    <div style="display: flex; justify-content: space-between; font-family: monospace; font-size: 0.5em; font-weight: 600; color: var(--text-main);">
+                        <span><i class="fas fa-thermometer-half"></i> Temp: 28.5°C</span>
+                        <span><i class="fas fa-tint"></i> Soil Moist: 65%</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-family: monospace; font-size: 0.5em; font-weight: 600; color: var(--text-main); margin-top: 15px;">
+                        <span><i class="fas fa-vial"></i> pH: 6.2 | EC: 1.8</span>
+                        <span><i class="fas fa-sun"></i> PAR: 450 μmol</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.1);">
+                <p style="font-size: 0.45em; color: var(--text-main);">
+                    <i class="fas fa-brain highlight" style="margin-right: 10px;"></i> <b>AI Diagnostics:</b> ประยุกต์ใช้ปัญญาประดิษฐ์ในการพยากรณ์โรคพืชและวิเคราะห์สุขภาพพืชเชิงรุก (IPM)
+                </p>
+            </div>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="stat-card" style="text-align: left; border-left: 5px solid var(--accent);">
+                <h4 style="font-size: 0.7em; color: var(--text-main); margin-bottom: 10px;">
+                    <i class="fas fa-qrcode" style="margin-right: 10px;"></i> 100% Traceability
+                </h4>
+                <p style="font-size: 0.48em; line-height: 1.6; color: var(--text-main);">
+                    ทุกผลิตภัณฑ์มี QR Code เฉพาะ Batch เพื่อให้ลูกค้าตรวจสอบแหล่งผลิต มาตรฐานความปลอดภัย และประวัติการดูแลย้อนกลับได้สมบูรณ์
+                </p>
+            </div>
+            <div class="stat-card" style="background: rgba(0, 113, 227, 0.05); padding: 25px;">
+                <p style="font-size: 0.55em; font-weight: 700; margin-bottom: 15px; color: var(--text-main);">Data Optimization Results</p>
+                <div style="font-size: 0.48em; line-height: 1.8; color: var(--text-main);">
+                    <p><i class="fas fa-caret-down highlight" style="margin-right: 10px;"></i> ลดความสูญเสียผลผลิต (Waste) ลง 20-30%</p>
+                    <p><i class="fas fa-caret-up highlight" style="margin-right: 10px;"></i> เพิ่มความแม่นยำในการเก็บเกี่ยว 95%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 9: Closing & Call to Action -->
+<section data-transition="zoom">
+    <!-- ลด padding แนวตั้งเหลือ 25px เพื่อไม่ให้ดันเนื้อหาตกขอบ -->
+    <div class="stat-card" style="border-radius: 35px; padding: 25px 40px; background: rgba(255,255,255,0.95); text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.8); max-width: 950px; margin: 0 auto;">
+        
+        <p class="sub-text" style="color: var(--accent); font-weight: 700; letter-spacing: 3px; margin-bottom: 5px;">
+            THE SELF-SUSTAINING EDUCATION-BUSINESS MODEL
+        </p>
+        
+        <!-- ปรับ Font-size เป็น 2.4em เพื่อบังคับให้คำว่า Floratech & FuengFu อยู่ใน 1 บรรทัด ไม่ตกขอบ -->
+        <h1 style="font-size: 2.4em; margin-bottom: 15px; letter-spacing: -0.04em; font-weight: 800; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.3; padding-bottom: 5px;">
+            Floratech & FuengFu
+        </h1>
+
+        <!-- กล่องไฮไลต์ข้อความสำคัญ -->
+        <div style="max-width: 700px; margin: 0 auto; background: rgba(0, 113, 227, 0.05); padding: 15px 30px; border-radius: 20px; border: 1px solid rgba(0, 113, 227, 0.15); margin-bottom: 15px;">
+            <p style="color: var(--accent); font-size: 0.65em; line-height: 1.4; font-weight: 700; margin: 0; padding-bottom: 8px;">
+                "ศูนย์เรียนรู้โรงเรือนอัจฉริยะและการทำฟาร์มเชิงธุรกิจ"
+            </p>
+            <p style="color: var(--text-main); font-size: 0.45em; line-height: 1.5; font-weight: 500; margin: 0;">
+                เพื่อการผลิตและแปรรูปไม้ดอกมูลค่าสูงครบวงจร สร้างผลกำไรที่มั่นคงควบคู่ไปกับการพัฒนาบุคลากรสมรรถนะสูง
+            </p>
+        </div>
+
+        <!-- คำเชิญชวน (Call to Action) -->
+        <div style="margin-bottom: 15px;">
+            <h2 style="color: var(--text-main); border-bottom: none; font-size: 0.9em; margin-bottom: 8px; font-weight: 700;">
+                "ร่วมลงทุนในอนาคตของเกษตรไทยที่ยั่งยืนไปกับเรา"
+            </h2>
+            <p style="color: var(--text-main); font-size: 0.45em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0;">
+                วิทยาลัยเกษตรและเทคโนโลยีเชียงใหม่
+            </p>
+            <p style="color: var(--accent); font-size: 0.35em; font-weight: 600; letter-spacing: 2px; margin-top: 3px;">
+                Smart Premium & Sustainable Enterprise
+            </p>
+        </div>
+
+        <!-- ไอคอนประดับตอนท้าย ปรับขนาดลงเหลือ 1.4em -->
+        <div style="display: flex; justify-content: center; gap: 40px; color: var(--accent); font-size: 1.4em; opacity: 0.9;">
+            <i class="fas fa-seedling" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"></i>
+            <i class="fas fa-microchip" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"></i>
+            <i class="fas fa-handshake" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"></i>
+        </div>
+        
+    </div>
+</section>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script>
+        Reveal.initialize({
+            width: 1280,
+            height: 720, // ปรับให้เหมาะกับจอ 16:9 มากขึ้น
+            margin: 0.08, // ลดขอบลงเพื่อใช้พื้นที่ได้เต็มที่
+            minScale: 0.2,
+            maxScale: 2.0,
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide',
+            backgroundTransition: 'fade', // ให้พื้นหลังเปลี่ยนแบบนุ่มนวล
+            autoAnimateEasing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+            autoAnimateDuration: 0.8
+        });
+
+        // Chart.js Configuration
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Net Profit (Est.)',
+                    data: [512, 553, 597, 643, 691], // Values from ADP
+                    borderColor: '#0071e3', // Apple Blue
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(0, 113, 227, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { ticks: { color: '#86868b' }, grid: { color: 'rgba(0,0,0,0.05)' } },
+                    x: { ticks: { color: '#86868b' }, grid: { display: false } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

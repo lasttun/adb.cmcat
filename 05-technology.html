@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5. เทคโนโลยีและ IoT · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.loop{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;align-items:stretch;margin-top:12px}
+.loop .n{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-right:22px}
+.loop .n:last-child{margin-right:0}
+.loop .n:not(:last-child)::after{content:"";position:absolute;right:-17px;top:50%;width:12px;height:12px;border-top:3px solid var(--leaf);border-right:3px solid var(--leaf);transform:translateY(-50%) rotate(45deg)}
+.loop .n h3{font-size:16px;font-weight:600}
+.loop .n p{margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.5}
+.loop .n.act{border-color:var(--tomato)}
+.override{margin-top:12px;font-size:14.5px;display:flex;gap:10px;align-items:center}
+.bud td.r{width:9em}
+@media (max-width:980px){.loop{grid-template-columns:1fr}.loop .n{margin:0 0 18px}.loop .n:not(:last-child)::after{right:50%;top:auto;bottom:-15px;transform:translateX(50%) rotate(135deg)}}
+</style>
+</head>
+<body data-page="5" data-art="img:control-box">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">5</span>
+    <h1 data-i18n="h1">เทคโนโลยีและ IoT</h1>
+    <p data-i18n="lead">ระบบให้น้ำและปุ๋ยแบบน้ำหยดควบคุมด้วย IoT ใช้ไฟจากแสงอาทิตย์ ข้อมูลจากเซ็นเซอร์ใช้ทั้งควบคุมการผลิตและเป็นสื่อการเรียนรู้ของนักศึกษา ขอบเขตอุปกรณ์อยู่ในงบ IoT 100,500 บาท</p>
+  </div>
+
+  <section class="block" aria-labelledby="loop-h">
+    <h2 id="loop-h" data-i18n="loopH">ข้อมูลไหลอย่างไร</h2>
+    <div class="loop" id="loop"></div>
+    <p class="override" id="ovr"></p>
+  </section>
+
+  <section class="block split-60" aria-label="Sensors">
+    <div>
+      <h2 style="font-size:23px;margin-bottom:12px" data-i18n="senH">เซ็นเซอร์และสิ่งที่วัด</h2>
+      <div class="tbl-wrap"><table class="data" id="sens"></table></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <figure class="ph crop"><img src="img/control-box.jpg" alt="" loading="lazy" id="i1"><figcaption data-i18n="c1">ตู้ควบคุมระบบสมาร์ทฟาร์มในโรงเรือนเดิมของวิทยาลัย</figcaption></figure>
+      <figure class="ph crop"><img src="img/ph-meter.jpg" alt="" loading="lazy" id="i2"><figcaption data-i18n="c2">นักศึกษาวัด EC/pH ของสารละลายปุ๋ยเป็นประจำ</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="sub-h">
+    <h2 id="sub-h" data-i18n="subH">ระบบย่อย 4 ส่วน</h2>
+    <div class="g4" id="subs" style="margin-top:12px"></div>
+  </section>
+
+  <section class="block g2" aria-label="Budget and data use">
+    <div>
+      <h2 style="font-size:23px;margin-bottom:12px" data-i18n="budH">งบประมาณด้านเทคโนโลยีและพลังงาน</h2>
+      <div class="tbl-wrap"><table class="data bud" id="bud"></table></div>
+    </div>
+    <div class="card" id="use"></div>
+  </section>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">ที่มา: แผนธุรกิจ ข้อ 6 (ฉบับแก้ไข) และแบบโรงเรือนของทีม</span></div></footer>
+<script>
+window.PAGE_EN={h1:"Technology and IoT",lead:"Drip fertigation controlled by IoT and powered by solar. Sensor data both runs production and gives students material to learn from. Devices fit within the THB 100,500 IoT budget.",
+ loopH:"How the data flows",senH:"Sensors and what they measure",subH:"Four subsystems",budH:"Technology and energy budget",
+ c1:"Smart-farm control box in the college's existing greenhouse",c2:"Students check EC/pH of the nutrient solution regularly",foot:"Sources: business plan section 6 (revised) and the team's greenhouse design"};
+function render(){
+  const t=SG.t,f=SG.fmt;
+  document.getElementById("i1").alt=t("ตู้ควบคุม","Control box");document.getElementById("i2").alt=t("เครื่องวัด pH","pH meter");
+  const L=[
+   [t("1. วัด","1. Sense"),t("เซ็นเซอร์อุณหภูมิ ความชื้น แสง EC/pH ระดับน้ำ PM2.5","Temperature, humidity, light, EC/pH, water level, PM2.5")],
+   [t("2. ส่งข้อมูล","2. Send"),t("กล่องควบคุม IoT ส่งผ่าน WiFi/4G ขึ้น Cloud","IoT controller sends via WiFi/4G to the cloud")],
+   [t("3. แสดงผล","3. Show"),t("แดชบอร์ดบนมือถือ กราฟย้อนหลัง แจ้งเตือนผ่าน LINE","Phone dashboard, history charts, LINE alerts")],
+   [t("4. ตัดสินใจ","4. Decide"),t("ตามค่าเป้าหมายแต่ละระยะ (หน้า 3) หรือสั่งจากมือถือ","Against stage targets (page 3) or by phone")],
+   [t("5. สั่งงาน","5. Act"),t("ปั๊ม วาล์วปุ๋ย A/B พัดลม พ่นหมอก ม่านพรางแสง","Pump, A/B valves, fans, misting, shade screen")]];
+  document.getElementById("loop").innerHTML=L.map((x,i)=>`<div class="n${i===4?" act":""}"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join("");
+  document.getElementById("ovr").innerHTML=`<span class="pill info">${t("สำรอง","Fallback")}</span>${t("มีสวิตช์ควบคุมด้วยมือ (Manual Override) ทุกจุด ถ้าเน็ตหรือเซ็นเซอร์ขัดข้อง โรงเรือนยังให้น้ำได้","Every output has a manual override, so watering continues if the network or a sensor fails.")}`;
+  const S=[
+   [t("อุณหภูมิและความชื้นอากาศ","Air temperature and humidity"),t("สั่งพัดลมและพ่นหมอก ป้องกันเกิน 33°C","Drives fans and misting; keeps below 33°C")],
+   [t("ความชื้นวัสดุปลูก","Substrate moisture"),t("กำหนดรอบให้น้ำ","Sets irrigation timing")],
+   [t("ความเข้มแสง (PAR/Lux)","Light (PAR/Lux)"),t("สั่งม่านพรางแสงอัตโนมัติ","Drives the shade screen")],
+   [t("EC และ pH สารละลาย","Solution EC and pH"),t("ปรับสัดส่วนปุ๋ย A/B ตามระยะ","Adjusts A/B dosing by stage")],
+   [t("ระดับน้ำในถัง RO","RO tank water level"),t("แจ้งเตือนก่อนน้ำหมด","Warns before the tank runs dry")],
+   [t("ฝุ่น PM2.5","PM2.5 dust"),t("เฝ้าระวังช่วงหมอกควัน","Haze-season monitoring")],
+   [t("มิเตอร์ไฟฟ้า (kWh)","Power meter (kWh)"),t("ติดตามการผลิตไฟของ Solar + BESS","Tracks Solar + BESS output")],
+   [t("เซ็นเซอร์ประตู","Door sensor"),t("ตรวจการเปิดประตูสองชั้นกันแมลง","Checks the double insect-proof door")]];
+  document.getElementById("sens").innerHTML=`<thead><tr><th>${t("เซ็นเซอร์","Sensor")}</th><th>${t("ใช้ทำอะไร","Used for")}</th></tr></thead><tbody>`+S.map(s=>`<tr><td>${s[0]}</td><td class="muted">${s[1]}</td></tr>`).join("")+"</tbody>";
+  const U=[
+   [t("ควบคุมจุลภูมิอากาศ","Microclimate"),t("อุณหภูมิและความชื้นอัตโนมัติ 24 ชม. พัดลม 50 นิ้ว 2 ตัวต่อโรงติดที่จั่วด้านบนเพื่อดึงอากาศร้อนออก และพ่นหมอก","24-hour temperature and humidity control; two 50-inch fans per house at the gable pull out rising hot air, plus misting")],
+   [t("ให้น้ำและปุ๋ยแม่นยำ","Precision fertigation"),t("น้ำกรอง RO หัวน้ำหยด 2 ลิตร/ชม. ปรับ EC/pH อัตโนมัติเมื่อค่าเบี่ยงเบน","RO water, 2 L/h drippers, automatic EC/pH correction")],
+   [t("ม่านพรางแสง","Shade screen"),t("ลดความร้อนกลางวัน โดยเฉพาะรอบร้อน พ.ค.–ก.ย.","Cuts midday heat, especially in the May–Sep cycle")],
+   [t("พลังงานและ Cloud","Energy and cloud"),t("Solar + แบตเตอรี่ จ่ายไฟ ข้อมูลขึ้น Cloud แสดงผลแบบเรียลไทม์","Solar + battery power; data to the cloud in real time")]];
+  document.getElementById("subs").innerHTML=U.map(u=>`<div class="card"><h3>${u[0]}</h3><p>${u[1]}</p></div>`).join("");
+  const B=[[t("ระบบ IoT","IoT system"),100500],[t("ระบบ Solar + BESS","Solar + battery storage"),260000],[t("ระบบไฟฟ้า","Electrical system"),49500],[t("ระบบน้ำพื้นฐาน","Basic water system"),58500],[t("เครื่องกรองน้ำ RO","RO water filter"),58000]];
+  document.getElementById("bud").innerHTML=`<thead><tr><th>${t("รายการ","Item")}</th><th class="r">${t("บาท","THB")}</th></tr></thead><tbody>`+B.map(b=>`<tr><td>${b[0]}</td><td class="r">${f(b[1])}</td></tr>`).join("")+`<tr class="total"><td>${t("รวม","Total")}</td><td class="r">${f(B.reduce((a,b)=>a+b[1],0))}</td></tr></tbody>`;
+  document.getElementById("use").innerHTML=`<h3>${t("ใช้ข้อมูลทำอะไรต่อ","What the data is used for")}</h3><ul>
+   <li>${t("วิเคราะห์ผลผลิตเทียบกับน้ำและปุ๋ยที่ใช้ เพื่อวางแผนรอบถัดไป","Compare yield with water and fertiliser use to plan the next cycle")}</li>
+   <li>${t("นักศึกษาเทคโนโลยีและนวัตกรรมเกษตรพัฒนาแดชบอร์ดและระบบทำนายผลผลิต","Agri-tech students build the dashboard and a yield-prediction model")}</li>
+   <li>${t("ระบบตรวจสอบย้อนกลับด้วย QR Code บนบรรจุภัณฑ์","QR-code traceability on every pack")}</li>
+   <li>${t("ฐานข้อมูลสำหรับการเรียนการสอนเกษตรอัจฉริยะ","A teaching dataset for smart farming")}</li></ul>
+   <p class="tag" style="margin-top:10px">${t("ปรับสเปกจากฉบับเดิม: ตัด Spectroradiometer, Air Shower และไฟปลูก ซึ่งเป็นสเปกของ Plant Factory ไม่ตรงกับโรงเรือนตาข่าย","Revised from the earlier draft: spectroradiometer, air shower and grow lights removed, as they suit a plant factory rather than a net-house")}</p>`;
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

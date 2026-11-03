@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10. ความเสี่ยงและแผนรองรับ · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.filters button{font:600 14px var(--font-body);padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.risks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.risk{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.risk h3{font-family:var(--font-body);font-size:16.5px;font-weight:600;line-height:1.4}
+.risk .row{font-size:14.5px;line-height:1.55}
+.risk .row b{font-weight:600;color:var(--muted);font-size:13px;display:block}
+.risk .lk{font-size:13.5px}
+.risk .lk a{color:var(--leaf);font-weight:600}
+@media (max-width:860px){.risks{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="10" data-art="svg:risk">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">10</span>
+    <h1 data-i18n="h1">ความเสี่ยงและแผนรองรับ</h1>
+    <p data-i18n="lead">ความเสี่ยงหลัก 8 ด้าน จัดเป็นด้านการผลิต ด้านตลาด และด้านการดำเนินงาน ความเสี่ยงที่กระทบรายได้มากที่สุดคือการขายปลีกไม่ได้ตามเป้า</p>
+  </div>
+  <section class="block" aria-label="Risks">
+    <div class="filters" id="filters" role="group" aria-label="Filter"></div>
+    <div class="risks" id="risks"></div>
+  </section>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">ที่มา: แผนธุรกิจ ข้อ 10 (ฉบับแก้ไข)</span></div></footer>
+<script>
+window.PAGE_EN={h1:"Risks and mitigation",lead:"Eight main risks across production, market and operations. The one that hits revenue hardest is missing the retail sales target.",foot:"Source: business plan section 10 (revised)"};
+let filter="all";
+function render(){
+  const t=SG.t;
+  const G={prod:["var(--leaf)",t("การผลิต","Production")],mkt:["var(--tomato)",t("ตลาด","Market")],ops:["var(--warn)",t("การดำเนินงาน","Operations")]};
+  const R=[
+   ["mkt",t("ขายปลีกไม่ได้ตามเป้า (≈ 1,000 กก./เดือน)","Retail sales below target (≈ 1,000 kg/month)"),t("รายได้ลดมากที่สุด เพราะการขายปลีกคิดเป็นกว่า 85% ของรายได้","Largest revenue impact: retail is over 85% of revenue"),t("ทำ LOI/สัญญารับซื้อกับร้านอาหาร โรงแรม คาเฟ่ ล่วงหน้า เปิด LINE OA/ออนไลน์ ระบายส่วนเกินไปขายส่งหรือแปรรูป","LOIs/contracts with restaurants, hotels, cafés in advance; LINE OA and online; surplus to wholesale or drying"),["04-market.html",t("หน้า 4 ตลาด","Page 4 market")]],
+   ["prod",t("ผลผลิตต่ำกว่าเป้า โดยเฉพาะรอบร้อน","Yield below target, especially the hot cycle"),t("รายได้ลดลง แต่ที่ 3 กก./ต้น ยังมีกำไร","Revenue falls, but still profitable at 3 kg/plant"),t("ม่านพรางแสง พ่นหมอก ระบายอากาศ ทดสอบพันธุ์ทนร้อน 2–3 พันธุ์ วางแผนเงินสดด้วยกรณีระมัดระวัง","Shade, misting, ventilation; trial 2–3 heat-tolerant varieties; plan cash on the conservative case"),["07-finance.html",t("หน้า 7 ลองปรับผลผลิต","Page 7 try lower yield")]],
+   ["mkt",t("ราคาตกช่วงผลผลิตออกมาก (ฤดูหนาว)","Price drop in the peak harvest season"),t("อัตรากำไรลดลง","Lower margins"),t("ตกลงราคาล่วงหน้ากับผู้ซื้อ B2B ชูความสดและ QR Code ตรวจสอบย้อนกลับ เพิ่มสัดส่วนแปรรูป","Pre-agreed B2B prices, freshness and QR traceability, more processing"),["07-finance.html",t("หน้า 7 ลองปรับราคา","Page 7 try lower price")]],
+   ["prod",t("หมอกควัน PM2.5 และแสงน้อย (ก.พ.–เม.ย.)","PM2.5 haze and low light (Feb–Apr)"),t("การสังเคราะห์แสงและคุณภาพผลลดลง","Less photosynthesis, lower fruit quality"),t("ให้ช่วงพักแปลงตรงกับเดือนเมษายน เฝ้าระวังด้วยเซ็นเซอร์ PM2.5","Schedule the rest period in April; monitor with the PM2.5 sensor"),["03-production.html",t("หน้า 3 ปฏิทิน","Page 3 calendar")]],
+   ["prod",t("โรคและแมลง (ไวรัสใบหงิกเหลือง แมลงหวี่ขาว)","Pests and disease (leaf curl virus, whitefly)"),t("ผลผลิตเสียหาย","Crop losses"),t("มุ้ง 32 เมช ประตูสองชั้น ไตรโคเดอร์มา และ IPM ตามมาตรฐาน GAP","32-mesh net, double doors, Trichoderma and IPM to GAP"),["05-technology.html",t("หน้า 5 เทคโนโลยี","Page 5 technology")]],
+   ["ops",t("อุปกรณ์ IoT หรือระบบไฟฟ้าขัดข้อง","IoT or power failure"),t("การให้น้ำ-ปุ๋ยหยุดชะงัก","Fertigation stops"),t("งบซ่อมบำรุง 30,000 บาท/ปี เงินสำรองทดแทนสินทรัพย์ ระบบแจ้งเตือน และสวิตช์ควบคุมด้วยมือ","THB 30,000/yr maintenance, replacement reserve, alerts and manual override"),["05-technology.html",t("หน้า 5 เทคโนโลยี","Page 5 technology")]],
+   ["ops",t("จัดซื้อจัดจ้างหรือก่อสร้างล่าช้า","Procurement or construction delay"),t("รอบผลิตแรกเลื่อน เพราะจัดซื้อในไตรมาส 2 ปีงบ 2570 เหลือเวลาติดตั้งราว 1 เดือน","First cycle slips; Q2 FY2027 procurement leaves about one month to install"),t("TOR เสร็จภายใน ธ.ค. 2569 ติดตั้งระบบน้ำ-ปุ๋ยและ IoT ก่อน และเริ่มปลูกในโรงเรือนเดิมถ้างานก่อสร้างล่าช้า","TOR ready by Dec 2026; install fertigation and IoT first; start in the existing house if building runs late"),["11-timeline.html",t("หน้า 11 กรอบเวลา","Page 11 timeline")]],
+   ["ops",t("บุคลากรและนักศึกษาเปลี่ยนรุ่น","Staff and student turnover"),t("องค์ความรู้ไม่ต่อเนื่อง","Know-how lost"),t("เจ้าหน้าที่ประจำ 2 ตำแหน่ง คู่มือปฏิบัติงาน และระบบส่งต่องานรุ่นพี่สู่รุ่นน้อง","Two permanent staff, operating manuals, senior-to-junior hand-over"),["08-learning.html",t("หน้า 8 การเรียนรู้","Page 8 learning")]]];
+  const counts={all:R.length};R.forEach(r=>counts[r[0]]=(counts[r[0]]||0)+1);
+  const fb=document.getElementById("filters");
+  fb.innerHTML=[["all",t("ทั้งหมด","All")],...Object.keys(G).map(k=>[k,G[k][1]])].map(([k,l])=>`<button type="button" data-f="${k}" aria-pressed="${filter===k}">${l} <span style="opacity:.7">${counts[k]}</span></button>`).join("");
+  fb.querySelectorAll("button").forEach(b=>b.onclick=()=>{filter=b.dataset.f;render()});
+  document.getElementById("risks").innerHTML=R.filter(r=>filter==="all"||r[0]===filter).map(r=>`
+   <article class="risk" style="--c:${G[r[0]][0]}">
+    <div><span class="pill ${r[0]==="mkt"?"bad":r[0]==="prod"?"info":"warn"}">${G[r[0]][1]}</span></div>
+    <h3>${r[1]}</h3>
+    <div class="row"><b>${t("ผลกระทบ","Impact")}</b>${r[2]}</div>
+    <div class="row"><b>${t("แนวทางรองรับ","Mitigation")}</b>${r[3]}</div>
+    <div class="lk"><a href="${r[4][0]}">${r[4][1]}</a></div>
+   </article>`).join("");
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2. พื้นที่และโรงเรือน · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.facil td.r{width:9em}
+.flowrow{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;align-items:center;margin:10px 0}
+.flowrow .lbl{font-size:14.5px;font-weight:600;line-height:1.35}
+.flowrow .lbl small{display:block;font-weight:400;color:var(--muted)}
+.renders{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:980px){.renders{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body data-page="2" data-art="img:site-render1">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">2</span>
+    <h1 data-i18n="h1">พื้นที่และโรงเรือน</h1>
+    <p data-i18n="lead">พื้นที่ใช้สอยรวม 755 ตร.ม. ประกอบด้วยโรงเรือนปลูก 4 โรง อาคารคัดแยก ห้องเย็น โดมอบแห้ง และอาคารเก็บอุปกรณ์ ผลผลิตเดินทางจากโรงเรือนถึงมือผู้ซื้อภายในพื้นที่เดียว</p>
+  </div>
+
+  <section class="block split-60" aria-label="Site">
+    <figure class="ph"><a href="img/site-aerial.jpg" target="_blank" rel="noopener"><img src="img/site-aerial.jpg" alt="" id="aerial"></a><figcaption data-i18n="capAerial">ภาพจำลองพื้นที่โครงการ วษท.เชียงใหม่ (กดเพื่อดูภาพเต็ม)</figcaption></figure>
+    <div id="spec"></div>
+  </section>
+
+  <section class="block" aria-labelledby="flow-h">
+    <h2 id="flow-h" data-i18n="flowH">ผลผลิต 16,000 กก. ต่อปีไปที่ไหน</h2>
+    <p class="intro" data-i18n="flowIntro">ทุกกิโลกรัมผ่านอาคารคัดแยกก่อน แล้วแยกไปตามเกรด ความกว้างของแถบเป็นสัดส่วนตามน้ำหนักจริงในแผนการเงิน</p>
+    <div id="flow"></div>
+  </section>
+
+  <section class="block" aria-labelledby="fac-h">
+    <h2 id="fac-h" data-i18n="facH">สิ่งปลูกสร้างและระบบในพื้นที่</h2>
+    <p class="intro" data-i18n="facIntro">เรียงตามเส้นทางของผลผลิต งบประมาณจากรายการลงทุนในหน้า 6</p>
+    <div class="tbl-wrap"><table class="data facil" id="facil"></table></div>
+  </section>
+
+  <section class="block" aria-labelledby="ren-h">
+    <h2 id="ren-h" data-i18n="renH">ภาพจำลองและแบบโรงเรือน</h2>
+    <figure class="ph" style="margin-bottom:16px"><a href="img/gh-render-fan.jpg" target="_blank" rel="noopener"><img src="img/gh-render-fan.jpg" alt="" id="fanimg"></a><figcaption data-i18n="capFan">โรงเรือนแบบใหม่ ย้ายพัดลมขึ้นไปไว้ที่จั่วด้านบน เพื่อดึงอากาศร้อนที่ลอยตัวขึ้นออกไป ตามข้อเสนอแนะของกรรมการ</figcaption></figure>
+    <div class="renders">
+      <figure class="ph crop"><a href="img/site-render1.jpg" target="_blank" rel="noopener"><img src="img/site-render1.jpg" alt=""></a></figure>
+      <figure class="ph crop"><a href="img/site-render2.jpg" target="_blank" rel="noopener"><img src="img/site-render2.jpg" alt=""></a></figure>
+      <figure class="ph crop"><a href="img/site-render3.jpg" target="_blank" rel="noopener"><img src="img/site-render3.jpg" alt=""></a></figure>
+      <figure class="ph crop"><a href="img/site-frame.jpg" target="_blank" rel="noopener"><img src="img/site-frame.jpg" alt=""></a></figure>
+    </div>
+    <figure class="ph" style="margin-top:16px"><a href="img/gh-design.jpg" target="_blank" rel="noopener"><img src="img/gh-design.jpg" alt="" id="ghimg"></a><figcaption data-i18n="capDesign">แบบโรงเรือนปลูกมะเขือเทศเชอรี่ ระบบซับสเตรตในถุง ให้น้ำแบบน้ำหยดควบคุมด้วย IoT ฉบับปรับปรุง พัดลมติดที่จั่ว (กดเพื่อดูภาพเต็ม)</figcaption></figure>
+  </section>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">ที่มา: แผนธุรกิจ ภาคผนวก และข้อมูลจากทีม วษท.เชียงใหม่</span></div></footer>
+<script>
+window.PAGE_EN={h1:"Site and greenhouses",lead:"A 755 m² site holds four growing houses, a grading building, a cold room, a solar drying dome and an equipment store. Fruit moves from greenhouse to buyer within one site.",
+ capAerial:"Rendering of the project site at Chiang Mai College (select to enlarge)",flowH:"Where the 16,000 kg a year goes",flowIntro:"Every kilogram passes through the grading building first, then splits by grade. Bar widths follow the weights in the financial plan.",
+ facH:"Buildings and systems on site",facIntro:"Listed along the path the fruit takes. Budgets from the investment list on page 6.",renH:"Renderings and greenhouse design",
+ capDesign:"Cherry tomato greenhouse design: substrate grow bags, IoT-controlled drip irrigation. Revised with the fan at the gable (select to enlarge)",foot:"Sources: business plan, appendix and Chiang Mai College team",capFan:"Revised greenhouse: the fan now sits high on the gable to pull out rising hot air, as the panel advised"};
+function render(){
+  const t=SG.t,f=SG.fmt;
+  document.getElementById("aerial").alt=t("ภาพจำลองมุมสูงของพื้นที่โครงการ","Aerial rendering of the project site");
+  document.getElementById("fanimg").alt=t("ภาพโรงเรือนแบบใหม่ พัดลมติดที่จั่ว","Revised greenhouse with gable-mounted fan");
+  document.getElementById("ghimg").alt=t("อินโฟกราฟิกแบบโรงเรือน","Greenhouse design infographic");
+  document.querySelectorAll(".renders img").forEach(i=>i.alt=t("ภาพจำลองพื้นที่โครงการ","Project site rendering"));
+  document.getElementById("spec").innerHTML=`
+   <div class="card">
+    <h3>${t("โรงเรือนปลูก 1 โรง","One growing house")}</h3>
+    <dl class="spec" style="margin-top:10px">
+     <dt>${t("ขนาด","Size")}</dt><dd>${t("กว้าง 6 × ยาว 16 × สูง 3.2 ม. (96 ตร.ม.)","6 × 16 m, 3.2 m high (96 m²)")}</dd>
+     <dt>${t("ความจุ","Capacity")}</dt><dd>${t("360 ถุง × 2 ต้น = 720 ต้น","360 bags × 2 plants = 720 plants")}</dd>
+     <dt>${t("ถุงปลูก","Grow bag")}</dt><dd>${t("ถุงขาว 25–30 ลิตร ขุยมะพร้าว + เพอร์ไลต์ + เวอร์มิคูไลต์","White bag, 25–30 L, coir + perlite + vermiculite")}</dd>
+     <dt>${t("โครงสร้าง","Structure")}</dt><dd>${t("เหล็กชุบกัลวาไนซ์ พลาสติก PE 150 ไมครอน มุ้งกันแมลง 32 เมช","Galvanised steel, 150 µm PE film, 32-mesh insect net")}</dd>
+     <dt>${t("ระบายอากาศ","Ventilation")}</dt><dd>${t("พัดลม 50 นิ้ว 2 ตัว ติดบริเวณจั่วด้านบนเพื่อดึงอากาศร้อนออก ตามข้อเสนอแนะของกรรมการ","Two 50-inch fans mounted at the gable to extract hot air, as the panel advised")}</dd>
+     <dt>${t("ให้น้ำ","Irrigation")}</dt><dd>${t("น้ำหยด 2 ลิตร/ชม. ปุ๋ย A/B ผ่านระบบ IoT","Drip 2 L/h, A/B fertiliser via IoT")}</dd>
+     <dt>${t("ค้าง","Trellis")}</dt><dd>${t("เชือกแขวนเดี่ยว สูง 2.2–2.5 ม.","Single-string trellis, 2.2–2.5 m")}</dd>
+    </dl>
+   </div>
+   <div class="card" style="margin-top:12px">
+    <h3>${t("ทั้งพื้นที่","Whole site")}</h3>
+    <dl class="spec" style="margin-top:10px">
+     <dt>${t("โรงเรือน","Houses")}</dt><dd>${t("4 โรง (สร้างใหม่ 3 + เดิม 1) รวม 384 ตร.ม.","4 (3 new + 1 existing), 384 m² in total")}</dd>
+     <dt>${t("ความจุรวม","Total capacity")}</dt><dd>${t("2,880 ต้น/รอบ คิดรายได้ 1,600 ต้น","2,880 plants/cycle; 1,600 counted for revenue")}</dd>
+     <dt>${t("พื้นที่ใช้สอย","Site area")}</dt><dd>${t("755 ตร.ม. รวมพื้นที่อบแห้งและหลังเก็บเกี่ยว","755 m² including drying and post-harvest")}</dd>
+    </dl>
+   </div>`;
+  const flows=[
+   {c:"var(--tomato)",kg:12000,th:"ขายปลีก",en:"Retail",sth:"เกรด A → ห้องเย็น → ร้านอาหาร โรงแรม ออนไลน์",sen:"Grade A → cold room → restaurants, hotels, online"},
+   {c:"#5C8A4E",kg:1700,th:"ขายส่ง",en:"Wholesale",sth:"เกรด B → ตลาดค้าส่ง",sen:"Grade B → wholesale market"},
+   {c:"#B7791F",kg:1500,th:"แปรรูป",en:"Processing",sth:"ตกเกรด → แช่น้ำเชื่อม → โดมอบแห้ง → 500 กก.",sen:"Off-grade → syrup soak → solar dome → 500 kg"},
+   {c:"var(--muted)",kg:800,th:"สูญเสีย",en:"Loss",sth:"สูญเสียหลังเก็บเกี่ยว 5%",sen:"Post-harvest loss 5%"}];
+  document.getElementById("flow").innerHTML=`<div class="flowbar" role="img" aria-label="${t("สัดส่วนผลผลิต","Output split")}">${flows.map(x=>`<div style="flex:${x.kg} 1 0;background:${x.c}">${f(x.kg)}</div>`).join("")}</div>`+
+   flows.map(x=>`<div class="flowrow"><div class="lbl"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${x.c};margin-right:6px"></span>${t(x.th,x.en)} ${f(x.kg)} ${t("กก.","kg")} <small>${(x.kg/160).toFixed(1)}%</small></div><div>${t(x.sth,x.sen)}</div></div>`).join("");
+  const F=[
+   [t("โรงเรือนปลูก 3 โรง (+ โรงเรือนเดิม 1 โรง)","3 growing houses (+ 1 existing)"),t("ปลูกในถุงวัสดุปลูก ระบบน้ำหยด","Grow bags with drip irrigation"),201000],
+   [t("เทพื้นคอนกรีต 755 ตร.ม.","Concrete floor, 755 m²"),t("พื้นโรงเรือนและทางเดิน ทำความสะอาดง่าย ลดโรค","Greenhouse floors and paths; easy to clean"),369950],
+   [t("ระบบ Solar + BESS","Solar + battery storage"),t("จ่ายไฟให้ปั๊ม พัดลม และ IoT","Powers pumps, fans and IoT"),260000],
+   [t("ระบบน้ำ ระบบไฟฟ้า และเครื่องกรอง RO","Water, electrical and RO filter"),t("น้ำสะอาดสำหรับระบบให้ปุ๋ย","Clean water for fertigation"),166000],
+   [t("อาคารคัดแยกผลผลิต","Grading building"),t("คัดเกรด ล้าง และบรรจุ","Grading, cleaning, packing"),80000],
+   [t("ห้องเย็น","Cold room"),t("เก็บผลสดเกรด A ก่อนส่ง","Holds grade-A fruit before delivery"),263500],
+   [t("โซล่าโดมอบแห้ง","Solar drying dome"),t("อบผลตกเกรดหลังแช่น้ำเชื่อม","Dries off-grade fruit after syrup soak"),285000],
+   [t("อาคารเก็บอุปกรณ์","Equipment store"),t("เก็บอุปกรณ์ วัสดุปลูก และบรรจุภัณฑ์","Tools, substrate and packaging"),410000]];
+  document.getElementById("facil").innerHTML=`<thead><tr><th>${t("สิ่งปลูกสร้าง/ระบบ","Building / system")}</th><th>${t("ใช้ทำอะไร","Purpose")}</th><th class="r">${t("งบ (บาท)","Budget (THB)")}</th></tr></thead><tbody>`+
+   F.map(r=>`<tr><td>${r[0]}</td><td class="muted">${r[1]}</td><td class="r">${f(r[2])}</td></tr>`).join("")+
+   `<tr class="sub"><td colspan="3">${t("เครื่องมือวัดคุณภาพ ถังและถาดสำหรับแปรรูป และระบบ IoT ดูรายละเอียดในหน้า 6","Quality instruments, processing tanks and trays, and IoT are itemised on page 6")}</td></tr></tbody>`;
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

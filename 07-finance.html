@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7. การเงินและตัวปรับสมมติฐาน · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:32px;align-items:start}
+.controls{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.controls h3{font-size:18px;font-weight:600;margin-bottom:6px}
+.ctl{padding:14px 0;border-bottom:1px solid var(--line)}
+.ctl:last-of-type{border-bottom:0}
+.ctl label{display:flex;justify-content:space-between;gap:12px;font-weight:600;font-size:15.5px}
+.ctl output{font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--tomato);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ctl input[type=range]{width:100%;margin:10px 0 4px;accent-color:var(--tomato);height:28px}
+.ctl .scale{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ctl .hint{font-size:13.5px;color:var(--muted);margin-top:4px;line-height:1.45}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.presets button{font:600 14px var(--font-body);padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.presets button:hover{border-color:var(--leaf)}
+.presets button.base{background:var(--leaf);color:var(--bg);border-color:var(--leaf)}
+.results .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+.results .tile:nth-child(2n){border-right:0}
+.results .tile{border-bottom:1px solid var(--line)}
+.verdict{display:flex;gap:12px;align-items:center;margin:16px 0 0;font-size:15.5px}
+.chart{margin-top:20px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px 10px}
+.chart h3{font-size:16px;font-weight:600}
+.chart svg{width:100%;height:auto;display:block}
+.chart .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin-top:4px}
+.chart .legend i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:6px}
+.vol{font-size:14px;margin-top:10px;color:var(--muted)}
+.vol b{color:var(--ink)}
+.sens td.r{min-width:7em}
+.costgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px;align-items:start}
+table.data tr.staff td{background:var(--tomato-soft)}
+table.data tr.grp td{background:var(--bg);font-weight:600;font-size:14.5px}
+.wc h3{font-size:18px;font-weight:600}
+.wc .wcv{font-family:var(--font-display);font-weight:700;font-size:30px;margin:4px 0 6px;color:var(--tomato)}
+.wc p{margin:0 0 10px;font-size:15px}
+.wc .pendq{font-size:14.5px;margin:0}
+@media (max-width:980px){.costgrid{grid-template-columns:1fr}}
+.assump{columns:2;column-gap:36px;font-size:15px;padding-left:18px;margin:0}
+.assump li{break-inside:avoid;margin:0 0 6px}
+@media (max-width:980px){.lab{grid-template-columns:1fr}.assump{columns:1}}
+</style>
+</head>
+<body data-page="7" data-art="svg:finance">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">7</span>
+    <h1 data-i18n="h1">การเงินและตัวปรับสมมติฐาน</h1>
+    <p data-i18n="lead">ลองเปลี่ยนผลผลิต ราคา และจำนวนต้น แล้วดูว่ากำไร จุดคุ้มทุน และระยะคืนทุนเปลี่ยนอย่างไร ค่าเริ่มต้นคือกรณีฐานในแผนธุรกิจฉบับแก้ไข</p>
+  </div>
+
+  <section class="block lab" aria-label="What-if">
+    <div class="controls">
+      <h3 data-i18n="ctlH">สมมติฐาน</h3>
+      <div class="ctl">
+        <label for="kg"><span data-i18n="kgL">ผลผลิตเฉลี่ย (กก./ต้น/รอบ)</span><output id="kg-o" for="kg"></output></label>
+        <input type="range" id="kg" min="2" max="7" step="0.5" value="5">
+        <div class="scale"><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
+        <div class="hint" data-i18n="kgH">กรณีฐาน 5 กก. (รอบหนาว ~6 รอบร้อน ~4) กรณีระมัดระวัง 3 กก.</div>
+      </div>
+      <div class="ctl">
+        <label for="price"><span data-i18n="priceL">ราคาขายปลีก (บาท/กก.)</span><output id="price-o" for="price"></output></label>
+        <input type="range" id="price" min="60" max="140" step="5" value="100">
+        <div class="scale"><span>60</span><span>80</span><span>100</span><span>120</span><span>140</span></div>
+        <div class="hint" data-i18n="priceH">ขายส่ง 30 บาท/กก. และอบแห้ง 300 บาท/กก. คงที่</div>
+      </div>
+      <div class="ctl">
+        <label for="plants"><span data-i18n="plantsL">จำนวนต้นที่คิดรายได้ (ต่อรอบ)</span><output id="plants-o" for="plants"></output></label>
+        <input type="range" id="plants" min="800" max="2880" step="80" value="1600">
+        <div class="scale"><span>800</span><span>1,600</span><span>2,880</span></div>
+        <div class="hint" data-i18n="plantsH">ความจุ 4 โรงเรือน 2,880 ต้น ต้นทุนผันแปรเพิ่มตามจำนวนต้น ต้นทุนคงที่เท่าเดิม</div>
+      </div>
+      <div class="ctl">
+        <label for="wage"><span data-i18n="wageL">ค่าจ้างเจ้าหน้าที่ 2 ตำแหน่ง (บาท/เดือน รวม)</span><output id="wage-o" for="wage"></output></label>
+        <input type="range" id="wage" min="18000" max="36000" step="1000" value="22000">
+        <div class="scale"><span>18,000</span><span>22,000</span><span>36,000</span></div>
+        <div class="hint" data-i18n="wageH">ฐาน: ฝ่ายผลิต 10,000 + ฝ่ายการตลาด 12,000 บาท/เดือน ยังไม่รวมเงินสมทบประกันสังคมของนายจ้าง</div>
+      </div>
+      <div class="presets" role="group" aria-label="Scenarios">
+        <button type="button" class="base" data-p="5,100,1600,22000" data-i18n="pBase">กรณีฐาน</button>
+        <button type="button" data-p="3,100,1600,22000" data-i18n="pCons">ระมัดระวัง 3 กก.</button>
+        <button type="button" data-p="3,80,1600,22000" data-i18n="pWorst">ผลผลิตต่ำและราคาตก</button>
+        <button type="button" data-p="5,100,2880,22000" data-i18n="pFull">ใช้เต็มความจุ</button>
+      </div>
+    </div>
+
+    <div class="results" aria-live="polite">
+      <div class="tiles">
+        <div class="tile"><div class="k" data-i18n="tRev">รายได้ปีที่ 1</div><div class="v" id="r-rev"></div><div class="delta" id="d-rev"></div></div>
+        <div class="tile"><div class="k" data-i18n="tNp">กำไรสุทธิปีที่ 1</div><div class="v" id="r-np"></div><div class="delta" id="d-np"></div></div>
+        <div class="tile"><div class="k" data-i18n="tBep">จุดคุ้มทุน (ยอดขาย/ปี)</div><div class="v" id="r-bep"></div><div class="n" id="n-bep"></div></div>
+        <div class="tile"><div class="k" data-i18n="tPb">ระยะคืนทุน</div><div class="v" id="r-pb"></div><div class="n" id="n-pb"></div></div>
+      </div>
+      <div class="verdict" id="verdict"></div>
+      <div class="vol" id="vol"></div>
+      <div class="chart">
+        <h3 data-i18n="chartH">กระแสเงินสดสะสม 5 ปี เทียบเงินลงทุน</h3>
+        <svg id="chart" viewBox="0 0 640 250" role="img" aria-labelledby="chart-desc"><desc id="chart-desc"></desc></svg>
+        <div class="legend">
+          <span><i style="background:var(--tomato)"></i><span data-i18n="lgScen">สมมติฐานที่เลือก</span></span>
+          <span><i style="background:var(--unripe)"></i><span data-i18n="lgBase">กรณีฐาน</span></span>
+          <span><i style="background:var(--ink);height:0;border-top:2px dashed var(--ink)"></i><span data-i18n="lgCapex">เงินลงทุน 2.53 ล้านบาท</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="cost-h">
+    <h2 id="cost-h" data-i18n="costH">โครงสร้างต้นทุนปีที่ 1</h2>
+    <p class="intro" data-i18n="costIntro">ค่าจ้างเจ้าหน้าที่จ่ายจากรายได้ของโครงการ ไม่ได้อยู่ในงบลงทุนจาก ADB ตารางนี้เปลี่ยนตามสมมติฐานด้านบน</p>
+    <div class="costgrid">
+      <div class="tbl-wrap"><table class="data" id="cost"></table></div>
+      <div class="callout wc">
+        <h3 data-i18n="wcH">เงินทุนหมุนเวียนช่วงเริ่มต้น</h3>
+        <p class="wcv num" data-i18n="wcV">≈ 95,000 บาท</p>
+        <p data-i18n="wcP">ผลผลิตแรกออกประมาณ 60 วันหลังย้ายปลูก ระหว่างนั้นต้องจ่ายเงินเดือน 2 เดือน (44,000) ค่าวัสดุปลูก ปุ๋ย และสารชีวภัณฑ์รอบแรก (40,000) และค่าไฟ ค่าซ่อมบำรุง ค่าเช่า (≈ 11,000) โดยยังไม่มีรายได้</p>
+        <p class="pendq"><span class="pill warn" data-i18n="wcPill">รอตัดสินใจ</span> <span data-i18n="wcQ">แหล่งเงินก้อนนี้ยังไม่อยู่ในแผน ทุน ADB ครอบคลุมเฉพาะเงินลงทุน 22 รายการ ทีมต้องกำหนดว่าจะใช้งบของวิทยาลัยหรือแหล่งอื่น</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="pl-h">
+    <h2 id="pl-h" data-i18n="plH">ประมาณการงบกำไรขาดทุน 5 ปี</h2>
+    <p class="intro" data-i18n="plIntro">ปีดำเนินงานที่ 1 คือ พ.ค. 2570 – เม.ย. 2571 ตารางนี้เปลี่ยนตามสมมติฐานด้านบน</p>
+    <div class="tbl-wrap"><table class="data" id="pl"></table></div>
+  </section>
+
+  <section class="block" aria-labelledby="sens-h">
+    <h2 id="sens-h" data-i18n="sensH">การวิเคราะห์ความอ่อนไหว</h2>
+    <p class="intro" data-i18n="sensIntro">กำไรสุทธิปีที่ 1 (บาท) ที่ 1,600 ต้น ช่องที่ไฮไลต์คือกรณีฐาน ตัวเลขในวงเล็บคือขาดทุน</p>
+    <div class="tbl-wrap"><table class="data sens" id="sens"></table></div>
+  </section>
+
+  <section class="block" aria-labelledby="as-h">
+    <h2 id="as-h" data-i18n="asH">สมมติฐานในโมเดล</h2>
+    <ul class="assump" id="assump"></ul>
+  </section>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">โมเดลเดียวกับที่ใช้ในแผนธุรกิจและภาคผนวกฉบับแก้ไข พฤศจิกายน 2569</span></div></footer>
+
+<script>
+window.PAGE_EN={
+ h1:"Finance and what-if",lead:"Change yield, price and plant numbers to see how profit, break-even and payback move. The starting values are the base case in the revised business plan.",
+ ctlH:"Assumptions",kgL:"Average yield (kg/plant/cycle)",kgH:"Base case 5 kg (cool cycle ~6, hot cycle ~4). Conservative case 3 kg.",
+ priceL:"Retail price (THB/kg)",priceH:"Wholesale THB 30/kg and dried product THB 300/kg stay fixed.",
+ plantsL:"Plants counted for revenue (per cycle)",plantsH:"Four houses hold 2,880 plants. Variable costs scale with plants; fixed costs do not.",
+ pBase:"Base case",wageL:"Staff wages, 2 posts (THB/month total)",wageH:"Base: production 10,000 + marketing 12,000 THB/month; employer social-security contribution not included.",costH:"Year-1 cost structure",costIntro:"Staff are paid from project revenue, not from the ADB investment grant. The table follows the assumptions above.",wcH:"Start-up working capital",wcV:"≈ THB 95,000",wcP:"First harvest comes about 60 days after transplanting. Until then the project pays two months of wages (44,000), first-cycle substrate, fertiliser and bio-inputs (40,000), and power, maintenance and rent (≈ 11,000) with no revenue.",wcPill:"Decision needed",wcQ:"This money is not yet in the plan; the ADB grant covers only the 22 investment items. The team needs to decide whether it comes from the college budget or another source.",pCons:"Conservative 3 kg",pWorst:"Low yield and low price",pFull:"Full capacity",
+ tRev:"Revenue, year 1",tNp:"Net profit, year 1",tBep:"Break-even sales per year",tPb:"Payback",
+ chartH:"Five-year cumulative cash flow against the investment",lgScen:"Selected assumptions",lgBase:"Base case",lgCapex:"Investment THB 2.53 M",
+ plH:"Five-year income statement",plIntro:"Operating year 1 runs May 2027 – Apr 2028. The table follows the assumptions above.",
+ sensH:"Sensitivity analysis",sensIntro:"Year-1 net profit (THB) at 1,600 plants. The highlighted cell is the base case; figures in brackets are losses.",
+ asH:"Model assumptions",foot:"Same model as the revised business plan and appendix, November 2026"
+};
+/* ---- model (mirrors the Python model used for the documents) ---- */
+const CAPEX=2532850, DEP=253285, FIXED_CASH=328000; // staff 120k + power 30k + maintenance 30k + rent 4k + marketing 144k
+const VOL=[1,1.05,1.10,1.10,1.10], INF=0.03;
+function model(kg,price,plants,wage=22000){
+  const FIXED_CASH_W=FIXED_CASH-264000+wage*12, wp=wage*12*120/264, wm=wage*12*144/264;
+  const s=plants*kg*2/16000;
+  const retail=12000*s, whole=1700*s, proc=1500*s, dried=proc/3, loss=800*s;
+  const rev=retail*price+whole*30+dried*300;
+  const varc=154000*s + retail/0.25*3 + dried/0.2*5; // inputs 80k+10k, syrup 54k, transport 10k; packs 250 g @3, 200 g @5
+  const years=[];let cum=0,pb=null;
+  for(let t=0;t<5;t++){
+    const inf=Math.pow(1+INF,t), v=VOL[t];
+    const R=Math.round(rev*v*inf), VC=varc*v*inf;
+    const sga=Math.round((4000+wm)*inf+10000*v*inf);
+    const cogs=Math.round(VC-10000*v*inf+(60000+wp)*inf+DEP);
+    const gp=R-cogs, np=gp-sga, cf=np+DEP;
+    if(pb===null&&cum+cf>=CAPEX&&cf>0)pb=t+(CAPEX-cum)/cf;
+    cum+=cf;years.push({R,cogs,gp,sga,np,cf,cum});
+  }
+  const cm=(rev-varc)/rev, bep=(FIXED_CASH_W+DEP)/cm;
+  return {prod:plants*kg*2,retail,whole,dried,loss,rev,varc,years,pb,cm,bep,wp,wm,fixedCash:FIXED_CASH_W,s};
+}
+const BASE=model(5,100,1600);
+console.assert(Math.round(BASE.years[0].np)===509215,"base NP mismatch",BASE.years[0].np);
+console.assert(Math.round(BASE.bep)===746795,"base BEP mismatch",BASE.bep);
+
+const $=id=>document.getElementById(id);
+const kg=$("kg"),price=$("price"),plants=$("plants"),wage=$("wage");
+function T(th,en){return SG.lang()==="en"?en:th}
+function money(n){const f=SG.fmt(Math.abs(n));return n<0?`(${f})`:f}
+function delta(el,v,b){
+  const d=v-b; if(Math.abs(d)<1){el.textContent=T("เท่ากรณีฐาน","Same as base");el.className="delta";return}
+  el.textContent=`${d>0?"+":"−"}${SG.fmt(Math.abs(d))} ${T("บาท เทียบกรณีฐาน","THB vs base")}`;el.className="delta "+(d>0?"up":"down");
+}
+function update(){
+  const k=+kg.value,p=+price.value,n=+plants.value,w=+wage.value,m=model(k,p,n,w),y=m.years[0];
+  $("wage-o").textContent=SG.fmt(w);
+  $("kg-o").textContent=k.toFixed(1);$("price-o").textContent=p;$("plants-o").textContent=SG.fmt(n);
+  $("r-rev").innerHTML=`${SG.fmt(y.R)}<small>${T("บาท","THB")}</small>`;delta($("d-rev"),y.R,BASE.years[0].R);
+  $("r-np").innerHTML=`<span style="color:${y.np<0?"var(--tomato)":"inherit"}">${money(y.np)}</span><small>${T("บาท","THB")}</small>`;delta($("d-np"),y.np,BASE.years[0].np);
+  $("r-bep").innerHTML=`${SG.fmt(m.bep)}<small>${T("บาท","THB")}</small>`;
+  $("n-bep").textContent=T(`${(m.bep/m.rev*100).toFixed(0)}% ของรายได้ที่ตั้งไว้ · อัตรากำไรส่วนเกิน ${(m.cm*100).toFixed(1)}%`,`${(m.bep/m.rev*100).toFixed(0)}% of revenue · contribution margin ${(m.cm*100).toFixed(1)}%`);
+  $("r-pb").innerHTML=m.pb===null?`&gt; 5<small>${T("ปี","yrs")}</small>`:`${m.pb.toFixed(1)}<small>${T("ปี","yrs")}</small>`;
+  $("n-pb").textContent=T(`กระแสเงินสดสะสม 5 ปี ${(m.years[4].cum/1e6).toFixed(2)} ล้านบาท`,`5-year cumulative cash THB ${(m.years[4].cum/1e6).toFixed(2)} M`);
+  // verdict
+  let pill,txt;
+  if(y.np<0){pill=`<span class="pill bad">${T("ขาดทุน","Loss")}</span>`;txt=T("ยอดขายต่ำกว่าจุดคุ้มทุน ต้องลดต้นทุนคงที่หรือเพิ่มยอดขาย","Sales fall below break-even; fixed costs must fall or sales rise.");}
+  else if(m.pb===null){pill=`<span class="pill warn">${T("มีกำไรแต่คืนทุนไม่ทัน 5 ปี","Profitable, payback beyond 5 years")}</span>`;txt=T("ยังเลี้ยงตัวเองได้ แต่สะสมเงินทดแทนสินทรัพย์ได้น้อย","Self-funding, but builds little replacement reserve.");}
+  else {pill=`<span class="pill good">${T("ยั่งยืนในกรอบ 5 ปี","Sustainable within 5 years")}</span>`;txt=T(`คืนทุนในประมาณ ${m.pb.toFixed(1)} ปี และมีกำไรทุกปี`,`Pays back in about ${m.pb.toFixed(1)} years with a profit every year.`);}
+  $("verdict").innerHTML=pill+`<span>${txt}</span>`;
+  const perMonth=m.retail/12, over=perMonth>1000.5;
+  $("vol").innerHTML=T(`ผลผลิตรวม <b>${SG.fmt(m.prod)} กก./ปี</b> ต้องขายปลีก <b>${SG.fmt(perMonth)} กก./เดือน</b>`,`Total output <b>${SG.fmt(m.prod)} kg/yr</b>; retail sales needed <b>${SG.fmt(perMonth)} kg/month</b>`)+(over?` <span class="pill warn">${T("สูงกว่าแผนการตลาด 1,000 กก./เดือน","Above the 1,000 kg/month market plan")}</span>`:"");
+  document.querySelectorAll(".presets button").forEach(b=>b.classList.toggle("base",b.dataset.p===`${k},${p},${n},${w}`));
+  drawChart(m);renderPL(m);renderCost(m);
+}
+function drawChart(m){
+  const svg=$("chart"),W=640,H=250,L=58,R=16,Tp=14,B=34;
+  const all=[...m.years.map(y=>y.cum),...BASE.years.map(y=>y.cum),CAPEX,0];
+  let max=Math.max(...all),min=Math.min(...all);
+  const step=1e6; max=Math.ceil(max/step)*step; min=Math.floor(min/step)*step;
+  const x=i=>L+(W-L-R)*(i/5), y=v=>Tp+(H-Tp-B)*(1-(v-min)/(max-min));
+  let g="";
+  for(let v=min;v<=max;v+=step){g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" font-size="12" fill="var(--muted)">${(v/1e6).toFixed(0)}${T(" ล.","M")}</text>`}
+  for(let i=0;i<=5;i++)g+=`<text x="${x(i)}" y="${H-12}" text-anchor="middle" font-size="12" fill="var(--muted)">${i===0?T("เริ่ม","Start"):T("ปี ","Y")+i}</text>`;
+  g+=`<line x1="${L}" x2="${W-R}" y1="${y(CAPEX)}" y2="${y(CAPEX)}" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="6 4"/>`;
+  const path=ys=>"M"+[0,...ys.map(v=>v.cum)].map((v,i)=>`${x(i)},${y(v)}`).join(" L");
+  g+=`<path d="${path(BASE.years)}" fill="none" stroke="var(--unripe)" stroke-width="3"/>`;
+  g+=`<path d="${path(m.years)}" fill="none" stroke="var(--tomato)" stroke-width="3"/>`;
+  m.years.forEach((v,i)=>{g+=`<circle cx="${x(i+1)}" cy="${y(v.cum)}" r="${i===4?5:3.5}" fill="var(--tomato)"/>`});
+  const last=m.years[4].cum;
+  g+=`<text x="${x(5)-8}" y="${y(last)-10}" text-anchor="end" font-size="13" font-weight="600" fill="var(--tomato)">${(last/1e6).toFixed(2)}${T(" ล้าน"," M")}</text>`;
+  svg.innerHTML=`<desc id="chart-desc">${T("กราฟกระแสเงินสดสะสม 5 ปี","Five-year cumulative cash flow chart")}</desc>`+g;
+}
+function renderPL(m){
+  const rows=[["R",T("รายได้จากการขาย","Revenue")],["cogs",T("หัก ต้นทุนขาย","Less cost of sales")],["gp",T("กำไรขั้นต้น","Gross profit")],["sga",T("หัก ค่าใช้จ่ายขายและบริหาร","Less selling and admin")],["np",T("กำไรสุทธิ (ไม่มีดอกเบี้ย ไม่มีภาษี)","Net profit (no interest, no tax)")],["cf",T("กระแสเงินสด (กำไร + ค่าเสื่อม)","Cash flow (profit + depreciation)")],["cum",T("กระแสเงินสดสะสม","Cumulative cash flow")]];
+  let h=`<thead><tr><th>${T("รายการ (บาท)","Item (THB)")}</th>${[1,2,3,4,5].map(i=>`<th class="r">${T("ปีที่ ","Year ")}${i}</th>`).join("")}</tr></thead><tbody>`;
+  rows.forEach(([k,l])=>{const cls=k==="np"?' class="total"':(k==="cf"||k==="cum")?' class="sub"':"";
+    h+=`<tr${cls}><td>${l}</td>${m.years.map(y=>`<td class="r${y[k]<0?" neg":""}">${money(y[k])}</td>`).join("")}</tr>`});
+  $("pl").innerHTML=h+"</tbody>";
+}
+function renderCost(m){
+  const s=m.s, retailPacks=12000*s/0.25*3, driedPacks=1500*s/3/0.2*5;
+  const fixed=[
+    [T("เจ้าหน้าที่ดูแลการผลิต","Production staff"),m.wp,1],
+    [T("เจ้าหน้าที่ฝ่ายการตลาดและการขาย","Marketing and sales staff"),m.wm,1],
+    [T("ค่าไฟฟ้า","Electricity"),30000],
+    [T("ค่าซ่อมบำรุง","Maintenance"),30000],
+    [T("ค่าเช่าพื้นที่","Space rent"),4000],
+    [T("ค่าเสื่อมราคา (ไม่ใช่เงินสด)","Depreciation (non-cash)"),DEP]];
+  const variable=[
+    [T("วัสดุปลูก ปุ๋ย และสารชีวภัณฑ์","Substrate, fertiliser, bio-inputs"),80000*s],
+    [T("อุปกรณ์เสริม","Supplies"),10000*s],
+    [T("น้ำเชื่อมฟรุกโตส (แช่ก่อนอบ)","Fructose syrup (pre-drying soak)"),54000*s],
+    [T("บรรจุภัณฑ์ผลสดและอบแห้ง","Packaging, fresh and dried"),retailPacks+driedPacks],
+    [T("ค่าขนส่ง","Transport"),10000*s]];
+  const sum=a=>a.reduce((x,r)=>x+r[1],0), F=sum(fixed), V=sum(variable), staff=m.wp+m.wm;
+  let h=`<thead><tr><th>${T("รายการ","Item")}</th><th class="r">${T("บาท/ปี","THB/yr")}</th><th class="r">${T("สัดส่วน","Share")}</th></tr></thead><tbody>`;
+  h+=`<tr class="grp"><td>${T("ต้นทุนคงที่","Fixed costs")}</td><td class="r">${SG.fmt(F)}</td><td class="r">${(F/(F+V)*100).toFixed(0)}%</td></tr>`;
+  fixed.forEach(r=>h+=`<tr${r[2]?' class="staff"':''}><td>${r[0]}</td><td class="r">${SG.fmt(r[1])}</td><td class="r">${(r[1]/(F+V)*100).toFixed(0)}%</td></tr>`);
+  h+=`<tr class="grp"><td>${T("ต้นทุนผันแปร","Variable costs")}</td><td class="r">${SG.fmt(V)}</td><td class="r">${(V/(F+V)*100).toFixed(0)}%</td></tr>`;
+  variable.forEach(r=>h+=`<tr><td>${r[0]}</td><td class="r">${SG.fmt(r[1])}</td><td class="r">${(r[1]/(F+V)*100).toFixed(0)}%</td></tr>`);
+  h+=`<tr class="total"><td>${T("รวมต้นทุนปีที่ 1","Total year-1 cost")}</td><td class="r">${SG.fmt(F+V)}</td><td class="r">100%</td></tr>`;
+  h+=`<tr class="sub"><td colspan="3">${T(`ค่าจ้างเจ้าหน้าที่ ${SG.fmt(staff)} บาท/ปี = ${(staff/m.fixedCash*100).toFixed(0)}% ของต้นทุนคงที่ที่จ่ายเป็นเงินสด`,`Staff wages THB ${SG.fmt(staff)}/yr = ${(staff/m.fixedCash*100).toFixed(0)}% of fixed cash costs`)}</td></tr>`;
+  $("cost").innerHTML=h+"</tbody>";
+}
+function renderSens(){
+  const prices=[80,100,120];
+  let h=`<thead><tr><th>${T("ผลผลิต (กก./ต้น/รอบ)","Yield (kg/plant/cycle)")}</th><th class="r">${T("ผลผลิตรวม (กก./ปี)","Output (kg/yr)")}</th>${prices.map(p=>`<th class="r">${T("ราคาปลีก ","Retail ")}${p}</th>`).join("")}</tr></thead><tbody>`;
+  [3,4,5,6].forEach(k=>{h+=`<tr><td>${k}${k===5?T(" (ฐาน)"," (base)"):k===3?T(" (ระมัดระวัง)"," (conservative)"):""}</td><td class="r">${SG.fmt(1600*k*2)}</td>${prices.map(p=>{const v=model(k,p,1600).years[0].np;return `<td class="r${v<0?" neg":""}${k===5&&p===100?" hl":""}">${money(v)}</td>`}).join("")}</tr>`});
+  $("sens").innerHTML=h+"</tbody>";
+}
+function renderAssump(){
+  const A=SG.lang()==="en"?[
+   "Output split: retail 75%, wholesale 10.6%, processed 9.4%, post-harvest loss 5%",
+   "Dried product: about 3 kg fresh fruit per 1 kg (fructose soak keeps the fruit's shape)",
+   "Retail packs 250 g at THB 3; dried packs 200 g at THB 5",
+   "Fixed cash costs THB 328,000/yr: production staff THB 10,000/month, marketing staff THB 12,000/month, power, maintenance, rent",
+   "Depreciation THB 253,285/yr, straight line over 10 years",
+   "Prices and costs rise 3%/yr; yield per plant +5% in years 2 and 3",
+   "Investment is a grant: no interest, no repayment, no income tax",
+   "Payback uses cumulative cash flow (net profit + depreciation)"
+  ]:[
+   "สัดส่วนผลผลิต: ขายปลีก 75% ขายส่ง 10.6% แปรรูป 9.4% สูญเสียหลังเก็บเกี่ยว 5%",
+   "อบแห้ง: ผลสดประมาณ 3 กก. ได้ผลิตภัณฑ์ 1 กก. (แช่น้ำเชื่อมฟรุกโตสเพื่อคงรูป)",
+   "บรรจุภัณฑ์ผลสด 250 กรัม ชิ้นละ 3 บาท อบแห้ง 200 กรัม ชิ้นละ 5 บาท",
+   "ต้นทุนคงที่ที่เป็นเงินสด 328,000 บาท/ปี: เจ้าหน้าที่ผลิต 10,000 บาท/เดือน เจ้าหน้าที่การตลาด 12,000 บาท/เดือน ค่าไฟ ค่าซ่อมบำรุง ค่าเช่า",
+   "ค่าเสื่อมราคา 253,285 บาท/ปี วิธีเส้นตรง 10 ปี",
+   "ราคาและต้นทุนเพิ่ม 3%/ปี ผลผลิตต่อต้นเพิ่ม 5% ในปีที่ 2 และ 3",
+   "เงินลงทุนเป็นทุนให้เปล่า ไม่มีดอกเบี้ย ไม่มีการชำระคืน และไม่มีภาษีเงินได้",
+   "ระยะคืนทุนคิดจากกระแสเงินสดสะสม (กำไรสุทธิ + ค่าเสื่อมราคา)"
+  ];
+  $("assump").innerHTML=A.map(a=>`<li>${a}</li>`).join("");
+}
+[kg,price,plants,wage].forEach(el=>el.addEventListener("input",update));
+document.querySelectorAll(".presets button").forEach(b=>b.addEventListener("click",()=>{const [a,p,n,w]=b.dataset.p.split(",");kg.value=a;price.value=p;plants.value=n;wage.value=w;update()}));
+window.onLang=()=>{update();renderSens();renderAssump()};
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

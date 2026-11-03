@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9. ชุมชนและความยั่งยืน · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.phase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:12px}
+.phase>div{padding:16px 20px 18px;border-top:5px solid var(--c);background:var(--surface);border-right:1px solid var(--line)}
+.phase>div:last-child{border-right:0}
+.phase h3{font-size:17px;font-weight:600}
+.phase .when{font-size:13.5px;color:var(--muted)}
+.phase p{font-size:15px;margin:8px 0 0}
+.photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:980px){.phase{grid-template-columns:1fr}.phase>div{border-right:0;border-bottom:1px solid var(--line)}.photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body data-page="9" data-art="img:event2">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">9</span>
+    <h1 data-i18n="h1">ชุมชนและความยั่งยืน</h1>
+    <p data-i18n="lead">แปลงปลูกและสถานีแปรรูปเปิดเป็นศูนย์เรียนรู้ต้นแบบ (Living Learning Center) ให้เกษตรกรและกลุ่มแม่บ้านรอบวิทยาลัย และวางระบบให้โครงการดำเนินต่อได้เองหลังทุนหมด</p>
+  </div>
+
+  <section class="block" aria-labelledby="k-h">
+    <h2 id="k-h" data-i18n="kH">เป้าหมายต่อปี</h2>
+    <div class="kpis" id="kpis" style="margin-top:12px"></div>
+  </section>
+
+  <section class="block" aria-labelledby="a-h">
+    <h2 id="a-h" data-i18n="aH">กิจกรรมถ่ายทอดความรู้</h2>
+    <div class="tbl-wrap" style="margin-top:12px"><table class="data" id="act"></table></div>
+  </section>
+
+  <section class="block g2" aria-label="Partners and channels">
+    <div><h2 style="font-size:23px;margin-bottom:12px" data-i18n="pH">ภาคีความร่วมมือ</h2><div class="tbl-wrap"><table class="data" id="part"></table></div></div>
+    <div><h2 style="font-size:23px;margin-bottom:12px" data-i18n="cH">ช่องทางสื่อสาร</h2><div class="tbl-wrap"><table class="data" id="chan"></table></div></div>
+  </section>
+
+  <section class="block" aria-labelledby="ph-h2">
+    <h2 id="ph-h2" data-i18n="phH">แผนขยายผล</h2>
+    <div class="phase" id="phase"></div>
+  </section>
+
+  <section class="block" aria-labelledby="pil-h">
+    <h2 id="pil-h" data-i18n="pilH">ความยั่งยืนในระดับสถาบัน</h2>
+    <div class="g3" id="pil" style="margin-top:12px"></div>
+  </section>
+
+  <section class="block" aria-labelledby="ev-h">
+    <h2 id="ev-h" data-i18n="evH">กิจกรรมที่ผ่านมา</h2>
+    <div class="photos" style="margin-top:12px">
+      <figure class="ph crop"><img src="img/event2.jpg" alt="" loading="lazy"></figure>
+      <figure class="ph crop"><img src="img/event3.jpg" alt="" loading="lazy"></figure>
+      <figure class="ph crop"><img src="img/event4.jpg" alt="" loading="lazy"></figure>
+      <figure class="ph crop"><img src="img/event5.jpg" alt="" loading="lazy"></figure>
+    </div>
+    <p class="note" data-i18n="evCap">การเผยแพร่ผลงานและจำหน่ายผลผลิตในงานประชุมวิชาการ อกท. ระดับหน่วย หน่วยเชียงใหม่ ปีการศึกษา 2568</p>
+  </section>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">ที่มา: แผนธุรกิจ ข้อ 8 และ 9 และภาคผนวก</span></div></footer>
+<script>
+window.PAGE_EN={h1:"Community and sustainability",lead:"The growing and processing stations double as a Living Learning Center for farmers and women's groups around the college, and the project is set up to keep running after the grant.",
+ kH:"Annual targets",aH:"Knowledge-sharing activities",pH:"Partners",cH:"Communication channels",phH:"Scale-up plan",pilH:"Institutional sustainability",evH:"Past activities",
+ evCap:"Showcasing and selling produce at the FFT unit-level conference, Chiang Mai unit, academic year 2025",foot:"Sources: business plan sections 8 and 9, and appendix"};
+function render(){
+  const t=SG.t;
+  document.querySelectorAll(".photos img").forEach(i=>i.alt=t("กิจกรรมเผยแพร่ผลงาน","Outreach event"));
+  document.getElementById("kpis").innerHTML=[["100+",t("ผู้เข้าอบรม/ดูงานต่อปี","trainees and visitors a year")],["3",t("กลุ่มเกษตรกร/วิสาหกิจที่นำไปใช้จริง","farmer or enterprise groups applying it")],["2",t("ชุดสื่อความรู้ (คู่มือ + วิดีโอ)","learning-material sets (manual + video)")],["2",t("ข้อตกลงความร่วมมือ","partnership agreements")],["1–2",t("Field Day ต่อปี","field days a year")]].map(k=>`<div><b>${k[0]}</b><span>${k[1]}</span></div>`).join("");
+  const A=[
+   [t("ศูนย์เรียนรู้ต้นแบบ","Living Learning Center"),t("แปลงสาธิตในโรงเรือนและสถานี IoT Solar Dryer เปิดให้ศึกษาดูงานตลอดฤดูผลิต","Demonstration greenhouse and IoT solar-dryer station open through the season"),t("เกษตรกร นักเรียน ประชาชน","Farmers, students, public"),t("เปิดถาวร นัดล่วงหน้า","Open; by appointment")],
+   [t("อบรม: ปลูกมะเขือเทศเชอรี่ในโรงเรือน","Training: greenhouse cherry tomatoes"),t("เพาะกล้า จัดการโรงเรือน ให้น้ำ-ปุ๋ย เก็บเกี่ยว","Seedlings, house management, fertigation, harvest"),t("เกษตรกร วิสาหกิจชุมชน","Farmers, community enterprises"),t("ภาคเรียนละ 1 ครั้ง","Once a term")],
+   [t("อบรม: แปรรูปด้วย IoT Solar Dryer","Training: IoT solar drying"),t("หลักการเครื่องอบ ควบคุมอุณหภูมิ-ความชื้น และความปลอดภัยอาหาร","Dryer principles, temperature and humidity control, food safety"),t("กลุ่มแม่บ้าน กลุ่มแปรรูป","Women's and processing groups"),t("ภาคเรียนละ 1 ครั้ง","Once a term")],
+   [t("Field Day / Open House","Field Day / Open House"),t("จัดแสดงผลผลิต สาธิตเทคโนโลยี จำหน่ายผลสดและอบแห้ง","Produce display, technology demos, sales"),t("ชุมชน ผู้ปกครอง หน่วยงาน","Community, parents, agencies"),t("ปีละ 1–2 ครั้ง","1–2 a year")],
+   [t("คู่มือและวิดีโอ","Manuals and videos"),t("คู่มือ 2 ฉบับ (ปลูก + แปรรูป) และวิดีโอสาธิตออนไลน์","Two manuals (growing + drying) and online demo videos"),t("บุคคลทั่วไป","General public"),t("ปรับปรุงต่อเนื่อง","Updated continuously")]];
+  document.getElementById("act").innerHTML=`<thead><tr><th>${t("กิจกรรม","Activity")}</th><th>${t("รายละเอียด","Details")}</th><th>${t("กลุ่มเป้าหมาย","Audience")}</th><th>${t("ความถี่","Frequency")}</th></tr></thead><tbody>`+A.map(a=>`<tr><td><b style="font-weight:600">${a[0]}</b></td><td class="muted">${a[1]}</td><td>${a[2]}</td><td>${a[3]}</td></tr>`).join("")+"</tbody>";
+  const P=[[t("สำนักงานเกษตรอำเภอ/จังหวัด","District/provincial agriculture office"),t("ร่วมอบรม ให้คำแนะนำมาตรฐาน","Co-train; advise on standards")],[t("อบต./เทศบาล","Local government"),t("สถานที่ Field Day และประชาสัมพันธ์","Field Day venue and publicity")],[t("วิสาหกิจชุมชน/สหกรณ์","Community enterprises/co-ops"),t("ร่วมปลูก-แปรรูป รับซื้อ-กระจาย","Co-grow, process, buy and distribute")],[t("ร้านอาหาร โรงแรม ผู้แปรรูป","Restaurants, hotels, processors"),t("รับซื้อผลสดและอบแห้งต่อเนื่อง","Regular buyers of fresh and dried")],[t("สวทช. มหาวิทยาลัย วิทยาลัยเกษตรฯ เครือข่าย","NSTDA, universities, partner colleges"),t("วิจัยร่วม รับรองมาตรฐาน แลกเปลี่ยนความรู้","Joint research, certification, knowledge exchange")]];
+  document.getElementById("part").innerHTML=`<thead><tr><th>${t("ภาคี","Partner")}</th><th>${t("บทบาท","Role")}</th></tr></thead><tbody>`+P.map(p=>`<tr><td>${p[0]}</td><td class="muted">${p[1]}</td></tr>`).join("")+"</tbody>";
+  const C=[[t("Facebook / LINE OA \"SmartGrow มะเขือเทศ\"","Facebook / LINE OA \"SmartGrow\""),t("ความคืบหน้า ราคา ช่องทางสั่งซื้อ","Progress, prices, ordering")],[t("ป้ายประกาศ เสียงตามสาย","Notice boards, village PA"),t("กำหนดอบรม Field Day ช่วงเก็บเกี่ยว","Training, Field Day, harvest dates")],[t("เวทีเครือข่ายเกษตรกร อบต.","Farmer-network and council forums"),t("รายงานผล รับฟังความต้องการ","Report results, hear needs")],[t("นิทรรศการวิชาการ","Academic exhibitions"),t("บูธสาธิตโรงเรือนและเครื่องอบ","Greenhouse and dryer demo booth")],[t("รายงานต่อคณะกรรมการโครงการ","Reports to the project committee"),t("ผลผลิต ยอดขาย บทเรียน เดือนละครั้ง","Output, sales, lessons; monthly")]];
+  document.getElementById("chan").innerHTML=`<thead><tr><th>${t("ช่องทาง","Channel")}</th><th>${t("เนื้อหา","Content")}</th></tr></thead><tbody>`+C.map(p=>`<tr><td>${p[0]}</td><td class="muted">${p[1]}</td></tr>`).join("")+"</tbody>";
+  const PH=[["var(--leaf)",t("ระยะสั้น","Short term"),t("ปีที่ 1–2","Years 1–2"),t("สร้างฐานการผลิตให้มั่นคง เพิ่มกำลังอบแห้งให้รับผลส่วนเกินได้เต็มที่ เก็บข้อมูลต้นทุน-ผลตอบแทนอย่างเป็นระบบ","Stabilise production, scale drying to absorb all surplus, record costs and returns systematically")],
+   ["var(--unripe)",t("ระยะกลาง","Medium term"),t("ปีที่ 3–5","Years 3–5"),t("เพิ่มผลิตภัณฑ์แปรรูป เช่น อบแห้งปรุงรส มะเขือเทศหนึบ ซอส ขยายช่องทางพรีเมียมและออนไลน์ และใช้เครื่องอบ IoT กับผลผลิตอื่นของวิทยาลัย","New processed products (seasoned, chewy, sauce), premium and online channels, and use of the IoT dryer for other college produce")],
+   ["var(--tomato)",t("ระยะยาว","Long term"),t("ปีที่ 5 ขึ้นไป","Year 5 onward"),t("เป็นหน่วยธุรกิจของวิทยาลัยที่เลี้ยงตัวเองได้ ขยายเครือข่ายเกษตรกรผู้ผลิตร่วม และถอดบทเรียนสู่วิทยาลัยเกษตรฯ ทั่วประเทศ","A self-funding college business unit, a wider network of partner growers, and a model shared with agricultural colleges nationwide")]];
+  document.getElementById("phase").innerHTML=PH.map(p=>`<div style="--c:${p[0]}"><h3>${p[1]}</h3><div class="when">${p[2]}</div><p>${p[3]}</p></div>`).join("");
+  const PL=[[t("หลักสูตรและบุคลากร","Curriculum and people"),t("บรรจุในรายวิชาสาขาพืชศาสตร์และสาขาที่เกี่ยวข้อง ส่งต่องานจากรุ่นพี่สู่รุ่นน้องทุกปี","Built into Plant Science and related courses, with yearly senior-to-junior hand-over")],
+   [t("การเงิน","Finance"),t("รายได้ส่วนหนึ่งเข้ากองทุนหมุนเวียน ใช้บำรุงรักษา ต่อยอด และค่าตอบแทนนักศึกษา พร้อมเงินสำรองทดแทนสินทรัพย์ ≈ 1.27 ล้านบาทใน 5 ปี","Part of revenue goes to a revolving fund for upkeep, growth and student pay, plus a ≈ THB 1.27 M replacement reserve over 5 years")],
+   [t("ข้อมูลและเทคโนโลยี","Data and technology"),t("เก็บข้อมูลผลผลิต ต้นทุน สภาพอากาศ และเครื่องอบผ่านแดชบอร์ด ใช้ปรับปรุงและสอน","Yield, cost, weather and dryer data kept on the dashboard for improvement and teaching")],
+   [t("สิ่งแวดล้อมและพลังงาน","Environment and energy"),t("พลังงานแสงอาทิตย์เป็นหลักทั้งโรงเรือนและเครื่องอบ ลดต้นทุนและก๊าซเรือนกระจก","Solar powers both houses and dryer, cutting cost and emissions")],
+   [t("การกำกับดูแล","Governance"),t("คณะทำงานร่วมของครู นักศึกษาแกนนำ และภาคีภายนอก รายงานผู้บริหารอย่างสม่ำเสมอ","A joint team of teachers, student leaders and partners reporting regularly to college leadership")]];
+  document.getElementById("pil").innerHTML=PL.map(p=>`<div class="card"><h3>${p[0]}</h3><p>${p[1]}</p></div>`).join("");
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

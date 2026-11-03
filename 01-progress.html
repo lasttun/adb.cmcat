@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1. ความก้าวหน้าตั้งแต่ Pitching Day · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.fb{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1.3fr);align-items:stretch;gap:0;margin-bottom:12px}
+.fb .q,.fb .a{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.fb .q{border-left:5px solid var(--warn)}
+.fb .a{border-left:5px solid var(--leaf)}
+.fb .lbl{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:2px}
+.fb .q p,.fb .a p{margin:0;font-size:15.5px}
+.fb .a .lk{font-size:13.5px;margin-top:6px}
+.fb .a .lk a{color:var(--leaf);font-weight:600}
+.fb .arr{display:flex;align-items:center;justify-content:center}
+.fb .arr::before{content:"";width:12px;height:12px;border-top:3px solid var(--leaf);border-right:3px solid var(--leaf);transform:rotate(45deg)}
+.done{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.done li{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:15px;line-height:1.5}
+.done li .pill{flex:none;margin-top:2px}
+.done li b{font-weight:600;display:block}
+.blocker{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;background:var(--tomato-soft);border-radius:12px;padding:18px 20px}
+.blocker .ic{width:42px;height:42px;border-radius:50%;background:var(--tomato);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:22px}
+.blocker h3{font-size:18px;font-weight:600}
+.blocker ul{margin:8px 0 0;padding-left:18px;font-size:15px}
+.stages3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.stages3>div{padding:14px 18px;border-top:4px solid var(--c);background:var(--surface);border-right:1px solid var(--line)}
+.stages3>div:last-child{border-right:0}
+.stages3 h3{font-size:16px;font-weight:600}
+.stages3 p{margin:4px 0 0;font-size:15px}
+.photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:860px){.fb{grid-template-columns:1fr}.fb .arr{height:24px}.fb .arr::before{transform:rotate(135deg)}.done{grid-template-columns:1fr}.stages3{grid-template-columns:1fr}.photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body data-page="1" data-art="img:gh-render-fan">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">1</span>
+    <h1 data-i18n="h1">ความก้าวหน้าตั้งแต่ Pitching Day</h1>
+    <p data-i18n="lead">ตั้งแต่ได้รับคัดเลือกเมื่อ 19 ส.ค. 2569 ทีมปรับแผนตามข้อเสนอแนะของกรรมการ ตั้งคณะกรรมการดำเนินงาน ได้ใบรับรอง GAP ทำ MOU กับผู้ซื้อ และเก็บผลผลิตในโรงเรือนเดิมไปแล้ว 2 รอบ งานที่เหลือรอการอนุมัติงบประมาณ</p>
+  </div>
+
+  <section class="block" aria-labelledby="k-h">
+    <h2 id="k-h" data-i18n="kH">ผลงานที่วัดได้</h2>
+    <div class="kpis" id="kpis" style="margin-top:12px"></div>
+  </section>
+
+  <section class="block" aria-labelledby="s-h">
+    <h2 id="s-h" data-i18n="sH">ผลการทดลองขาย ต่อ 1 รอบการผลิต (ประมาณการ)</h2>
+    <p class="intro" data-i18n="sIntro">ทดลองขายผลผลิตจากโรงเรือนเดิมผ่านช่องทางขายปลีกและขายส่ง ราคาที่ขายได้ใกล้เคียงกับที่ใช้ในแผนการเงิน ตัวเลขเป็นค่าประมาณจากทีม</p>
+    <div class="flowbar" id="salebar" style="margin-top:12px"></div>
+    <div class="tbl-wrap" style="margin-top:12px"><table class="data" id="sales"></table></div>
+  </section>
+
+  <section class="block" aria-labelledby="fb-h">
+    <h2 id="fb-h" data-i18n="fbH">ข้อเสนอแนะจากกรรมการ และสิ่งที่ทีมปรับแล้ว</h2>
+    <p class="intro" data-i18n="fbIntro">กรรมการวัน Pitching Day ให้ข้อเสนอแนะ 3 ข้อ</p>
+    <div id="fb"></div>
+  </section>
+
+  <section class="block" aria-labelledby="d-h">
+    <h2 id="d-h" data-i18n="dH">งานที่ทำแล้ว</h2>
+    <ul class="done" id="done" style="margin-top:12px"></ul>
+  </section>
+
+  <section class="block" aria-labelledby="t-h">
+    <h2 id="t-h" data-i18n="tH">คณะกรรมการดำเนินงาน</h2>
+    <p class="intro" data-i18n="tIntro">แบ่งความรับผิดชอบตามกระบวนการผลิต ทุกแผนกวิชาใช้ฟาร์มเป็นแหล่งเรียนรู้และบูรณาการเข้ากับรายวิชาของตนเอง</p>
+    <div class="stages3" id="team"></div>
+  </section>
+
+  <section class="block" aria-labelledby="b-h">
+    <h2 id="b-h" data-i18n="bH">สิ่งที่ยังค้างอยู่</h2>
+    <div class="blocker" id="blocker" style="margin-top:12px"></div>
+  </section>
+
+  <section class="block" aria-labelledby="p-h">
+    <h2 id="p-h" data-i18n="pH">ภาพการดำเนินงาน</h2>
+    <div class="photos" style="margin-top:12px" id="photos">
+      <figure class="ph crop"><img src="img/harvest.jpg" alt="" loading="lazy"><figcaption data-i18n="p1">เก็บผลผลิตในโรงเรือนเดิม</figcaption></figure>
+      <figure class="ph crop"><img src="img/fruit-truss.jpg" alt="" loading="lazy"><figcaption data-i18n="p2">ผลผลิตบนต้นก่อนเก็บเกี่ยว</figcaption></figure>
+      <figure class="ph crop"><img src="img/product-fresh.jpg" alt="" loading="lazy"><figcaption data-i18n="p3">ผลสดบรรจุพร้อมจำหน่าย</figcaption></figure>
+      <figure class="ph crop"><img src="img/event-sale.jpg" alt="" loading="lazy"><figcaption data-i18n="p4">จำหน่ายในงาน อกท. ปีการศึกษา 2568</figcaption></figure>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">ที่มา: ทีม วษท.เชียงใหม่ ข้อมูล ณ 3 พฤศจิกายน 2569 ตัวเลขการทดลองขายเป็นค่าประมาณ</span></div></footer>
+<script>
+window.PAGE_EN={h1:"Progress since Pitching Day",lead:"Since selection on 19 Aug 2026 the team has revised the plan on the panel's advice, set up an operating committee, obtained GAP certification, signed an MOU with a buyer and harvested two cycles in the existing greenhouse. The remaining work awaits budget approval.",
+ kH:"Measurable results",sH:"Trial sales, per production cycle (estimate)",sIntro:"Produce from the existing house was sold through retail and wholesale channels. Prices achieved are close to those in the financial plan. Figures are the team's estimates.",fbH:"Panel feedback and what we changed",fbIntro:"The Pitching Day panel gave three recommendations.",dH:"Work completed",tH:"Operating committee",
+ tIntro:"Responsibilities follow the production process. Every department uses the farm as a learning site within its own courses.",bH:"Still pending",pH:"Photos",
+ p1:"Harvesting in the existing greenhouse",p2:"Fruit on the vine before harvest",p3:"Packed fresh fruit ready for sale",p4:"Sales at the FFT event, academic year 2025",foot:"Source: Chiang Mai College team, as of 3 November 2026. Trial-sale figures are estimates."};
+function render(){
+  const t=SG.t;
+  document.querySelectorAll("#photos img").forEach((im,i)=>im.alt=document.querySelectorAll("#photos figcaption")[i].textContent);
+  document.getElementById("kpis").innerHTML=[
+   ["2",t("รอบที่เก็บผลผลิตแล้วในโรงเรือนเดิม","cycles harvested in the existing house")],
+   ["≈ 100",t("บาท/กก. ราคาขายปลีกจริง เท่ากับในแผน","THB/kg actual retail price, same as the plan")],
+   ["≈ 74,000",t("บาทต่อรอบ จากการทดลองขาย (ประมาณการ)","THB per cycle from trial sales (estimate)")],
+   ["1",t("MOU กับผู้ซื้อ: บริษัท สอยดาวการเกษตร จำกัด","buyer MOU: Soi Dao Kan Kaset Co., Ltd.")],
+   ["≈ 700",t("นักศึกษาที่ร่วมกิจกรรมและใช้แหล่งเรียนรู้","students taking part and using the farm")]].map(k=>`<div><b>${k[0]}</b><span>${k[1]}</span></div>`).join("");
+  document.getElementById("salebar").innerHTML=`<div style="flex:60 1 0;background:var(--tomato)">${t("ขายปลีก 60%","Retail 60%")}</div><div style="flex:40 1 0;background:#5C8A4E">${t("ขายส่งให้บริษัท 40%","Wholesale to company 40%")}</div>`;
+  document.getElementById("sales").innerHTML=`<thead><tr><th>${t("ช่องทาง","Channel")}</th><th class="r">${t("สัดส่วน","Share")}</th><th class="r">${t("รายได้ต่อรอบ (บาท)","Revenue per cycle (THB)")}</th><th class="r">${t("ราคาที่ขายได้ (บาท/กก.)","Price achieved (THB/kg)")}</th><th class="r">${t("ราคาในแผน","Plan price")}</th></tr></thead><tbody>
+   <tr><td>${t("ขายปลีก: นักเรียน ผู้ปกครอง ครู งาน อกท. ตลาดนัดภายนอก","Retail: students, parents, teachers, FFT event, outside market")}</td><td class="r">60%</td><td class="r">≈ 60,000</td><td class="r">≈ 100</td><td class="r">100</td></tr>
+   <tr><td>${t("ขายส่งให้บริษัท","Wholesale to a company")}</td><td class="r">40%</td><td class="r">≈ 14,000</td><td class="r">≈ 35</td><td class="r">30</td></tr>
+   <tr class="total"><td>${t("รวมต่อรอบ","Total per cycle")}</td><td class="r">100%</td><td class="r">≈ 74,000</td><td class="r"></td><td class="r"></td></tr></tbody>`;
+  const F=[
+   [t("ศึกษาเรื่องการตลาดให้ชัดเจนขึ้น","Study the market in more depth"),
+    t("วิเคราะห์กลุ่มลูกค้า B2B/B2C และเทียบราคาของเรากับตลาดค้าส่งและห้าง ทำ MOU กับผู้ซื้อ 1 ราย และวางเป้า LOI จากผู้ซื้อเพิ่มให้ครอบคลุมครึ่งหนึ่งของยอดขายปลีก","Analysed B2B/B2C segments, compared our prices with wholesale and supermarkets, signed one buyer MOU, and set an LOI target to cover half of retail sales"),
+    ["04-market.html",t("หน้า 4 ตลาดและผู้ซื้อ","Page 4 market and buyers")]],
+   [t("ทำไมต้องเป็นมะเขือเทศอบแห้ง","Why dried tomatoes?"),
+    t("มะเขือเทศอบแห้งเป็นสินค้าของฝากของจังหวัดเชียงใหม่ที่ได้รับความนิยมและราคาสูง (ขายออนไลน์ราว 190–550 บาท/กก.) และใช้ผลตกเกรดซึ่งขายสดไม่ได้ราคา ผลสด 3 กก. ได้ผลิตภัณฑ์ 1 กก.","Dried tomatoes are a popular, high-priced Chiang Mai souvenir (about THB 190–550/kg online) and use off-grade fruit that sells poorly fresh. 3 kg fresh makes 1 kg dried."),
+    ["02-site.html",t("หน้า 2 เส้นทางผลผลิต","Page 2 where the fruit goes")]],
+   [t("ตำแหน่งพัดลมและการระบายความร้อนของโรงเรือน","Fan position and greenhouse cooling"),
+    t("ย้ายพัดลมขึ้นไปไว้บริเวณจั่วด้านบนของโรงเรือน เพื่อดึงอากาศร้อนที่ลอยขึ้นสูงออก ตามหลักการพาความร้อน","Fans moved up to the gable so they extract the hot air that rises to the roof, following convection"),
+    ["05-technology.html",t("หน้า 5 เทคโนโลยี","Page 5 technology")],"img/gh-render-fan.jpg"]];
+  document.getElementById("fb").innerHTML=F.map(f=>`<div class="fb"><div class="q"><div class="lbl">${t("ข้อเสนอแนะ","Feedback")}</div><p>${f[0]}</p></div><div class="arr" aria-hidden="true"></div><div class="a"><div class="lbl">${t("สิ่งที่ปรับแล้ว","What we changed")}</div><p>${f[1]}</p>${f[3]?`<img src="${f[3]}" alt="${t("ภาพโรงเรือนแบบใหม่ พัดลมติดที่จั่ว","Revised greenhouse with gable-mounted fan")}" style="width:100%;max-width:360px;border-radius:8px;border:1px solid var(--line);margin-top:10px;display:block">`:""}<div class="lk"><a href="${f[2][0]}">${f[2][1]}</a></div></div></div>`).join("");
+  const D=[
+   [t("ตั้งคณะกรรมการดำเนินงานแล้ว","Operating committee set up"),t("แบ่งงานตามกระบวนการผลิต","Roles follow the production process")],
+   [t("ได้ใบรับรอง GAP แล้ว","GAP certification obtained"),t("มาตรฐาน GAP พืชอาหาร มกษ. 9001-2564","Thai GAP for food crops, TAS 9001-2564")],
+   [t("MOU กับบริษัท สอยดาวการเกษตร จำกัด","MOU with Soi Dao Kan Kaset Co., Ltd."),t("ผู้ซื้อรายแรกที่ลงนาม","First buyer signed")],
+   [t("ออกแบบบรรจุภัณฑ์แล้ว","Packaging designed"),t("ผลสดและอบแห้ง และให้สถานประกอบการภายนอกเสนอแบบแล้ว","Fresh and dried packs; outside firms have submitted designs")],
+   [t("เก็บผลผลิตในโรงเรือนเดิม 2 รอบ","Two cycles harvested in the existing house"),t("ทดลองระบบปลูกและการจัดการจริง","Growing system tested in practice")],
+   [t("ทดลองขายผ่าน 2 ช่องทาง","Trial sales through two channels"),t("ขายปลีก 60% ≈ 60,000 บาท และขายส่งให้บริษัท 40% ≈ 14,000 บาท ต่อรอบ (ประมาณการ)","Retail 60% ≈ THB 60,000 and wholesale to a company 40% ≈ THB 14,000 per cycle (estimate)")],
+   [t("ศึกษาการใช้พื้นที่และโครงสร้างโรงเรือน","Site use and greenhouse structure studied"),t("พร้อมจัดทำ TOR เมื่องบได้รับอนุมัติ","Ready to draft the TOR once the budget is approved")],
+   [t("ปรับแผนธุรกิจ 16 จุด","Business plan revised in 16 places"),`<a href="changes.html" style="color:var(--leaf);font-weight:600">${t("ดูสรุปการแก้ไข","See the revisions")}</a>`]];
+  document.getElementById("done").innerHTML=D.map(d=>`<li><span class="pill good">${t("เสร็จ","Done")}</span><span><b>${d[0]}</b>${d[1]}</span></li>`).join("");
+  document.getElementById("team").innerHTML=[
+   ["var(--leaf)",t("เตรียมแปลงและปลูก","Preparation and growing"),t("สาขาวิชาพืชศาสตร์ และช่างกลเกษตร","Plant Science and Agricultural Mechanics")],
+   ["var(--unripe)",t("แปรรูป","Processing"),t("สาขาวิชาอุตสาหกรรมเกษตร","Agro-Industry")],
+   ["var(--tomato)",t("จัดจำหน่าย","Sales"),t("สาขาวิชาธุรกิจเกษตร","Agribusiness")]].map(s=>`<div style="--c:${s[0]}"><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join("");
+  document.getElementById("blocker").innerHTML=`<div class="ic" aria-hidden="true">!</div><div><h3>${t("รอการอนุมัติงบประมาณ","Awaiting budget approval")}</h3>
+   <p style="margin:4px 0 0;font-size:15px">${t("เมื่องบได้รับอนุมัติ ทีมจะเริ่มงานต่อไปนี้ได้ทันที","Once the budget is approved the team can start straight away on:")}</p>
+   <ul><li>${t("จัดทำ TOR และจัดซื้อจัดจ้าง (ตามแผน ไตรมาส 2 ปีงบประมาณ 2570)","TOR and procurement (planned for Q2 of fiscal 2027)")}</li>
+   <li>${t("วางแผนการใช้เงินและการจ้างเจ้าหน้าที่","Spending plan and staff hiring")}</li>
+   <li>${t("อบรมและศึกษาดูงาน","Training and study visits")}</li>
+   <li>${t("ทดลองอบแห้งด้วยโดมพลังงานแสงอาทิตย์ (ยังไม่ได้ทดลอง)","Solar-dome drying trials (not yet done)")}</li></ul></div>`;
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

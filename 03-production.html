@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3. แผนการผลิต · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.cal{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;margin-top:6px}
+.cal .m{font-size:13px;color:var(--muted);text-align:center;padding-bottom:4px}
+.cal .bar{grid-row:2;height:62px;border-radius:8px;display:flex;flex-direction:column;justify-content:center;padding:0 12px;color:#fff;font-size:14px;line-height:1.3;overflow:hidden}
+.cal .bar b{font-family:var(--font-display);font-size:16px}
+.cal .rest{background:var(--line);color:var(--muted)}
+.cal .peak{grid-row:3;height:8px;border-radius:4px;background:var(--warn);margin-top:6px}
+.cal-note{font-size:13.5px;color:var(--muted);margin-top:8px;display:flex;gap:18px;flex-wrap:wrap}
+.cal-note i{display:inline-block;width:14px;height:6px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;counter-reset:s}
+.steps figure figcaption b{display:block;color:var(--ink);font-weight:600;font-size:14.5px}
+.steps figure figcaption .d{font-family:var(--font-display);font-weight:700;color:var(--tomato);font-size:13.5px}
+table.data td.ec{white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:980px){.steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.cal .bar{font-size:12px;padding:0 6px}}
+</style>
+</head>
+<body data-page="3" data-art="img:fruit-truss">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">3</span>
+    <h1 data-i18n="h1">แผนการผลิต</h1>
+    <p data-i18n="lead">ปลูกมะเขือเทศเชอรี่ลูกผสม 2 รอบต่อปี รอบหนาวให้ผลผลิตสูงกว่ารอบร้อน เป้าหมายเฉลี่ย 5 กก./ต้น/รอบ จากข้อมูลการปลูกจริงของวิทยาลัย</p>
+  </div>
+
+  <section class="block" aria-labelledby="cal-h">
+    <h2 id="cal-h" data-i18n="calH">ปฏิทินการผลิต 12 เดือน</h2>
+    <div class="cal" id="cal"></div>
+    <div class="cal-note" id="calnote"></div>
+  </section>
+
+  <section class="block" aria-labelledby="y-h">
+    <h2 id="y-h" data-i18n="yH">เป้าหมายผลผลิต</h2>
+    <div class="kpis" id="ykpi"></div>
+    <p class="note" id="ynote"></p>
+  </section>
+
+  <section class="block" aria-labelledby="st-h">
+    <h2 id="st-h" data-i18n="stH">1 รอบการผลิต ทำอะไรบ้าง</h2>
+    <p class="intro" data-i18n="stIntro">ภาพจากการปลูกจริงในโรงเรือนของวิทยาลัย</p>
+    <div class="steps" id="steps"></div>
+  </section>
+
+  <section class="block" aria-labelledby="ec-h">
+    <h2 id="ec-h" data-i18n="ecH">การจัดการตามระยะการเจริญเติบโต</h2>
+    <p class="intro" data-i18n="ecIntro">ค่า EC/pH เป้าหมายที่ระบบ IoT ใช้ควบคุมการให้น้ำและปุ๋ย ปรับได้ตามพันธุ์และสภาพแวดล้อม</p>
+    <div class="tbl-wrap"><table class="data" id="ec"></table></div>
+  </section>
+
+  <section class="block g2" aria-label="Quality and varieties">
+    <div class="card" id="quality"></div>
+    <div class="card" id="variety"></div>
+  </section>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">ที่มา: แผนธุรกิจ ข้อ 3 ภาคผนวก และอินโฟกราฟิกแผนการผลิตของทีม</span></div></footer>
+<script>
+window.PAGE_EN={h1:"Production plan",lead:"Hybrid cherry tomatoes, two cycles a year. The cool cycle yields more than the hot one. Target average 5 kg per plant per cycle, based on the college's own harvests.",
+ calH:"12-month production calendar",yH:"Yield targets",stH:"What happens in one cycle",stIntro:"Photos from the college's own greenhouse.",
+ ecH:"Management by growth stage",ecIntro:"EC/pH targets the IoT system uses to run irrigation and fertiliser; adjusted to variety and conditions.",foot:"Sources: business plan section 3, appendix and the team's production infographic"};
+function render(){
+  const t=SG.t,f=SG.fmt;
+  const months=t("พ.ย. ธ.ค. ม.ค. ก.พ. มี.ค. เม.ย. พ.ค. มิ.ย. ก.ค. ส.ค. ก.ย. ต.ค.","Nov Dec Jan Feb Mar Apr May Jun Jul Aug Sep Oct").split(" ");
+  document.getElementById("cal").innerHTML=months.map(m=>`<div class="m">${m}</div>`).join("")+
+   `<div class="bar" style="grid-column:1/6;background:var(--leaf)"><b>${t("รอบที่ 1 · ฤดูหนาว","Cycle 1 · cool season")}</b>${t("≈ 6 กก./ต้น อากาศเย็น ติดผลดี","≈ 6 kg/plant; cool weather, good fruit set")}</div>`+
+   `<div class="bar rest" style="grid-column:6/7">${t("พัก","Rest")}</div>`+
+   `<div class="bar" style="grid-column:7/12;background:var(--tomato)"><b>${t("รอบที่ 2 · ฤดูร้อน-ฝน","Cycle 2 · hot and wet")}</b>${t("≈ 4 กก./ต้น ใช้ม่านพรางแสง พัดลม พ่นหมอก","≈ 4 kg/plant; shade screen, fans, misting")}</div>`+
+   `<div class="bar rest" style="grid-column:12/13">${t("พัก","Rest")}</div>`+
+   `<div class="peak" style="grid-column:1/5"></div>`;
+  document.getElementById("calnote").innerHTML=`<span><i style="background:var(--warn)"></i>${t("ความต้องการของตลาดสูงสุด พ.ย.–ก.พ. (นักท่องเที่ยว) ตรงกับช่วงผลผลิตรอบที่ 1","Market demand peaks Nov–Feb (tourist season), matching cycle 1 harvests")}</span><span>${t("ช่วงพักแปลง เม.ย. ตรงกับช่วงหมอกควัน PM2.5","April rest period coincides with the PM2.5 haze season")}</span>`;
+  document.getElementById("ykpi").innerHTML=[
+   ["1,600",t("ต้นที่คิดรายได้ต่อรอบ","plants counted per cycle")],
+   ["5",t("กก./ต้น/รอบ เฉลี่ย (ข้อมูลจริงของวิทยาลัย)","kg/plant/cycle average (college data)")],
+   ["2",t("รอบต่อปี","cycles a year")],
+   ["16,000",t("กก./ปี ผลผลิตรวม","kg/yr total output")],
+   ["3",t("กก./ต้น กรณีระมัดระวัง ยังมีกำไร","kg/plant conservative case, still profitable")]].map(k=>`<div><b>${k[0]}</b><span>${k[1]}</span></div>`).join("");
+  document.getElementById("ynote").innerHTML=t(`เป้าหมายสูงกว่างานทดสอบพันธุ์ในโรงเรือนตาข่ายของไทย (คิงฟิชเชอร์ 4,327.50 กก./ไร่ โซลาริโน่ 4,092.30 กก./ไร่; บรรจง et al., 2024) เพราะใช้ระบบวัสดุปลูก ปุ๋ยแม่นยำ และ IoT ดูผลกระทบเมื่อผลผลิตต่ำกว่าเป้าได้ที่ <a href="07-finance.html">หน้า 7</a>`,`The target is above Thai net-house variety trials (King Fisher 4,327.50 kg/rai, Solarino 4,092.30 kg/rai; Banjong et al., 2024) because of substrate culture, precision fertigation and IoT. See <a href="07-finance.html">page 7</a> for lower-yield scenarios.`);
+  const S=[
+   ["prep-clean",t("สัปดาห์ 1","Week 1"),t("เตรียมโรงเรือน","Prepare house"),t("ล้างทำความสะอาดโรงเรือน","Clean and wash the house")],
+   ["prep-coir",t("สัปดาห์ 1","Week 1"),t("เตรียมวัสดุปลูก","Prepare substrate"),t("เติมขุยมะพร้าวลงถุง","Fill bags with coir")],
+   ["transplant",t("สัปดาห์ 3","Week 3"),t("ย้ายปลูก","Transplant"),t("ย้ายกล้าที่มีใบจริง 4–5 ใบ","Seedlings with 4–5 true leaves")],
+   ["fert-ab",t("ทุกวัน","Daily"),t("ผสมปุ๋ย A/B","Mix A/B fertiliser"),t("จ่ายผ่านระบบน้ำหยด","Delivered through drip")],
+   ["trichoderma",t("ป้องกัน","Prevention"),t("ไตรโคเดอร์มา","Trichoderma"),t("ป้องกันโรคจากเชื้อรา","Controls fungal disease")],
+   ["control-box",t("อัตโนมัติ","Automated"),t("ระบบสมาร์ทฟาร์ม","Smart-farm control"),t("ควบคุมน้ำและปุ๋ย","Runs water and fertiliser")],
+   ["trellis",t("25 วันหลังปลูก","Day 25 after planting"),t("ทำค้าง","Trellising"),t("โรยเชือกหลังปลูก 25 วัน","String trellis 25 days after planting")],
+   ["pruning",t("ต่อเนื่อง","Ongoing"),t("ตัดแต่งกิ่ง","Pruning"),t("ตัดแขนงให้ยอดหลักโต","Remove side shoots")],
+   ["ec-meter",t("สม่ำเสมอ","Regularly"),t("วัด EC และ pH","Check EC and pH"),t("ตรวจความเข้มข้นปุ๋ย","Monitor nutrient strength")],
+   ["harvest",t("≈ 60 วันหลังย้ายปลูก","≈ 60 days after transplant"),t("เก็บเกี่ยว","Harvest"),t("เลือกผลแก่เต็มที่ มันเงา","Pick fully ripe, glossy fruit")]];
+  document.getElementById("steps").innerHTML=S.map(s=>`<figure class="ph crop"><img src="img/${s[0]}.jpg" alt="${s[2]}" loading="lazy"><figcaption><span class="d">${s[1]}</span><b>${s[2]}</b>${s[3]}</figcaption></figure>`).join("");
+  const E=[
+   [t("สัปดาห์ 1–2","Weeks 1–2"),t("เตรียมโรงเรือนและเพาะกล้า","Preparation and seedlings"),t("ทำความสะอาดและฆ่าเชื้อโรงเรือน","Clean and sanitise"),"1.2–1.5","5.8–6.2"],
+   [t("สัปดาห์ 3–4","Weeks 3–4"),t("เจริญเติบโตทางลำต้น","Vegetative growth"),t("ย้ายกล้าลงถุงเมื่อมีใบจริง 4–5 ใบ","Transplant at 4–5 true leaves"),"2.0–2.5","5.8–6.2"],
+   [t("สัปดาห์ 5–12","Weeks 5–12"),t("ออกดอก ผสมเกสร ติดผล","Flowering and fruit set"),t("ช่วยผสมเกสร ตัดแต่งใบ เน้นโพแทสเซียมและแคลเซียม","Assist pollination, prune leaves, more K and Ca"),"2.5–3.5","6.0–6.5"],
+   [t("สัปดาห์ 13 ขึ้นไป","Week 13 onward"),t("ติดผลและเก็บเกี่ยวต่อเนื่อง","Continuous harvest"),t("คัดเกรด ชั่งน้ำหนัก บันทึกผลผลิตรายวัน","Grade, weigh, record daily yield"),"2.5–3.5","6.0–6.5"]];
+  document.getElementById("ec").innerHTML=`<thead><tr><th>${t("ช่วงเวลา","Period")}</th><th>${t("ระยะ","Stage")}</th><th>${t("การจัดการ","Management")}</th><th class="r">EC (mS/cm)</th><th class="r">pH</th></tr></thead><tbody>`+
+   E.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td class="muted">${r[2]}</td><td class="r ec">${r[3]}</td><td class="r ec">${r[4]}</td></tr>`).join("")+"</tbody>";
+  document.getElementById("quality").innerHTML=`<h3>${t("เกณฑ์คุณภาพ 7 ด้าน","Seven quality criteria")}</h3><ul>${[
+   t("ขนาดและรูปทรงสม่ำเสมอ","Uniform size and shape"),t("สีสม่ำเสมอตามระยะเก็บเกี่ยว","Even colour at harvest stage"),t("เนื้อแน่น ทนการขนส่ง","Firm, travels well"),
+   t("ความหวาน (Brix) เหมาะสม","Good sweetness (Brix)"),t("ปลอดภัยจากสารตกค้าง","Free of residues"),t("เสียหายจากโรคและแมลงน้อย","Minimal pest and disease damage"),t("คัดเกรดและบรรจุพร้อมขายตลาดพรีเมียม","Graded and packed for premium buyers")].map(x=>`<li>${x}</li>`).join("")}</ul>
+   <p class="tag" style="margin-top:8px">${t("วัดด้วยเครื่องวัดบริกซ์ เนื้อสัมผัส สี และ pH ในงบลงทุน","Measured with Brix, texture, colour and pH meters in the budget")}</p>`;
+  document.getElementById("variety").innerHTML=`<h3>${t("พันธุ์และอุณหภูมิ","Varieties and temperature")}</h3>
+   <p>${t("ทดสอบเปรียบเทียบ 2–3 พันธุ์การค้าในแปลงจริง เช่น คิงฟิชเชอร์ และโซลาริโน่ ในโรงเรือนเดิมก่อนเริ่มผลิตเต็มรูปแบบ","Compare 2–3 commercial varieties such as King Fisher and Solarino in the existing house before full production.")}</p>
+   <ul>
+    <li>${t("อุณหภูมิเฉลี่ยที่เหมาะสมประมาณ 19–20°C","Optimal mean temperature about 19–20°C")}</li>
+    <li>${t("สูงกว่า 33°C รบกวนละอองเกสรและการติดผล","Above 33°C harms pollen and fruit set")}</li>
+    <li>${t("รอบร้อนจึงใช้ม่านพรางแสง พัดลม และพ่นหมอก","So the hot cycle uses shade screens, fans and misting")}</li>
+   </ul>
+   <p class="tag" style="margin-top:8px">${t("อ้างอิง: Schwarz et al., 2014; van der Ploeg & Heuvelink, 2005","Refs: Schwarz et al., 2014; van der Ploeg & Heuvelink, 2005")}</p>`;
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

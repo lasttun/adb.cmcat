@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>สรุปการแก้ไขแผนธุรกิจ · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.page-head .big{color:var(--leaf);font-size:clamp(40px,5vw,60px)}
+.kn table.data td.old{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--tomato) 60%,transparent)}
+.kn table.data td.new{font-weight:700}
+.kn table.data td.r{white-space:normal;min-width:7em}
+@media (max-width:640px){.kn table.data{font-size:14px}.kn table.data th,.kn table.data td{padding:8px 10px}}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.filters button{font:600 14px var(--font-body);padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters .c{font-variant-numeric:tabular-nums;opacity:.7;margin-left:6px}
+.list{display:flex;flex-direction:column;gap:10px}
+.chg{display:grid;grid-template-columns:200px minmax(0,1fr) minmax(0,1fr);gap:18px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:10px;border-left:5px solid var(--c)}
+.chg .meta{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.chg .meta h3{font-family:var(--font-body);font-size:16px;font-weight:600;line-height:1.4}
+.chg .meta .sec{color:var(--muted)}
+.chg .col .lbl{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.chg .col p{margin:0;font-size:15px;line-height:1.55}
+.chg .before p{color:var(--muted)}
+.chg .why{grid-column:2/-1;font-size:14px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+.chg .why b{color:var(--ink);font-weight:600}
+.pend{margin-top:8px}
+.pend li{margin:4px 0}
+@media (max-width:860px){.chg{grid-template-columns:1fr}.chg .why{grid-column:auto}}
+</style>
+</head>
+<body data-page="13" data-art="svg:doc">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big num">16</span>
+    <h1 data-i18n="h1">สรุปการแก้ไขแผนธุรกิจ</h1>
+    <p data-i18n="lead">จุดที่แก้ในแผนธุรกิจและภาคผนวก ก่อนการประชุมวันที่ 7 พฤศจิกายน 2569 ตัวเลขทุกตัวในเอกสารทั้งสองเล่มคำนวณจากโมเดลการเงินชุดเดียวกับหน้า 7</p>
+  </div>
+
+  <section class="block kn" aria-labelledby="kn-h">
+    <h2 id="kn-h" data-i18n="knH">ตัวเลขหลักก่อนและหลังแก้</h2>
+    <div class="tbl-wrap"><table class="data" id="kn"></table></div>
+    <p class="note" data-i18n="knNote">จุดคุ้มทุนลดลงเพราะแก้สูตร ไม่ใช่เพราะเปลี่ยนสมมติฐาน ส่วนรายได้ปีที่ 5 ลดลงเพราะเลิกใช้การเติบโต 20% ต่อปีที่ไม่มีที่มา</p>
+  </section>
+
+  <section class="block" aria-labelledby="list-h">
+    <h2 id="list-h" data-i18n="listH">รายการแก้ไขทั้งหมด</h2>
+    <p class="intro" data-i18n="listIntro">กรองตามประเภทการแก้ไข</p>
+    <div class="filters" id="filters" role="group" aria-label="Filter"></div>
+    <div class="list" id="list"></div>
+  </section>
+
+  <section class="block" aria-labelledby="conf-h">
+    <h2 id="conf-h" data-i18n="confH">ข้อมูลที่ทีมยืนยันแล้ว</h2>
+    <ul class="pend" id="conf"></ul>
+  </section>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">ไฟล์ประกอบ: SmartGrow-แผนธุรกิจ-SATIT-ฉบับแก้ไข.docx และ SmartGrow-ภาคผนวก-ฉบับแก้ไข.docx</span></div></footer>
+<script>
+const CHANGES=[{"i": 3, "g": "fix", "en": "Yield target made consistent and per plant", "doc": "แผนหลัก", "section": "3.3.1 เป้าหมายผลผลิต", "before": "6,000–6,500 กก./ไร่/รอบ (แต่ข้อ 3.8 เขียน 4,000–4,500 และรายได้ใช้ 15,500 กก./ปี ซึ่งไม่ตรงกับทั้งสองตัวเลข)", "after": "4 โรงเรือน (ใหม่ 3 + เดิม 1) × 720 ต้น = ความจุ 2,880 ต้น/รอบ คิดรายได้จาก 1,600 ต้น × เฉลี่ย 5 กก./ต้น/รอบ × 2 รอบ = 16,000 กก./ปี ส่วนที่เหลือเป็นแปลงทดสอบพันธุ์ แปลงฝึกนักศึกษา และกำลังผลิตสำรอง พร้อมกรณีระมัดระวัง 3 กก./ต้น", "why": "ตัวเลขผลผลิตในเล่มขัดกันเอง 3 ชุด และต่อไม่ถึงรายได้ จึงเปลี่ยนเป็นรายต้นให้คำนวณถึงรายได้ได้ตรง", "sec_en": "3.3.1 Yield target", "before_en": "6,000–6,500 kg/rai/cycle (but section 3.8 said 4,000–4,500, and revenue used 15,500 kg/yr, matching neither)", "after_en": "4 houses (3 new + 1 existing) × 720 plants = 2,880 plants/cycle capacity; revenue based on 1,600 plants × 5 kg × 2 cycles = 16,000 kg/yr; the rest for variety trials, student plots and reserve; conservative case 3 kg/plant", "why_en": "The document gave three conflicting yield figures that did not link to revenue, so the target is now per plant and ties directly to revenue", "doc_en": "Business plan"}, {"i": 6, "g": "fix", "en": "Revenue growth assumption", "doc": "แผนหลัก/ภาคผนวก", "section": "7.1 และงบกำไรขาดทุน", "before": "รายได้โต 20% ทุกปี (1.44 → 2.99 ล้านบาท) บนพื้นที่เท่าเดิม", "after": "ราคา +3%/ปี และผลผลิต/ต้น +5% ในปีที่ 2–3 → รายได้ปีที่ 5 ≈ 1.73 ล้านบาท", "why": "การโต 20%/ปี โดยไม่ขยายโรงเรือนไม่มีที่มา", "sec_en": "7.1 and income statement", "before_en": "Revenue growing 20% every year (THB 1.44 → 2.99 M) on the same area", "after_en": "Prices +3%/yr and yield per plant +5% in years 2–3 → year-5 revenue ≈ THB 1.73 M", "why_en": "20% annual growth without more greenhouse area had no basis", "doc_en": "Business plan / appendix"}, {"i": 7, "g": "fix", "en": "Revenue table: fresh-fruit balance", "doc": "แผนหลัก/ภาคผนวก", "section": "7.1 ตารางรายได้", "before": "ขายสด 15,000 กก. + อบแห้ง 500 กก. = 15,500 กก. (ไม่ได้นับผลสดที่ต้องใช้ทำอบแห้ง และไม่มีการสูญเสีย)", "after": "ผลิต 16,000 กก. = ขายปลีก 12,000 + ขายส่ง 1,700 + ใช้แปรรูป 1,500 (→ อบแห้ง 500 กก.) + สูญเสีย 800 กก. รายได้ 1,401,000 บาท", "why": "มะเขือเทศอบแห้ง 500 กก. ต้องใช้ผลสดราว 1,500 กก. ฉบับเดิมนับผลผลิตเกินกว่าที่ปลูกได้", "sec_en": "7.1 Revenue table", "before_en": "Fresh sales 15,000 kg + dried 500 kg = 15,500 kg (ignoring the fresh fruit needed for drying, and with no losses)", "after_en": "Output 16,000 kg = retail 12,000 + wholesale 1,700 + processing 1,500 (→ 500 kg dried) + loss 800; revenue THB 1,401,000", "why_en": "500 kg of dried tomato needs about 1,500 kg of fresh fruit; the earlier version counted more fruit than could be grown", "doc_en": "Business plan / appendix"}, {"i": 9, "g": "fix", "en": "Break-even formula corrected", "doc": "แผนหลัก/ภาคผนวก", "section": "7.3 / 5.1 จุดคุ้มทุน", "before": "1,078,203 บาท/ปี (หารด้วยอัตรากำไรขั้นต้น 51.13%)", "after": "746,795 บาท/ปี (หารด้วยอัตรากำไรส่วนเกิน 77.84%)", "why": "สูตรเดิมนับต้นทุนคงที่ซ้ำ เพราะกำไรขั้นต้นหักค่าเสื่อมและค่าแรงไปแล้ว", "sec_en": "7.3 / 5.1 Break-even", "before_en": "THB 1,078,203/yr (divided by the 51.13% gross margin)", "after_en": "THB 746,795/yr (divided by the 77.84% contribution margin)", "why_en": "The old formula counted fixed costs twice, because gross margin already deducts depreciation and labour", "doc_en": "Business plan / appendix"}, {"i": 10, "g": "fix", "en": "Payback method corrected", "doc": "แผนหลัก/ภาคผนวก", "section": "7.3 / 5.2 ระยะคืนทุน", "before": "3.05 ปี (เงินลงทุน ÷ กระแสเงินสดปีที่ 1 อย่างเดียว)", "after": "3.0 ปี (กระแสเงินสดสะสมปีที่ 1–4)", "why": "ใช้วิธีมาตรฐานให้สอดคล้องกับกระแสเงินสดที่เปลี่ยนแต่ละปี", "sec_en": "7.3 / 5.2 Payback", "before_en": "3.05 years (investment ÷ year-1 cash flow only)", "after_en": "3.0 years (cumulative cash flow, years 1–4)", "why_en": "Standard method that reflects cash flow changing each year", "doc_en": "Business plan / appendix"}, {"i": 12, "g": "fix", "en": "Grant recorded as equity, not a loan", "doc": "แผนหลัก/ภาคผนวก", "section": "7.6 (เพิ่มใหม่) และงบแสดงฐานะการเงิน", "before": "งบดุลบันทึกเงิน ADB เป็น \"เงินกู้ยืมระยะยาว\" แต่ไม่มีดอกเบี้ยหรือแผนชำระคืน", "after": "บันทึกเป็นทุนให้เปล่าจาก HLT Fund (ADB) ซึ่งมีเงื่อนไขให้ธุรกิจยั่งยืนภายใน 5 ปี พร้อมแสดงกระแสเงินสดสะสม 5 ปี และการจัดสรรเป็นเงินสำรองทดแทนสินทรัพย์และกองทุนหมุนเวียน", "why": "ยืนยันแล้วว่าเป็นทุนให้เปล่า จึงต้องแสดงว่าโครงการเลี้ยงตัวเองและทดแทนสินทรัพย์ได้ภายใน 5 ปี", "sec_en": "7.6 (new) and balance sheet", "before_en": "Balance sheet recorded ADB funds as a long-term loan, with no interest or repayment", "after_en": "Recorded as an HLT Fund (ADB) grant, conditional on a business sustainable within 5 years, with 5-year cumulative cash flow and allocation to a replacement reserve and revolving fund", "why_en": "Confirmed as a grant, so the plan must show the project funds itself and replaces assets within 5 years", "doc_en": "Business plan / appendix"}, {"i": 1, "g": "add", "en": "Market evidence: MOU, survey and LOI target", "doc": "แผนหลัก", "section": "2. หลักฐานยืนยันตลาด", "before": "มีเพียงข้อความทั่วไปว่าผู้บริโภคยินดีจ่าย", "after": "อ้างถึง MOU และแบบสำรวจตลาดในภาคผนวก และตั้งเป้ารวบรวม LOI จากผู้ซื้อ B2B ≥ 3 ราย ครอบคลุม ≥ 50% ของยอดขายปลีก", "why": "รายได้กว่า 85% มาจากการขายปลีก ADB จะถามหาหลักฐานผู้ซื้อ", "sec_en": "2. Market evidence", "before_en": "Only a general statement that consumers will pay a premium", "after_en": "Cites the MOU and market survey in the appendix, and sets a target of LOIs from ≥ 3 B2B buyers covering ≥ 50% of retail sales", "why_en": "Over 85% of revenue is retail, so ADB will ask for buyer evidence", "doc_en": "Business plan"}, {"i": 8, "g": "add", "en": "Maintenance cost added", "doc": "แผนหลัก/ภาคผนวก", "section": "7.2 / 3.1 ต้นทุนการผลิต", "before": "ไม่มีค่าซ่อมบำรุงโรงเรือน ระบบ IoT และ Solar", "after": "เพิ่มค่าซ่อมบำรุง 30,000 บาท/ปี → COGS 733,785 บาท", "why": "ระบบ IoT ปั๊ม พลาสติกโรงเรือน และแบตเตอรี่ต้องมีค่าบำรุงรักษาทุกปี", "sec_en": "7.2 / 3.1 Cost of production", "before_en": "No maintenance for greenhouses, IoT or solar", "after_en": "Added maintenance of THB 30,000/yr → cost of sales THB 733,785", "why_en": "IoT devices, pumps, greenhouse film and batteries need upkeep every year", "doc_en": "Business plan / appendix"}, {"i": 11, "g": "add", "en": "Sensitivity analysis added", "doc": "แผนหลัก/ภาคผนวก", "section": "7.5 / 5.4 (เพิ่มใหม่)", "before": "ไม่มีการวิเคราะห์ความอ่อนไหว", "after": "ตารางกำไรสุทธิปีที่ 1 ที่ผลผลิต 3–6 กก./ต้น × ราคาปลีก 80/100/120 บาท", "why": "ให้ผู้เชี่ยวชาญเห็นว่าแผนรับความเสี่ยงด้านผลผลิตและราคาได้แค่ไหน", "sec_en": "7.5 / 5.4 Sensitivity analysis (new)", "before_en": "No sensitivity analysis", "after_en": "Year-1 net profit table for 3–6 kg/plant × retail price THB 80/100/120", "why_en": "Shows the panel how much yield and price risk the plan can absorb", "doc_en": "Business plan / appendix"}, {"i": 13, "g": "add", "en": "Risk register added", "doc": "แผนหลัก", "section": "10. ความเสี่ยง (เพิ่มใหม่)", "before": "ไม่มี", "after": "ตารางความเสี่ยง 8 ด้าน พร้อมผลกระทบและแนวทางรองรับ", "why": "ADB มักถามเรื่องความเสี่ยงและแผนรองรับ", "sec_en": "10. Risks (new)", "before_en": "None", "after_en": "Risk table covering 8 areas with impact and mitigation", "why_en": "ADB routinely asks about risks and mitigation", "doc_en": "Business plan"}, {"i": 14, "g": "add", "en": "Timeline and operating-year basis", "doc": "แผนหลัก/ภาคผนวก", "section": "11. กรอบเวลา (เพิ่มใหม่) และช่วงเวลาของงบการเงิน", "before": "งบการเงินนับปีปฏิทิน (ปีที่ 1 สิ้นสุด 31 ธ.ค. 2570) ซึ่งเป็นไปไม่ได้ที่จะผลิตครบ 2 รอบ", "after": "นับปีดำเนินงาน พ.ค. 2570 – เม.ย. 2571 และเพิ่มตารางกรอบเวลา โดยจัดซื้อจัดจ้างในไตรมาสที่ 2 ปีงบประมาณ 2570 (ม.ค.–มี.ค. 2570) และติดตั้งในเดือน เม.ย. 2570", "why": "ต้องมีเวลาจัดซื้อจัดจ้างและติดตั้งก่อนเริ่มผลิต", "sec_en": "11. Timeline (new) and accounting period", "before_en": "Statements used calendar years (year 1 ending 31 Dec 2027), when two full cycles would be impossible", "after_en": "Operating year May 2027 – Apr 2028, plus a timeline with procurement in Q2 of fiscal 2027 (Jan–Mar 2027) and installation in Apr 2027", "why_en": "Procurement and installation must come before production starts", "doc_en": "Business plan / appendix"}, {"i": 0, "g": "align", "en": "Executive summary figures updated", "doc": "แผนหลัก", "section": "1. บทสรุปผู้บริหาร", "before": "รายได้ปีแรก 1.44 ล้านบาท / คืนทุน 3.05 ปี", "after": "รายได้ปีแรก 1.40 ล้านบาท / จุดคุ้มทุน 0.75 ล้านบาท / คืนทุนประมาณ 3 ปี", "why": "ปรับตามประมาณการการเงินที่แก้ไขแล้ว", "sec_en": "Executive summary", "before_en": "Year-1 revenue THB 1.44 M / payback 3.05 years", "after_en": "Year-1 revenue THB 1.40 M / break-even THB 0.75 M / payback about 3 years", "why_en": "Updated to match the revised financial projections", "doc_en": "Business plan"}, {"i": 2, "g": "align", "en": "Yield target per cycle in crop calendar", "doc": "แผนหลัก", "section": "3.2 ตารางรอบการผลิต", "before": "ไม่ระบุผลผลิตแยกตามรอบ", "after": "รอบหนาว (พ.ย.–มี.ค.) ≈ 6 กก./ต้น, รอบร้อน (พ.ค.–ก.ย.) ≈ 4 กก./ต้น เฉลี่ย 5 กก./ต้น", "why": "สอดคล้องกับงานวิจัยเรื่องอุณหภูมิที่อ้างไว้ในเล่ม และทำให้เป้าหมายรายรอบสมเหตุสมผล", "sec_en": "3.2 Production calendar", "before_en": "No yield per cycle", "after_en": "Cool cycle (Nov–Mar) ≈ 6 kg/plant, hot cycle (May–Sep) ≈ 4 kg/plant, average 5 kg/plant", "why_en": "Matches the temperature research already cited and makes each cycle's target realistic", "doc_en": "Business plan"}, {"i": 4, "g": "align", "en": "Citation corrected", "doc": "แผนหลัก", "section": "3.5 การอ้างอิง", "before": "Gautier et al., 2014 (ไม่มีในรายการอ้างอิง)", "after": "Schwarz et al., 2014", "why": "แก้ให้ตรงกับรายการเอกสารอ้างอิง", "sec_en": "3.5 Citation", "before_en": "Gautier et al., 2014 (not in the reference list)", "after_en": "Schwarz et al., 2014", "why_en": "Matches the reference list", "doc_en": "Business plan"}, {"i": 5, "g": "align", "en": "IoT specification matched to net-house and budget", "doc": "แผนหลัก", "section": "6. เทคโนโลยี IoT", "before": "มี Spectroradiometer, วัดแสงแยกช่วงคลื่นประจำชั้นปลูก, Air Shower + HEPA + UV, ควบคุมไฟปลูก, เป้า PPFD ของแปลงอนุบาล", "after": "ปรับเป็นสเปกโรงเรือนตาข่าย: เซ็นเซอร์แสง PAR/Lux สั่งม่านพรางแสง, PM2.5, kWh meter, ประตูสองชั้น/จุดฆ่าเชื้อ, Manual Override", "why": "สเปกเดิมเป็นของโรงงานผลิตพืช (Plant Factory) ไม่ตรงกับโรงเรือนตาข่าย และเกินงบ IoT 100,500 บาท", "sec_en": "6. IoT technology", "before_en": "Spectroradiometer, per-layer spectral light sensing, air shower with HEPA and UV, grow-light control, nursery PPFD targets", "after_en": "Net-house specification: PAR/Lux sensor driving a shade screen, PM2.5, kWh meter, double door and sanitising point, manual override", "why_en": "The earlier specification suited a plant factory, not a net-house, and exceeded the THB 100,500 IoT budget", "doc_en": "Business plan"}, {"i": 15, "g": "align", "en": "Fructose syrup purpose stated", "doc": "ภาคผนวก", "section": "3.1 ต้นทุนการผลิต รายการที่ 5", "before": "น้ำเชื่อมฟรุตโทสตรา C บนใบไม้ (ไม่ระบุว่าใช้ทำอะไร)", "after": "น้ำเชื่อมฟรุกโตส (แช่ก่อนอบแห้งเพื่อคงรูปผล)", "why": "ระบุวัตถุประสงค์ให้ชัด และใช้อธิบายอัตราส่วนผลสดต่อผลิตภัณฑ์ 3:1", "sec_en": "3.1 Cost of production, item 5", "before_en": "Fructose syrup \"brand C on leaves\" (purpose not stated)", "after_en": "Fructose syrup (pre-drying soak to keep fruit shape)", "why_en": "States the purpose and explains the 3:1 fresh-to-dried ratio", "doc_en": "Appendix"}];
+window.PAGE_EN={h1:"Business-plan revisions",lead:"Changes made to the business plan and appendix before the 7 November 2026 meeting. Every figure in both documents now comes from the same financial model as page 7.",
+ knH:"Key figures before and after",knNote:"Break-even fell because the formula was corrected, not because assumptions changed. Year-5 revenue fell because the unexplained 20% annual growth was dropped.",
+ listH:"All revisions",listIntro:"Filter by type of change.",confH:"Facts confirmed by the team",foot:"Files: revised business plan and appendix (.docx)"};
+const G={fix:{c:"var(--tomato)",th:"แก้ตัวเลขหรือสูตรที่ผิด",en:"Corrected figures or formulas"},add:{c:"var(--leaf)",th:"เพิ่มเนื้อหาที่ขาด",en:"Added missing content"},align:{c:"var(--warn)",th:"ปรับให้ตรงความจริงและชัดเจนขึ้น",en:"Aligned and clarified"}};
+const KN=[
+ ["รายได้ปีที่ 1","Revenue, year 1","1,440,000","1,401,000","บาท","THB"],
+ ["กำไรสุทธิปีที่ 1","Net profit, year 1","578,215","509,215","บาท","THB"],
+ ["จุดคุ้มทุน","Break-even sales","1,078,203","746,795","บาท/ปี","THB/yr"],
+ ["ระยะคืนทุน","Payback","3.05","3.0","ปี","yrs"],
+ ["รายได้ปีที่ 5","Revenue, year 5","2,985,984","1,734,522","บาท","THB"],
+ ["ผลผลิตที่ใช้คิดรายได้","Output used for revenue","15,500 (ไม่รวมผลสดที่ใช้อบแห้ง)","16,000 (รวมแปรรูปและสูญเสีย)","กก./ปี","kg/yr","15,500 (excluding fruit used for drying)","16,000 (including processing and losses)"],
+ ["เงิน ADB ในงบดุล","ADB funds in balance sheet","เงินกู้ระยะยาว","ทุนให้เปล่า","","","Long-term loan","Grant"]
+];
+const CONF=[
+ ["เงินลงทุนเป็นทุนให้เปล่า มีเงื่อนไขให้ธุรกิจยั่งยืนภายใน 5 ปี","Investment is a grant; the business must be sustainable within 5 years"],
+ ["โรงเรือน 4 โรง (ใหม่ 3 + เดิม 1) ขนาด 6 × 16 ม. โรงละ 360 ถุง ถุงละ 2 ต้น","4 houses (3 new + 1 existing), 6 × 16 m, 360 bags each, 2 plants per bag"],
+ ["ผลผลิตจริงของวิทยาลัยเฉลี่ย 5 กก./ต้น","College's measured yield averages 5 kg per plant"],
+ ["พื้นที่ใช้สอย 755 ตร.ม. รวมพื้นที่อบแห้งและหลังเก็บเกี่ยว","755 m² site includes drying and post-harvest areas"],
+ ["น้ำเชื่อมฟรุกโตสใช้แช่ก่อนอบเพื่อคงรูปผล","Fructose syrup is a pre-drying soak to keep fruit shape"],
+ ["จัดซื้อจัดจ้างไตรมาสที่ 2 ปีงบประมาณ 2570","Procurement in Q2 of fiscal year 2027"]
+];
+let filter="all";
+function render(lang){
+  const en=lang==="en";
+  document.getElementById("kn").innerHTML=`<thead><tr><th>${en?"Item":"รายการ"}</th><th class="r">${en?"Before":"เดิม"}</th><th class="r">${en?"After":"ฉบับแก้ไข"}</th><th>${en?"Unit":"หน่วย"}</th></tr></thead><tbody>`+
+    KN.map(r=>`<tr><td>${en?r[1]:r[0]}</td><td class="r old">${en&&r[6]?r[6]:r[2]}</td><td class="r new">${en&&r[7]?r[7]:r[3]}</td><td class="muted">${en?r[5]:r[4]}</td></tr>`).join("")+"</tbody>";
+  const counts={all:CHANGES.length};CHANGES.forEach(c=>counts[c.g]=(counts[c.g]||0)+1);
+  const fb=document.getElementById("filters");
+  fb.innerHTML=[["all",en?"All":"ทั้งหมด"],...Object.keys(G).map(k=>[k,en?G[k].en:G[k].th])].map(([k,l])=>`<button type="button" data-f="${k}" aria-pressed="${filter===k}">${l}<span class="c">${counts[k]}</span></button>`).join("");
+  fb.querySelectorAll("button").forEach(b=>b.onclick=()=>{filter=b.dataset.f;render(SG.lang())});
+  const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+  document.getElementById("list").innerHTML=CHANGES.filter(c=>filter==="all"||c.g===filter).map(c=>`
+   <article class="chg" style="--c:${G[c.g].c}">
+     <div class="meta"><h3>${esc(en?c.en:c.section)}</h3><span class="sec">${esc(en?c.doc_en+" · "+c.sec_en:c.doc)}</span><span><span class="pill ${c.g==="fix"?"bad":c.g==="add"?"info":"warn"}">${en?G[c.g].en:G[c.g].th}</span></span></div>
+     <div class="col before"><div class="lbl">${en?"Before":"เดิม"}</div><p>${esc(en?c.before_en:c.before)}</p></div>
+     <div class="col after"><div class="lbl">${en?"After":"ฉบับแก้ไข"}</div><p>${esc(en?c.after_en:c.after)}</p></div>
+     <div class="why"><b>${en?"Why":"เหตุผล"}</b> ${esc(en?c.why_en:c.why)}</div>
+   </article>`).join("");
+  document.getElementById("conf").innerHTML=CONF.map(c=>`<li>${en?c[1]:c[0]}</li>`).join("");
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4. ตลาดและผู้ซื้อ · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.ladder{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.ladder svg{width:100%;height:auto;display:block}
+.evid li{margin:6px 0}
+.evid .pill{margin-right:6px}
+.packs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.packs{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="4" data-art="img:pack-fresh">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">4</span>
+    <h1 data-i18n="h1">ตลาดและผู้ซื้อ</h1>
+    <p data-i18n="lead">ขายผลสดเกรดพรีเมียมตรงถึงร้านอาหาร โรงแรม คาเฟ่ และผู้บริโภคในเมืองเชียงใหม่ จุดขายคือความสด ปลอดสาร ตรวจสอบย้อนกลับได้ และชื่อเสียงของวิทยาลัย</p>
+  </div>
+
+  <section class="block g2" aria-label="Customers" id="seg"></section>
+
+  <section class="block" aria-labelledby="pr-h">
+    <h2 id="pr-h" data-i18n="prH">ราคาของเราเทียบกับตลาด</h2>
+    <p class="intro" data-i18n="prIntro">ราคาขายปลีกในแผน 100 บาท/กก. อยู่ระหว่างราคาตลาดค้าส่งกับราคาบนชั้นวางห้างสรรพสินค้า จึงมีช่องให้ผู้ซื้อ B2B ได้ราคาดีกว่าซื้อปลีก</p>
+    <div class="ladder"><svg id="ladder" viewBox="0 0 760 250" role="img"></svg></div>
+    <p class="note" id="prnote"></p>
+  </section>
+
+  <section class="block split-60" aria-label="Revenue and evidence">
+    <div>
+      <h2 style="font-size:23px" data-i18n="mixH">รายได้ปีที่ 1 มาจากไหน</h2>
+      <div class="flowbar" style="margin-top:12px" id="mix"></div>
+      <div id="mixl" style="margin-top:10px"></div>
+      <div class="callout" style="margin-top:18px" id="risk"></div>
+    </div>
+    <div class="card">
+      <h3 data-i18n="evH">หลักฐานความต้องการของตลาด</h3>
+      <ul class="evid" id="evid" style="list-style:none;padding:0"></ul>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="cmp-h">
+    <h2 id="cmp-h" data-i18n="cmpH">คู่แข่งและความได้เปรียบ</h2>
+    <div class="g3" id="cmp" style="margin-top:12px"></div>
+  </section>
+
+  <section class="block" aria-labelledby="pk-h">
+    <h2 id="pk-h" data-i18n="pkH">บรรจุภัณฑ์และการจำหน่ายที่ผ่านมา</h2>
+    <div class="packs" style="margin-top:12px">
+      <figure class="ph crop"><img src="img/pack-fresh.jpg" alt="" loading="lazy"><figcaption data-i18n="c1">แบบบรรจุภัณฑ์ผลสด พร้อม QR Code</figcaption></figure>
+      <figure class="ph crop"><img src="img/pack-dried.jpg" alt="" loading="lazy"><figcaption data-i18n="c2">แบบบรรจุภัณฑ์มะเขือเทศเชอรี่อบแห้ง</figcaption></figure>
+      <figure class="ph crop"><img src="img/event-sale.jpg" alt="" loading="lazy"><figcaption data-i18n="c3">จำหน่ายผลผลิตในงานประชุมวิชาการ อกท. หน่วยเชียงใหม่ ปีการศึกษา 2568</figcaption></figure>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">ที่มา: แผนธุรกิจ ข้อ 2 และ 7 ภาคผนวก และราคาอ้างอิงจากเว็บไซต์ ค้นเมื่อ พ.ย. 2569</span></div></footer>
+<script>
+window.PAGE_EN={h1:"Market and buyers",lead:"Premium fresh fruit sold direct to restaurants, hotels, cafés and city consumers in Chiang Mai. The selling points are freshness, safety, traceability and the college's reputation.",
+ prH:"Our prices against the market",prIntro:"The plan's THB 100/kg retail price sits between the wholesale market and supermarket shelf prices, leaving room for B2B buyers to pay less than retail.",
+ mixH:"Where year-1 revenue comes from",evH:"Evidence of demand",cmpH:"Competitors and our advantage",pkH:"Packaging and past sales",
+ c1:"Fresh-fruit pack design with QR code",c2:"Dried cherry tomato pack design",c3:"Selling produce at the FFT Chiang Mai unit conference, academic year 2025",
+ foot:"Sources: business plan sections 2 and 7, appendix, and web price references checked Nov 2026"};
+function render(){
+  const t=SG.t,f=SG.fmt;
+  document.getElementById("seg").innerHTML=`
+   <div class="card"><span class="pill info">B2B</span><h3 style="margin-top:8px">${t("ร้านอาหาร โรงแรม คาเฟ่","Restaurants, hotels, cafés")}</h3>
+    <p>${t("ร้านอาหารอิตาเลียน สลัดบาร์ เฮลตี้คาเฟ่ และโรงแรม ต้องการวัตถุดิบหวานกรอบ สดใหม่ ขนาดสม่ำเสมอ และส่งได้ต่อเนื่อง ซึ่งเป็นเหตุผลหลักที่ทำให้สั่งซื้อซ้ำ","Italian restaurants, salad bars, healthy cafés and hotels want sweet, crisp, fresh fruit of even size, delivered reliably: the main reasons they reorder.")}</p></div>
+   <div class="card"><span class="pill info">B2C</span><h3 style="margin-top:8px">${t("ผู้บริโภคในเมือง","City consumers")}</h3>
+    <p>${t("คนรักสุขภาพ คนเมืองรุ่นใหม่ และชาวต่างชาติในเขตเมืองและย่านนิมมานเหมินท์ ยินดีจ่ายราคาพรีเมียมสำหรับสินค้าปลอดสารที่ตรวจสอบแหล่งที่มาได้ สั่งผ่าน LINE OA และช่องทางออนไลน์","Health-conscious young urbanites and foreigners in the city and Nimman area pay a premium for safe, traceable produce, ordering via LINE OA and online.")}</p></div>`;
+  // price ladder (THB/kg)
+  const P=[
+   {v:30,th:"ขายส่งในแผน",en:"Our wholesale",ours:1},
+   {v:63.33,th:"ราคามะเขือเทศราชินี ตลาดค้าส่ง",en:"Queen tomato, wholesale market"},
+   {v:100,th:"ขายปลีก/B2B ในแผน",en:"Our retail / B2B",ours:1},
+   {v:196,th:"บนชั้นวางห้าง (250 ก. 49 บาท)",en:"Supermarket shelf (250 g, THB 49)"}];
+  const svg=document.getElementById("ladder"),W=760,L=20,R=20,y0=150,max=220,x=v=>L+(W-L-R)*v/max;
+  let g=`<line x1="${L}" x2="${W-R}" y1="${y0}" y2="${y0}" stroke="var(--line)" stroke-width="2"/>`;
+  [0,50,100,150,200].forEach(v=>g+=`<line x1="${x(v)}" x2="${x(v)}" y1="${y0-4}" y2="${y0+4}" stroke="var(--muted)"/><text x="${x(v)}" y="${y0+22}" font-size="12" text-anchor="middle" fill="var(--muted)">${v}</text>`);
+  g+=`<text x="${W-R}" y="${y0+40}" font-size="12" text-anchor="end" fill="var(--muted)">${t("บาท/กก.","THB/kg")}</text>`;
+  P.forEach((p,i)=>{const up=i%2===0,yy=up?y0-70:y0-28,c=p.ours?"var(--tomato)":"var(--leaf)";
+   g+=`<line x1="${x(p.v)}" x2="${x(p.v)}" y1="${yy+6}" y2="${y0}" stroke="${c}" stroke-width="1.5"/><circle cx="${x(p.v)}" cy="${y0}" r="7" fill="${c}"/>`+
+   `<text x="${x(p.v)}" y="${yy-14}" font-size="13" font-weight="600" text-anchor="middle" fill="${c}">${f(p.v,p.v%1?2:0)}</text><text x="${x(p.v)}" y="${yy}" font-size="12.5" text-anchor="middle" fill="var(--ink)">${t(p.th,p.en)}</text>`});
+  svg.innerHTML=g;svg.setAttribute("aria-label",t("แผนภาพเปรียบเทียบราคา","Price comparison chart"));
+  document.getElementById("prnote").innerHTML=t("ราคาที่ขายได้จริงในการทดลองขาย: ปลีก ≈ 100 บาท/กก. ส่ง ≈ 35 บาท/กก. · ราคาอ้างอิง: มะเขือเทศราชินี 63.33 บาท/กก. จาก kasetprice.com และ 49 บาท/250 ก. จาก Big C Online ค้นเมื่อ พ.ย. 2569 · มะเขือเทศราชินีอบแห้งขายออนไลน์ราว 190–550 บาท/กก. ส่วนในแผนตั้งไว้ 300 บาท/กก.","Actual trial-sale prices: retail ≈ THB 100/kg, wholesale ≈ THB 35/kg. References: queen tomato THB 63.33/kg (kasetprice.com) and THB 49 per 250 g (Big C Online), checked Nov 2026. Dried queen tomatoes sell online for about THB 190–550/kg; the plan uses THB 300/kg.");
+  const M=[{c:"var(--tomato)",v:1200000,th:"ขายปลีก 12,000 กก.",en:"Retail 12,000 kg"},{c:"#B7791F",v:150000,th:"อบแห้ง 500 กก.",en:"Dried 500 kg"},{c:"#5C8A4E",v:51000,th:"ขายส่ง 1,700 กก.",en:"Wholesale 1,700 kg"}];
+  const T=1401000;
+  document.getElementById("mix").innerHTML=M.map(m=>`<div style="flex:${m.v} 1 0;background:${m.c}">${(m.v/T*100).toFixed(0)}%</div>`).join("");
+  document.getElementById("mixl").innerHTML=M.map(m=>`<div style="display:flex;justify-content:space-between;font-size:15px;padding:4px 0;border-bottom:1px solid var(--line)"><span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${m.c};margin-right:8px"></span>${t(m.th,m.en)}</span><span class="num">${f(m.v)} ${t("บาท","THB")}</span></div>`).join("");
+  document.getElementById("risk").innerHTML=`<b>${t("ปัจจัยวิกฤต:","Critical factor:")}</b> ${t("ต้องขายปลีกให้ได้ประมาณ 1,000 กก./เดือน หรือราว 4,000 แพ็ก (250 ก.) แผนจึงตั้งเป้ารวบรวม LOI จากผู้ซื้อ B2B อย่างน้อย 3 ราย ครอบคลุมครึ่งหนึ่ง (≈ 500 กก./เดือน) ก่อนเริ่มรอบผลิตแรก","Retail sales must reach about 1,000 kg a month, roughly 4,000 packs of 250 g. The plan aims for LOIs from at least 3 B2B buyers covering half of that (≈ 500 kg/month) before the first cycle.")}`;
+  document.getElementById("evid").innerHTML=[
+   ["good",t("มีแล้ว","In hand"),t("MOU กับบริษัท สอยดาวการเกษตร จำกัด","MOU with Soi Dao Kan Kaset Co., Ltd.")],
+   ["good",t("มีแล้ว","In hand"),t("แบบสำรวจตลาดในพื้นที่ (ภาคผนวก)","Local market survey (appendix)")],
+   ["good",t("มีแล้ว","In hand"),t("ใบรับรอง GAP พืชอาหาร มกษ. 9001-2564","GAP certificate for food crops, TAS 9001-2564")],
+   ["good",t("มีแล้ว","In hand"),t("ทดลองขาย: ขายปลีก 60% ที่ ≈ 100 บาท/กก. และขายส่งให้บริษัท 40% ที่ ≈ 35 บาท/กก. (ประมาณการ)","Trial sales: 60% retail at ≈ THB 100/kg and 40% wholesale to a company at ≈ THB 35/kg (estimates)")],
+   ["warn",t("กำลังทำ","In progress"),t("LOI จากผู้ซื้อ B2B เพิ่มเติม ให้รวมได้ ≥ 3 ราย ก่อนเริ่มรอบผลิตแรก","More B2B buyer LOIs, ≥ 3 in total before the first cycle")]].map(e=>`<li><span class="pill ${e[0]}">${e[1]}</span>${e[2]}</li>`).join("");
+  document.getElementById("cmp").innerHTML=`
+   <div class="card"><h3>${t("คู่แข่งหลัก","Main competitors")}</h3><p>${t("ผลผลิตจากโครงการหลวงและเกษตรกรแปลงใหญ่บนพื้นที่สูง น่าเชื่อถือสูง แต่มีต้นทุนขนส่งและผลช้ำจากการเดินทาง","Royal Project and large highland growers: highly trusted, but with transport costs and bruising in transit.")}</p></div>
+   <div class="card"><h3>${t("ความได้เปรียบ","Our advantage")}</h3><p>${t("ฟาร์มในเมือง ส่งของสดได้วันเดียว ต้นทุนขนส่งต่ำ ผลไม่ช้ำ มีชื่อเสียงของวิทยาลัยในฐานะสถาบันผลิตเกษตรมาตรฐาน","An in-town farm with same-day delivery, low transport cost, unbruised fruit, and the college's reputation for standards.")}</p></div>
+   <div class="card"><h3>${t("ฤดูกาล","Seasonality")}</h3><p>${t("ความต้องการสูงสุด พ.ย.–ก.พ. ตามฤดูท่องเที่ยว ตรงกับช่วงที่ผลผลิตคุณภาพดีที่สุดของรอบหนาว","Demand peaks Nov–Feb with tourism, when the cool cycle gives its best fruit.")}</p></div>`;
+  document.querySelectorAll(".packs img").forEach((im,i)=>im.alt=document.querySelectorAll(".packs figcaption")[i].textContent);
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

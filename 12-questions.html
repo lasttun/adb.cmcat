@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12. ประเด็นที่ขอคำปรึกษา · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.grp{margin:0 0 34px}
+.grp>h2{font-size:21px;font-weight:700;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+.grp>h2 .to{font-family:var(--font-body);font-size:15px;font-weight:500;color:var(--muted)}
+.qs{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.qq{display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--tomato);border-radius:14px;padding:22px 26px;align-items:start}
+.qq .no{font-family:var(--font-display);font-weight:700;font-size:52px;color:var(--tomato);line-height:1;font-variant-numeric:tabular-nums}
+.qq h3{font-family:var(--font-display);font-size:clamp(21px,2.3vw,28px);font-weight:600;line-height:1.4;text-wrap:balance}
+.qq .ctx{font-size:15px;color:var(--muted);margin-top:10px;line-height:1.6;padding-top:10px;border-top:1px dashed var(--line)}
+.qq .ctx a{color:var(--leaf);font-weight:600}
+@media (max-width:640px){.qq{grid-template-columns:1fr;gap:6px;padding:18px}.qq .no{font-size:36px}.qq h3{font-size:20px}}
+</style>
+</head>
+<body data-page="12" data-art="svg:ask">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">12</span>
+    <h1 data-i18n="h1">ประเด็นที่ขอคำปรึกษา</h1>
+    <p data-i18n="lead">คำถาม 6 ข้อที่ทีมต้องการคำแนะนำจากคณะผู้เชี่ยวชาญในช่วงบ่าย แบ่งตาม 4 ด้าน</p>
+  </div>
+  <div id="groups"></div>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">คำถามคัดเลือกโดยทีม วษท.เชียงใหม่</span></div></footer>
+<script>
+window.PAGE_EN={h1:"Questions for the advisers",lead:"Six questions the team would like the panel's advice on this afternoon, in four areas.",foot:"Questions selected by the Chiang Mai College team"};
+function Q(){const t=SG.t;return[
+ {h:t("ด้านเงินทุนและเงื่อนไข","Funding and conditions"),to:t("ถามคณะ ADB","For the ADB team"),items:[
+  {id:"q1",q:t("เงื่อนไข \"ธุรกิจยั่งยืนภายใน 5 ปี\" วัดด้วยตัวชี้วัดอะไร และ ADB จะติดตามอย่างไร","How is \"sustainable within 5 years\" measured, and how will ADB track it?"),
+   c:t(`สิ่งที่เราเตรียมไว้: มีกำไรตั้งแต่ปีที่ 1 คืนทุนประมาณ 3 ปี กระแสเงินสดสะสม 5 ปี ≈ 4.46 ล้านบาท และกันเงินสำรองทดแทนสินทรัพย์ ≈ 1.27 ล้านบาท <a href="07-finance.html">หน้า 7</a>`,`What we have prepared: profit from year 1, payback about 3 years, five-year cumulative cash ≈ THB 4.46 M and a ≈ THB 1.27 M replacement reserve. <a href="07-finance.html">Page 7</a>`)},
+  {id:"q2",q:t("ต้องรายงานผลในรูปแบบไหน มีการติดตามลงพื้นที่หรือไม่ และบ่อยแค่ไหน","What reporting format is required, will there be site monitoring visits, and how often?"),
+   c:t(`ในแผนตอนนี้: รายงานความก้าวหน้าต่อคณะกรรมการโครงการเดือนละครั้ง และรายงานผลปีที่ 1 เดือน เม.ย. 2571 <a href="11-timeline.html">หน้า 11</a>`,`Current plan: monthly progress reports to the project committee and a year-1 report in Apr 2028. <a href="11-timeline.html">Page 11</a>`)}]},
+ {h:t("ด้านการบริหารจัดการ","Management"),to:t("ถามคณะ ADB","For the ADB team"),items:[
+  {id:"q3",q:t("การจัดซื้อจัดจ้างต้องใช้ระเบียบของ ADB หรือระเบียบพัสดุภาครัฐ และจะทันไตรมาสที่ 2 หรือไม่","Should procurement follow ADB rules or Thai government procurement rules, and can it be done in Q2?"),
+   c:t(`แผนตอนนี้: จัดซื้อจัดจ้าง ม.ค.–มี.ค. 2570 ติดตั้ง เม.ย. 2570 ทีมพร้อมทำ TOR เมื่องบได้รับอนุมัติ <a href="06-investment.html">หน้า 6</a>`,`Current plan: procurement Jan–Mar 2027, installation Apr 2027. The team will draft the TOR once the budget is approved. <a href="06-investment.html">Page 6</a>`)},
+  {id:"q4",q:t("จ้างเจ้าหน้าที่ 2 ตำแหน่งจากเงินรายได้ของโครงการ ทำได้ตามระเบียบเงินรายได้สถานศึกษาหรือไม่","Can two staff be hired from project revenue under the college's income regulations?"),
+   c:t(`ในแผน: ฝ่ายผลิต 10,000 + ฝ่ายการตลาด 12,000 บาท/เดือน รวม 264,000 บาท/ปี จ่ายจากรายได้ ไม่ได้มาจากทุน ADB <a href="07-finance.html">หน้า 7</a>`,`In the plan: production THB 10,000 + marketing THB 12,000 a month, THB 264,000 a year, paid from revenue, not the ADB grant. <a href="07-finance.html">Page 7</a>`)}]},
+ {h:t("ด้านเทคนิคการผลิต","Production"),to:t("ถาม รศ.ดร.สิริวัฒน์ สาครวาสี","For Assoc. Prof. Dr. Siriwat Sakhonwasee"),items:[
+  {id:"q5",q:t("มีข้อเสนอแนะเกี่ยวกับการจัดทำโรงเรือน และการเพิ่มผลผลิตให้มีคุณภาพอย่างไรบ้าง","What advice do you have on greenhouse design and on raising yield and quality?"),
+   c:t(`ข้อมูลประกอบ: โรงเรือน 6×16 ม. 360 ถุง ถุงละ 2 ต้น พัดลมย้ายไปไว้ที่จั่วด้านบน เป้า 5 กก./ต้น/รอบ (รอบหนาว ≈ 6 รอบร้อน ≈ 4) <a href="02-site.html">หน้า 2</a> · <a href="03-production.html">หน้า 3</a>`,`Context: 6×16 m houses, 360 bags with 2 plants each, fans moved to the gable, target 5 kg/plant/cycle (cool ≈ 6, hot ≈ 4). <a href="02-site.html">Page 2</a> · <a href="03-production.html">Page 3</a>`)}]},
+ {h:t("ด้านตลาดและการขยายผล","Market and scale-up"),to:t("ถามคณะ ADB","For the ADB team"),items:[
+  {id:"q6",q:t("ADB หรือเครือข่ายช่วยเชื่อมต่อผู้ซื้อกลุ่มโรงแรมหรือร้านอาหารพรีเมียมได้หรือไม่","Can ADB or its network connect us with hotel or premium-restaurant buyers?"),
+   c:t(`ตอนนี้: MOU กับบริษัท สอยดาวการเกษตร จำกัด 1 ราย ต้องขายปลีกประมาณ 1,000 กก./เดือน จึงต้องการผู้ซื้อ B2B เพิ่ม <a href="04-market.html">หน้า 4</a>`,`Now: one MOU (Soi Dao Kan Kaset Co., Ltd.). Retail sales need to reach about 1,000 kg a month, so more B2B buyers are needed. <a href="04-market.html">Page 4</a>`)}]}]}
+let n=0;
+function render(){
+  n=0;
+  document.getElementById("groups").innerHTML=Q().map(g=>`<section class="grp"><h2>${g.h}<span class="to">${g.to}</span></h2><div class="qs">${g.items.map(i=>{n++;return `
+   <article class="qq"><span class="no">${n}</span><div><h3>${i.q}</h3><div class="ctx">${i.c}</div></div></article>`}).join("")}</div></section>`).join("");
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

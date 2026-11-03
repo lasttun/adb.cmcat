@@ -1,654 +1,318 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="utf-8">
-    <title>Floratech | CMCAT Flagship Pitch</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SmartGrow วษท.เชียงใหม่</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 <style>
-        :root { 
-            --primary: #1d1d1f; 
-            --accent: #0066cc; /* Deep Apple Blue */
-            --gold: #f56300; 
-            --text-main: #1d1d1f; 
-            --text-muted: #86868b; 
-            --card-bg: rgba(255, 255, 255, 0.85); 
-        }
-        
-        /* 🌌 1. Animated Gradient Background */
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Sarabun'; 
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background: linear-gradient(-45deg, #f5f7fa, #c3cfe2, #e0c3fc, #8ec5fc);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: var(--text-main); 
-        }
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;padding:52px 0 40px;align-items:start}
+.meeting{font-size:15px;color:var(--muted);margin:0 0 18px;display:flex;gap:8px 16px;flex-wrap:wrap}
+.meeting span{display:inline-flex;align-items:center;gap:6px}
+.meeting span:first-child{color:var(--tomato);font-weight:600}
+.hero h1{font-size:clamp(34px,4.6vw,58px);line-height:1.08;font-weight:700;letter-spacing:-.01em}
+.hero h1 .sg{display:block;color:var(--leaf)}
+.hero .full{display:block;font-family:var(--font-display);font-weight:500;font-size:clamp(19px,1.9vw,23px);line-height:1.45;margin:18px 0 0;max-width:30ch}
+.hero p.lede{max-width:56ch;margin:20px 0 0;color:var(--muted)}
+.selected{margin-top:26px;display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-left:4px solid var(--tomato);background:var(--surface);border-radius:0 10px 10px 0;max-width:56ch;font-size:15.5px}
+.selected strong{font-weight:600}
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* ✨ 2. Floating Particles Effect */
-        .area {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* ให้อยู่หลังสุด */
-        }
+/* greenhouse plan */
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px}
+.plan h2{font-size:18px;font-weight:600}
+.plan .sub{font-size:14.5px;color:var(--muted);margin:2px 0 14px}
+.houses{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.house{display:flex;flex-direction:column;gap:6px;align-items:stretch}
+.house svg{width:100%;height:auto;display:block}
+.house .lbl{font-size:13px;color:var(--muted);text-align:center;line-height:1.35}
+.house .lbl b{display:block;color:var(--ink);font-weight:600;font-size:14px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:14px;color:var(--muted)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:7px;vertical-align:-1px}
+.plan .eq{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-size:15px}
+.plan .eq b{color:var(--tomato)}
 
-        .circles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-        }
+/* figures */
+.figures{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--ink);border-bottom:1px solid var(--line);margin:8px 0 0}
+.fig{padding:18px 18px 20px;border-right:1px solid var(--line)}
+.fig:last-child{border-right:0}
+.fig .k{font-size:14px;color:var(--muted);line-height:1.4;min-height:2.8em}
+.fig .v{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,2.6vw,32px);line-height:1.15;margin-top:6px}
+.fig .v small{font-size:15px;font-weight:500;color:var(--muted);margin-left:4px}
+.fig .n{font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+.fig.stress .v{color:var(--leaf)}
+.figures-note{font-size:13.5px;color:var(--muted);margin:10px 0 0}
 
-        .circles li {
-            position: absolute;
-            display: block;
-            list-style: none;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.4);
-            animation: animate 25s linear infinite;
-            bottom: -150px;
-            border-radius: 50%;
-        }
+/* chain */
+.chain{margin:52px 0 0}
+.chain h2,.index h2,.day h2{font-size:24px;font-weight:700}
+.chain .intro{color:var(--muted);margin:6px 0 18px;max-width:70ch}
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+.stage{padding:18px 22px 20px 0;position:relative}
+.stage::before{content:"";display:block;height:4px;background:var(--leaf);margin:0 0 16px;border-radius:2px}
+.stage:nth-child(2)::before{background:linear-gradient(90deg,var(--leaf),var(--unripe))}
+.stage:nth-child(3)::before{background:var(--tomato)}
+.stage h3{font-size:19px;font-weight:600}
+.stage .en{font-size:14px;color:var(--muted)}
+.stage ul{margin:10px 0 0;padding:0 0 0 18px;font-size:15.5px}
+.stage li{margin:3px 0}
+.stage .dept{margin-top:10px;font-size:13.5px;color:var(--muted)}
 
-        .circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
-        .circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
-        .circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
-        .circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
-        .circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
-        .circles li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
-        .circles li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
-        .circles li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
-        .circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
-        .circles li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+/* day + index */
+.lower{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,2fr);gap:44px;margin:56px 0 64px}
+.day ol{list-style:none;margin:16px 0 0;padding:0;border-left:2px solid var(--line)}
+.day li{position:relative;padding:0 0 16px 20px;font-size:15.5px;line-height:1.5}
+.day li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--leaf)}
+.day li.focus::before{background:var(--tomato);border-color:var(--tomato)}
+.day time{display:block;font-weight:600;font-variant-numeric:tabular-nums}
+.day .who{margin-top:22px;font-size:14px;color:var(--muted)}
+.day .who h3{font-size:16px;color:var(--ink);font-weight:600;margin-bottom:6px}
+.day .who ul{margin:0;padding-left:18px}
+.day .who li{padding:0;margin:2px 0;font-size:14px}
+.day .who li::before{display:none}
 
-        @keyframes animate {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
-            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
-        }
-        
-        .reveal { background: transparent; }
-        
-        /* 🍎 Typography Enhancement */
-        .reveal h1, .reveal h2, .reveal h3, .reveal h4 { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Sarabun';
-            font-weight: 700; 
-            text-transform: none; 
-            color: var(--text-main); 
-            letter-spacing: -0.015em; 
-        }
-        
-        .reveal h1 { font-size: 3em; font-weight: 800; letter-spacing: -0.03em; }
-        .reveal h2 { font-size: 1.8em; margin-bottom: 1.2em; font-weight: 700; border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 15px; display: inline-block; }
-        
-        .reveal p, .reveal li { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Sarabun';
-            color: var(--text-muted); 
-        }
+.index .intro{color:var(--muted);margin:6px 0 18px}
+.topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.topic{display:grid;grid-template-columns:44px 1fr auto;transition:border-color .15s;gap:12px;align-items:start;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface);text-decoration:none;color:inherit}
+.topic .no{font-family:var(--font-display);font-weight:700;font-size:22px;color:var(--leaf);line-height:1.2;font-variant-numeric:tabular-nums}
+.topic h3{font-family:var(--font-body);font-size:16.5px;font-weight:600;line-height:1.4}
+.topic p{margin:2px 0 0;font-size:14px;color:var(--muted);line-height:1.5}
+.topic .st{font-size:12.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 9px;white-space:nowrap;margin-top:2px}
+.topic.key{border-color:var(--tomato);box-shadow:inset 4px 0 0 var(--tomato)}
+.topic.key .no{color:var(--tomato)}
+.topic.ask{grid-column:1/-1;background:var(--tomato-soft);border-color:transparent}
+.topic.ask .no{color:var(--tomato)}
+.changes{margin-top:14px;display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;padding:14px 16px;border:1px dashed var(--leaf);border-radius:10px;font-size:15px}
+.changes b{font-weight:600}
+.changes .st{font-size:12.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
 
-        /* 🃏 Premium Cards */
-        .stat-card { 
-            background: var(--card-bg); 
-            backdrop-filter: blur(25px); 
-            -webkit-backdrop-filter: blur(25px); 
-            padding: 35px; 
-            border-radius: 24px; 
-            border: 1px solid rgba(255,255,255,0.8); 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.04), 0 5px 15px rgba(0,0,0,0.02); 
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease; 
-        }
-        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
-        
-        .highlight-num { font-size: 2.8em; font-weight: 800; color: var(--text-main); display: block; letter-spacing: -0.04em; line-height: 1; margin: 10px 0; }
-        .sub-text { font-size: 0.5em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; }
-        
-        .logo-header { position: absolute; top: 40px; left: 40px; display: flex; align-items: center; gap: 15px; z-index: 100; }
-        .logo-dot { width: 14px; height: 14px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px rgba(0,102,204,0.4); }
-        
-        /* 📐 Layouts */
-        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .chart-container { width: 100%; height: 300px; margin-top: 25px; }
-        
-        .feature-icon { color: var(--text-main); margin-bottom: 20px; font-size: 1.8em; opacity: 0.85; background: #f5f5f7; padding: 15px; border-radius: 16px; display: inline-block; }
-        .highlight { color: var(--accent); font-weight: 700; }
-        
-        .prompt-info { display: none; }
+footer{border-top:1px solid var(--line);padding:20px 0 28px;font-size:13.5px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;gap:32px;padding-top:36px}
+  .figures{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fig{border-bottom:1px solid var(--line)}
+  .fig:nth-child(2n){border-right:0}
+  .lower{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .stages{grid-template-columns:1fr}
+  .topics{grid-template-columns:1fr}
+  .houses{gap:8px}
+  .figures{grid-template-columns:1fr}
+  .fig{border-right:0}
+}
+@media (prefers-reduced-motion:no-preference){
+  .bag{transition:fill .5s ease}
+}
+
+a.topic:hover{border-color:var(--leaf)}
+.topic .st.ready{color:var(--good);border-color:currentColor}
+a.changes{text-decoration:none}
+.partners{display:flex;align-items:center;gap:14px;margin-top:22px;max-width:56ch;font-size:14.5px;color:var(--muted);line-height:1.5}
+.partners img{flex:none;object-fit:contain}
+.partners img[alt="ADB"]{border-radius:4px}
+.partners b{color:var(--ink);font-weight:600}
+@media (max-width:640px){.hero h1{font-size:34px}.hero{padding-top:28px}.houses{gap:6px}}
+a.changes:hover{border-style:solid}
 </style>
 </head>
-<body>
-    <!-- 🎇 HTML สำหรับละอองแสงลอยตัว (Floating Particles) -->
-    <div class="area" >
-        <ul class="circles">
-            <li></li><li></li><li></li><li></li><li></li>
-            <li></li><li></li><li></li><li></li><li></li>
+<body data-page="0">
+
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="meeting"><span data-i18n="date">7 พฤศจิกายน 2569</span><span data-i18n="occasion">ประชุมติดตามความก้าวหน้าและให้คำปรึกษาแผนการลงทุน ร่วมกับคณะทำงาน ADB</span></p>
+      <h1><span class="sg">SmartGrow</span><span class="full" data-i18n="title">ต้นแบบเกษตรอัจฉริยะสีเขียวและห่วงโซ่คุณค่ามะเขือเทศเชอรี่มูลค่าสูงเพื่อความยั่งยืน</span></h1>
+      <p class="lede" data-i18n="lede">ปลูกมะเขือเทศเชอรี่ลูกผสมในโรงเรือนควบคุมด้วย IoT ใช้พลังงานแสงอาทิตย์ แปรรูปผลตกเกรดด้วยโดมอบแห้ง และขายตรงสู่ตลาดพรีเมียมในเชียงใหม่ โดยนักศึกษา 5 สาขาวิชาร่วมดำเนินงานตลอดห่วงโซ่</p>
+      <div class="selected">
+        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" style="flex:none;margin-top:3px"><circle cx="11" cy="11" r="10" fill="none" stroke="var(--tomato)" stroke-width="2"/><path d="M6.5 11.5l3 3 6-7" fill="none" stroke="var(--tomato)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div data-i18n-html="selected">1 ใน 2 โครงการที่ได้รับคัดเลือกจากวัน <strong>Pilot SMART Agriculture Project Pitching Day</strong> (19 ส.ค. 2569) ให้ได้รับทุน High-Level Technology Fund ภายใต้โครงการ SATIT ของ ADB และ สอศ.</div>
+      </div>
+      <div class="partners">
+        <img src="img/logo-adb.png" alt="ADB" width="52" height="52">
+        <img src="img/logo-college.png" alt="" width="58" height="58" id="col-logo">
+        <span data-i18n-html="partners"><b>ธนาคารพัฒนาเอเชีย (ADB)</b> ร่วมกับ <b>สำนักงานคณะกรรมการการอาชีวศึกษา</b> และ <b>วิทยาลัยเกษตรและเทคโนโลยีเชียงใหม่</b></span>
+      </div>
+    </div>
+
+    <figure class="plan" aria-labelledby="plan-h">
+      <h2 id="plan-h" data-i18n="planH">พื้นที่ปลูก 4 โรงเรือน</h2>
+      <p class="sub" data-i18n="planSub">แต่ละโรงขนาด 6 × 16 ม. ปลูกได้ 360 ถุง ถุงละ 2 ต้น</p>
+      <div class="houses" id="houses"></div>
+      <div class="legend">
+        <span><i style="background:var(--tomato)"></i><span data-i18n="lgCommercial">ต้นที่คิดรายได้ 1,600 ต้น</span></span>
+        <span><i style="background:var(--unripe)"></i><span data-i18n="lgReserve">ทดสอบพันธุ์ ฝึกนักศึกษา และกำลังผลิตสำรอง 1,280 ต้น</span></span>
+      </div>
+      <p class="eq" data-i18n-html="planEq">4 โรง × 720 ต้น = ความจุ <span class="num">2,880</span> ต้น/รอบ · แผนการเงินคิดจาก <b class="num">1,600 ต้น × 5 กก. × 2 รอบ = 16,000 กก./ปี</b></p>
+    </figure>
+  </section>
+
+  <section aria-label="Key figures">
+    <div class="figures">
+      <div class="fig"><div class="k" data-i18n="fCapex">เงินลงทุน (ทุนให้เปล่า HLT Fund)</div><div class="v num">2.53<small data-i18n="mb">ล้านบาท</small></div><div class="n num" data-i18n="fCapexN">2,532,850 บาท</div></div>
+      <div class="fig"><div class="k" data-i18n="fRev">รายได้ปีดำเนินงานที่ 1</div><div class="v num">1.40<small data-i18n="mb">ล้านบาท</small></div><div class="n" data-i18n="fRevN">ขายปลีก 86% ขายส่ง 4% อบแห้ง 11%</div></div>
+      <div class="fig"><div class="k" data-i18n="fNp">กำไรสุทธิปีที่ 1</div><div class="v num">509,215<small data-i18n="baht">บาท</small></div><div class="n" data-i18n="fNpN">อัตรากำไรสุทธิ 36.3%</div></div>
+      <div class="fig"><div class="k" data-i18n="fBep">จุดคุ้มทุน</div><div class="v num">746,795<small data-i18n="bahtYr">บาท/ปี</small></div><div class="n" data-i18n="fBepN">53% ของรายได้เป้าหมาย หรือราว 2.7 กก./ต้น/รอบ</div></div>
+      <div class="fig stress"><div class="k" data-i18n="fPb">ระยะคืนทุน</div><div class="v num">3.0<small data-i18n="yr">ปี</small></div><div class="n" data-i18n="fPbN">กระแสเงินสดสะสม 5 ปี 4.46 ล้านบาท</div></div>
+    </div>
+    <p class="figures-note" data-i18n="figNote">แม้ผลผลิตลดเหลือ 3 กก./ต้น/รอบ โครงการยังมีกำไรประมาณ 73,000 บาทต่อปี (ที่ราคาขายปลีก 100 บาท/กก.)</p>
+  </section>
+
+  <section class="chain" aria-labelledby="chain-h">
+    <h2 id="chain-h" data-i18n="chainH">ห่วงโซ่คุณค่าครบวงจร</h2>
+    <p class="intro" data-i18n="chainIntro">ผลผลิตทุกกิโลกรัมมีปลายทาง ผลเกรดดีขายสด ผลตกเกรดเข้าโดมอบแห้ง ข้อมูลจากเซ็นเซอร์ใช้ทั้งควบคุมการผลิตและเป็นสื่อการเรียนรู้</p>
+    <div class="stages">
+      <div class="stage">
+        <h3 data-i18n="upH">ต้นน้ำ: ผลิตในโรงเรือน</h3>
+        <div class="en" data-i18n="upEn">Upstream production</div>
+        <ul>
+          <li data-i18n="up1">ปลูกในถุงวัสดุปลูก ให้น้ำ-ปุ๋ยแม่นยำ</li>
+          <li data-i18n="up2">IoT วัด EC/pH อุณหภูมิ ความชื้น แสง และ PM2.5</li>
+          <li data-i18n="up3">Solar + BESS จ่ายไฟให้ระบบ</li>
         </ul>
+        <div class="dept" data-i18n="upD">พืชศาสตร์ · ช่างกลเกษตร · เทคโนโลยีและนวัตกรรมเกษตร</div>
+      </div>
+      <div class="stage">
+        <h3 data-i18n="midH">กลางน้ำ: คัดเกรดและแปรรูป</h3>
+        <div class="en" data-i18n="midEn">Midstream post-harvest</div>
+        <ul>
+          <li data-i18n="mid1">คัดเกรด บรรจุ และเก็บในห้องเย็น</li>
+          <li data-i18n="mid2">ผลตกเกรด 1,500 กก. → อบแห้ง 500 กก.</li>
+          <li data-i18n="mid3">QR Code ตรวจสอบย้อนกลับ</li>
+        </ul>
+        <div class="dept" data-i18n="midD">พืชศาสตร์ · ผลิตภัณฑ์อาหาร</div>
+      </div>
+      <div class="stage">
+        <h3 data-i18n="downH">ปลายน้ำ: ตลาดและการขาย</h3>
+        <div class="en" data-i18n="downEn">Downstream sales</div>
+        <ul>
+          <li data-i18n="down1">ขายปลีก 12,000 กก./ปี ร้านอาหาร โรงแรม คาเฟ่</li>
+          <li data-i18n="down2">LINE OA และช่องทางออนไลน์</li>
+          <li data-i18n="down3">ขายส่งส่วนเกิน 1,700 กก./ปี</li>
+        </ul>
+        <div class="dept" data-i18n="downD">เทคโนโลยีการจัดการธุรกิจเกษตร</div>
+      </div>
     </div>
+  </section>
 
-    <div class="logo-header">
-        <div class="logo-dot"></div>
-        <div style="color: var(--text-main); font-size: 0.6em; font-weight: 700; opacity: 0.8;">CMCAT x ADB | Floratech & FuengFu </div>
-    </div>
-    
-    <div class="reveal">
-        <div class="slides">
-        
-<!-- Slide 1: Title & Identity -->
-<section data-transition="fade">
-    <p class="sub-text" style="color: var(--accent); letter-spacing: 5px; font-weight: 700; margin-bottom: 15px;">ADB FLAGSHIP ENTERPRISE PITCH</p>
-    
-    <!-- 1. ลด padding บน-ล่าง จาก 60px เหลือ 40px เพื่อเพิ่มพื้นที่แนวตั้ง -->
-    <div style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 40px 60px; border-radius: 40px; border: 1px solid rgba(0,0,0,0.05); display: inline-block; box-shadow: 0 20px 60px rgba(0,0,0,0.08);">
-        
-        <!-- 2. ลดขนาดโลโก้ลงเล็กน้อย และลด margin-bottom ให้กระชับขึ้น -->
-        <img src="src/logo.png" alt="CMCAT Logo" style="width: 70px; height: 70px; margin: 0 auto 15px auto; display: block; border-radius: 50%; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+  <div class="lower">
+    <section class="day" aria-labelledby="day-h">
+      <h2 id="day-h" data-i18n="dayH">กำหนดการวันนี้</h2>
+      <ol>
+        <li class="focus"><time>10:00</time><span data-i18n="d1">เยี่ยมชมโรงเรือน แล้วนำเสนอแผนการดำเนินงาน (หัวข้อ 1–11)</span></li>
+        <li><time>12:00</time><span data-i18n="d3">พักรับประทานอาหารกลางวัน</span></li>
+        <li class="focus"><time>13:00</time><span data-i18n="d4">ให้คำปรึกษาแผนการลงทุน (หัวข้อ 12)</span></li>
+        <li><time>16:30</time><span data-i18n="d5">สรุปการประชุม</span></li>
+      </ol>
+      <div class="who">
+        <h3 data-i18n="whoH">คณะผู้เชี่ยวชาญ</h3>
+        <ul>
+          <li>Mr. Fook Yen Chong, ADB</li>
+          <li>Dr. Shaun Wellbourne-Wood, ADB</li>
+          <li data-i18n="p3">ผศ. ดร.สุวลักษณ์ อัศวสันติ, ADB</li>
+          <li data-i18n="p4">คุณอรทัย รัตนจันทร์, ADB Thailand</li>
+          <li data-i18n="p5">รศ. ดร.สิริวัฒน์ สาครวาสี, ม.แม่โจ้</li>
+        </ul>
+      </div>
+    </section>
 
-        <!-- 3. ปรับขนาด Font Size หัวข้อให้เล็กลง (2.4em) และเพิ่ม Line-height ป้องกันสระจม -->
-        <h1 style="font-size: 2.4em; margin-bottom: 15px; color: var(--text-main); line-height: 1.2; padding-bottom: 5px;">Floratech & FuengFu</h1>
-        
-        <!-- 4. ลดขนาดคำคมลง (0.9em) และเพิ่ม line-height ช่วยให้ภาษาไทยดูโปร่ง อ่านง่าย -->
-        <p style="color: var(--accent); font-weight: 600; font-size: 0.9em; margin-bottom: 25px; line-height: 1.5;">"การผลิตพืชพรรณมูลค่าสูงด้วยนวัตกรรมดิจิทัลเพื่อความยั่งยืน"</p>
-        
-        <div style="padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.1);">
-            <p style="font-size: 0.65em; max-width: 800px; margin: 0 auto; line-height: 1.6; font-weight: 400; color: var(--text-main);">ศูนย์เรียนรู้โรงเรือนอัจฉริยะและการทำฟาร์มเชิงธุรกิจ <br>เพื่อการผลิตและแปรรูปไม้ดอกมูลค่าสูงครบวงจร</p>
-            <p style="font-size: 0.45em; margin-top: 15px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">วิทยาลัยเกษตรและเทคโนโลยีเชียงใหม่</p>
-        </div>
-    </div>
-</section>
+    <section class="index" aria-labelledby="idx-h">
+      <h2 id="idx-h" data-i18n="idxH">หัวข้อนำเสนอ</h2>
+      <p class="intro" data-i18n="idxIntro">เรียงตามลำดับการนำเสนอ กดเลือกหัวข้อเพื่อเปิดรายละเอียด</p>
+      <div class="topics" id="topics"></div>
+      <a class="changes" href="changes.html">
+        <span data-i18n-html="chg"><b>สรุปการแก้ไขแผนธุรกิจ</b> 16 รายการ ตั้งแต่วัน Pitching Day</span>
+        <span class="st ready" data-i18n="open">เปิดดู</span>
+      </a>
+    </section>
+  </div>
+</main>
 
-<!-- Slide 2: Commercial Viability & Sustainability -->
-<section>
-    <!-- ลดขนาดฟอนต์ลงเล็กน้อยและบังคับให้อยู่บรรทัดเดียวด้วย white-space: nowrap -->
-    <h2 style="font-size: 1.4em; margin-bottom: 25px; white-space: nowrap; letter-spacing: -0.02em;">Commercial Viability & Sustainability</h2>
-    
-    <div class="grid-layout" style="grid-template-columns: 1fr 1.3fr; gap: 30px; align-items: stretch;">
-        
-        <!-- ฝั่งซ้าย: ข้อมูลตัวเลข (Stat Cards) -->
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-            <!-- 🌟 ปรับให้อยู่กึ่งกลาง (Center) เพื่อความสวยงามของตัวเลข KPI -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <div class="stat-card" style="border-left: 6px solid var(--accent); padding: 20px 15px; text-align: center;">
-                    <span class="sub-text">Gross Margin</span>
-                    <span class="highlight-num" style="font-size: 2em; margin: 5px 0;">71.46%</span>
-                    <p style="font-size: 0.4em; margin: 0; line-height: 1.4;">อัตรากำไรขั้นต้นโดดเด่นกว่าอุตสาหกรรม</p>
-                </div>
-                <div class="stat-card" style="border-left: 6px solid var(--gold); padding: 20px 15px; text-align: center;">
-                    <span class="sub-text">Payback Period</span>
-                    <span class="highlight-num" style="font-size: 2em; margin: 5px 0;">2.3 <span style="font-size: 0.4em; font-weight: 400; color: var(--text-muted);">Years</span></span>
-                    <p style="font-size: 0.4em; margin: 0; line-height: 1.4;">คืนทุนไว ภายใน 28 เดือน</p>
-                </div>
-            </div>
+<footer>
+  <div class="wrap">
+    <span data-i18n="foot1">โครงการ Sustainable Agriculture Transformation through Innovative TVET (SATIT) · ADB × สอศ.</span>
+    <span data-i18n="foot2">ตัวเลขทั้งหมดจากแผนธุรกิจฉบับแก้ไข พฤศจิกายน 2569</span>
+  </div>
+</footer>
 
-            <!-- เพิ่มลูกเล่นพื้นหลังไล่สี (Gradient) อ่อนๆ ให้ดูมีมิติ -->
-            <div class="stat-card" style="background: linear-gradient(135deg, rgba(0, 113, 227, 0.08) 0%, rgba(0, 113, 227, 0.01) 100%); border: 1px solid rgba(0, 113, 227, 0.2); padding: 25px 20px; text-align: center;">
-                <p style="font-size: 0.55em; font-weight: 700; color: var(--accent); margin-bottom: 10px; letter-spacing: 1px;">
-                    <i class="fas fa-redo-alt"></i> REINVESTMENT POLICY
-                </p>
-                <p style="font-size: 0.45em; margin: 0; line-height: 1.5; color: var(--text-main);">
-                    จัดสรรกำไร <span class="highlight">50% ลงทุนซ้ำ</span> ในเทคโนโลยีและนวัตกรรมเพื่อรักษาขีดความสามารถระยะยาว
-                </p>
-            </div>
-        </div>
-        
-        <!-- ฝั่งขวา: Business Model และ กราฟ (Chart) -->
-        <div class="stat-card" style="display: flex; flex-direction: column; padding: 30px; height: 100%;">
-            <!-- ส่วนข้อความ -->
-            <div style="margin-bottom: 10px;">
-                <p style="font-size: 0.6em; text-align: left; color: var(--text-main); font-weight: 700; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 10px; margin-bottom: 15px;">
-                    <i class="fas fa-hand-holding-usd" style="color: var(--accent); margin-right: 5px;"></i> Core Business Model
-                </p>
-                <ul style="font-size: 0.45em; text-align: left; line-height: 1.7; list-style: none; padding: 0; margin: 0; color: var(--text-main);">
-                    <!-- บังคับความกว้างไอคอน (width: 20px) ให้แถวตรงกันเป๊ะ -->
-                    <li style="margin-bottom: 8px;"><i class="fas fa-check-circle" style="color: var(--accent); width: 20px;"></i> <b>Flagship:</b> Edible Flowers & Premium Chrysanthemum</li>
-                    <li style="margin-bottom: 8px;"><i class="fas fa-bullseye" style="color: var(--accent); width: 20px;"></i> <b>Target:</b> โรงแรมระดับพรีเมียม และร้านอาหาร Fine Dining</li>
-                    <li><i class="fas fa-arrow-up" style="color: var(--gold); width: 20px;"></i> <b>Expansion:</b> สตรอว์เบอร์รี & เมลอนพรีเมียม (ปีที่ 3-5)</li>
-                </ul>
-            </div>
-            
-            <!-- ส่วนกราฟ (ควบคุมความสูงไม่ให้ล้น) -->
-            <div style="flex-grow: 1; position: relative; min-height: 160px; max-height: 220px; width: 100%; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 15px; margin-top: 10px;">
-                <canvas id="revenueChart"></canvas>
-            </div>
-            <p style="font-size: 0.35em; text-align: center; margin-top: 12px; color: var(--text-muted); font-weight: 600;">
-                ประมาณการการเติบโตของกำไรสุทธิภายใน 5 ปี (หน่วย: พันบาท)
-            </p>
-        </div>
-        
-    </div>
-</section>
-
-<!-- Slide 3: Curriculum Integration -->
-<section>
-    <h2 style="margin-bottom: 5px;">Curriculum Integration</h2>
-    <p class="sub-text" style="color: var(--accent); margin-bottom: 30px;">การบูรณาการ 5 สาขาวิชาเพื่อสมรรถนะแห่งอนาคต</p>
-    
-    <div style="display: flex; flex-direction: column; gap: 20px;">
-        
-        <!-- ส่วนที่ 1: กลุ่ม 4 สาขาวิชาหลัก (ปรับเป็นแนวนอนแบบ Pill) -->
-        <div style="display: flex; justify-content: space-between; gap: 15px;">
-            <div class="stat-card text-center" style="flex: 1; padding: 15px;">
-                <i class="fas fa-seedling" style="color: var(--accent); font-size: 1.2em; margin-bottom: 8px;"></i>
-                <h4 style="font-size: 0.55em; margin: 0 0 5px 0;">พืชศาสตร์</h4>
-                <p style="font-size: 0.38em; margin: 0;">จัดการพืชและสภาวะโรงเรือนแม่นยำ</p>
-            </div>
-            <div class="stat-card text-center" style="flex: 1; padding: 15px;">
-                <i class="fas fa-utensils" style="color: var(--accent); font-size: 1.2em; margin-bottom: 8px;"></i>
-                <h4 style="font-size: 0.55em; margin: 0 0 5px 0;">เทคโนโลยีอาหาร</h4>
-                <p style="font-size: 0.38em; margin: 0;">นวัตกรรมแปรรูปและมาตรฐาน GMP</p>
-            </div>
-            <div class="stat-card text-center" style="flex: 1; padding: 15px;">
-                <i class="fas fa-chart-pie" style="color: var(--accent); font-size: 1.2em; margin-bottom: 8px;"></i>
-                <h4 style="font-size: 0.55em; margin: 0 0 5px 0;">ธุรกิจเกษตร</h4>
-                <p style="font-size: 0.38em; margin: 0;">การคิดเชิงออกแบบและการจัดการธุรกิจ</p>
-            </div>
-            <div class="stat-card text-center" style="flex: 1; padding: 15px;">
-                <i class="fas fa-cogs" style="color: var(--accent); font-size: 1.2em; margin-bottom: 8px;"></i>
-                <h4 style="font-size: 0.55em; margin: 0 0 5px 0;">ช่างกลเกษตร</h4>
-                <p style="font-size: 0.38em; margin: 0;">วิศวกรรมชลประทานและระบบอัตโนมัติ</p>
-            </div>
-        </div>
-        
-        <!-- ส่วนที่ 2: สาขาเกษตรอัจฉริยะ (ชูเป็นหัวใจหลัก) -->
-        <div class="stat-card text-center" style="background: rgba(0, 113, 227, 0.05); border: 2px solid var(--accent); padding: 20px;">
-            <h4 style="font-size: 0.7em; color: var(--accent); margin: 0 0 8px 0; font-weight: 800;">
-                <i class="fas fa-microchip"></i> เกษตรอัจฉริยะ (Smart Agri)
-            </h4>
-            <p style="font-size: 0.5em; margin: 0; line-height: 1.4; color: var(--text-main); font-weight: 500;">
-                บูรณาการทั้ง 4 สาขา ด้วยการจัดการข้อมูลขนาดใหญ่ (Big Data) และระบบควบคุม AI/IoT ในฟาร์ม
-            </p>
-        </div>
-        
-        <!-- ส่วนที่ 3: รูปแบบการเรียนการสอน (แบ่ง 2 คอลัมน์) -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;">
-            <div class="stat-card text-left" style="border-left: 5px solid var(--accent); padding: 20px;">
-                <p style="font-size: 0.6em; font-weight: 700; margin-bottom: 12px; color: var(--text-main);">
-                    <i class="fas fa-graduation-cap highlight"></i> Experiential Learning
-                </p>
-                <div style="font-size: 0.48em; line-height: 1.6; color: var(--text-muted);">
-                    <p style="margin-bottom: 5px;">• <b>ปวช.:</b> โครงงานเป็นฐาน <span class="highlight">(PjBL)</span> สร้างสรรค์ผลผลิตจริง</p>
-                    <p style="margin: 0;">• <b>ปวส.:</b> การวิจัยเป็นฐาน <span class="highlight">(RBL)</span> ยกระดับสู่นวัตกรรมธุรกิจ</p>
-                </div>
-            </div>
-            
-            <div class="stat-card text-left" style="background: rgba(245, 99, 0, 0.05); border-left: 5px solid var(--gold); padding: 20px;">
-                <p style="font-size: 0.6em; color: var(--gold); font-weight: 700; margin-bottom: 12px;">
-                    <i class="fas fa-lightbulb"></i> From Theory to Commercial
-                </p>
-                <p style="font-size: 0.48em; margin: 0; line-height: 1.6; color: var(--text-muted);">
-                    เปลี่ยนการเรียนในตำรา สู่การตัดสินใจในสถานการณ์ธุรกิจจริงที่ตอบสนองความต้องการของคู่ค้าอุตสาหกรรม
-                </p>
-            </div>
-        </div>
-        
-    </div>
-</section>
-
-<!-- Slide 4: Workplace Learning Ecosystem -->
-<section>
-    <h2 style="margin-bottom: 5px;">Workplace Learning Ecosystem</h2>
-    <p class="sub-text" style="color: var(--accent); margin-bottom: 30px;">แหล่งฝึกประสบการณ์สมรรถนะวิชาชีพตลอดห่วงโซ่คุณค่า</p>
-    
-    <div class="grid-layout" style="grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch;">
-        <!-- Card 1: Lab -->
-        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 25px;">
-            <div style="text-align: left;">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: rgba(0,0,0,0.04); border-radius: 12px; margin-bottom: 15px;">
-                    <i class="fas fa-vial" style="font-size: 1.6em; color: var(--text-main);"></i>
-                </div>
-                <h4 style="font-size: 0.65em; color: var(--text-main); margin: 0 0 10px 0;">Lab & Propagation</h4>
-                <p style="font-size: 0.42em; line-height: 1.5; color: var(--text-main);">
-                    ฝึกเพาะเลี้ยงเนื้อเยื่อพืชในห้องปฏิบัติการ (Clean Zone) เพื่อผลิตต้นพันธุ์ปลอดโรคมาตรฐานสากล
-                </p>
-            </div>
-            <div style="border-top: 1px solid rgba(0,0,0,0.08); padding-top: 15px; margin-top: 15px; text-align: left;">
-                <span class="sub-text" style="font-size: 0.38em; color: var(--text-muted);">Focus: Aseptic Technique</span>
-            </div>
-        </div>
-        
-        <!-- Card 2: Smart Production -->
-        <div class="stat-card" style="border-top: 4px solid var(--accent); display: flex; flex-direction: column; justify-content: space-between; padding: 25px;">
-            <div style="text-align: left;">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: rgba(0, 113, 227, 0.1); border-radius: 12px; margin-bottom: 15px;">
-                    <i class="fas fa-project-diagram" style="font-size: 1.6em; color: var(--accent);"></i>
-                </div>
-                <h4 style="font-size: 0.65em; color: var(--text-main); margin: 0 0 10px 0;">Smart Production</h4>
-                <p style="font-size: 0.42em; line-height: 1.5; color: var(--text-main);">
-                    ควบคุม IoT ในโรงเรือนอัจฉริยะ และฝึกสมรรถนะในระบบ <span class="highlight">Aquaponics</span> เพื่อสมดุลธรรมชาติ
-                </p>
-            </div>
-            <div style="border-top: 1px solid rgba(0,0,0,0.08); padding-top: 15px; margin-top: 15px; text-align: left;">
-                <span class="sub-text" style="font-size: 0.38em; color: var(--text-muted);">Focus: Resource Optimization</span>
-            </div>
-        </div>
-        
-        <!-- Card 3: Value Addition -->
-        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 25px;">
-            <div style="text-align: left;">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: rgba(0,0,0,0.04); border-radius: 12px; margin-bottom: 15px;">
-                    <i class="fas fa-store-alt" style="font-size: 1.6em; color: var(--text-main);"></i>
-                </div>
-                <h4 style="font-size: 0.65em; color: var(--text-main); margin: 0 0 10px 0;">Value Addition</h4>
-                <p style="font-size: 0.42em; line-height: 1.5; color: var(--text-main);">
-                    จัดการหลังการเก็บเกี่ยว คัดบรรจุมาตรฐาน GMP และการตลาดดิจิทัลบนสมาร์ทโฟน
-                </p>
-            </div>
-            <div style="border-top: 1px solid rgba(0,0,0,0.08); padding-top: 15px; margin-top: 15px; text-align: left;">
-                <span class="sub-text" style="font-size: 0.38em; color: var(--text-muted);">Focus: Commercial Readiness</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Footer Highlight Card -->
-    <div class="stat-card" style="margin-top: 20px; background: rgba(0, 113, 227, 0.04); border: 1px solid rgba(0, 113, 227, 0.15); padding: 18px;">
-        <p style="font-size: 0.5em; line-height: 1.5; margin: 0; color: var(--text-main);">
-            <i class="fas fa-sync-alt highlight" style="margin-right: 10px;"></i> <b>Structured Learning Ecosystem:</b> 
-            วิทยาลัยบูรณาการโครงการให้เป็นพื้นที่ "Learning by Doing" ครบทั้งห่วงโซ่มูลค่า
-        </p>
-    </div>
-</section>
-
-<!-- Slide 5: Industry & Community Linkages -->
-<section>
-    <h2 style="margin-bottom: 5px;">Industry & Community Linkages</h2>
-    <p class="sub-text" style="color: var(--accent); margin-bottom: 25px;">บูรณาการเครือข่ายเพื่อสร้างคุณค่าร่วมกัน (Shared Value)</p>
-    
-    <div class="grid-layout" style="grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: stretch;">
-        
-        <!-- ฝั่งซ้าย: ข้อมูลเครือข่าย 2 กล่อง -->
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-            <!-- กล่องที่ 1: อุตสาหกรรม -->
-            <div class="stat-card" style="text-align: left; padding: 20px;">
-                <h3 style="font-size: 0.65em; color: var(--text-main); margin-bottom: 12px; font-weight: 700;">
-                    <i class="fas fa-handshake" style="color: var(--accent); margin-right: 8px;"></i> Strategic Industry Network
-                </h3>
-                <ul style="font-size: 0.45em; line-height: 1.6; list-style: none; padding: 0; margin: 0; color: var(--text-main);">
-                    <li style="margin-bottom: 8px;">
-                        <i class="fas fa-file-contract highlight" style="width: 20px;"></i> <b>Pre-order Contracts:</b> ทำสัญญากับโรงแรมพรีเมียม อาทิ ทัช สตาร์ รีสอร์ท
-                    </li>
-                    <li style="margin-bottom: 8px;">
-                        <i class="fas fa-microscope highlight" style="width: 20px;"></i> <b>R&D Collaboration:</b> ร่วมวิจัยกับสันป่าตอง ดิสทิลเลอร์รี่ และ บ.ซาทีวาโกลว์
-                    </li>
-                    <li>
-                        <i class="fas fa-truck-loading highlight" style="width: 20px;"></i> <b>Supply Chain:</b> ห่วงโซ่ความเย็น (เชียงใหม่บูรพาห้องเย็น) และคูโบต้า
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- กล่องที่ 2: ชุมชน -->
-            <div class="stat-card" style="text-align: left; border-left: 5px solid var(--gold); padding: 20px;">
-                <h3 style="font-size: 0.65em; color: var(--text-main); margin-bottom: 12px; font-weight: 700;">
-                    <i class="fas fa-users-cog" style="color: var(--gold); margin-right: 8px;"></i> Community Tech Station
-                </h3>
-                <ul style="font-size: 0.45em; line-height: 1.6; list-style: none; padding: 0; margin: 0; color: var(--text-main);">
-                    <li style="margin-bottom: 8px;">
-                        <i class="fas fa-chalkboard-teacher" style="color: var(--gold); width: 20px;"></i> <b>Mentorship:</b> เป็น "พี่เลี้ยง" ถ่ายทอดโมเดลโรงเรือนอัจฉริยะสู่ชุมชน
-                    </li>
-                    <li style="margin-bottom: 8px;">
-                        <i class="fas fa-user-friends" style="color: var(--gold); width: 20px;"></i> <b>Outgrower Network:</b> บริหารกลุ่มเกษตรกร <span class="highlight">10 ราย</span> (Young Smart Farmers)
-                    </li>
-                    <li>
-                        <i class="fas fa-chart-line" style="color: var(--gold); width: 20px;"></i> <b>Economic Impact:</b> จัดสรรโควตาผลิตตามสั่ง ลดความเสี่ยงราคา
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
-        <!-- ฝั่งขวา: รูปภาพและข้อความสรุป -->
-        <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-            <!-- เพิ่มความสูงของรูปภาพให้สอดคล้องกับกล่องทางซ้าย -->
-            <div style="height: 300px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.8); flex-grow: 1;">
-                <img src="src/mou.png" style="width: 100%; height: 100%; object-fit: cover; margin: 0; display: block;">
-            </div>
-            
-            <div class="stat-card" style="margin-top: 15px; padding: 15px 20px; background: rgba(0, 113, 227, 0.04); border: 1px solid rgba(0, 113, 227, 0.15);">
-                <p style="font-size: 0.45em; line-height: 1.5; color: var(--text-main); margin: 0;">
-                    <i class="fas fa-project-diagram highlight" style="margin-right: 8px;"></i> <b>Smart Floral Platform:</b> ศูนย์กลางห่วงโซ่คุณค่า ที่เปลี่ยน "ความรู้" เป็น "รายได้" แก่อุตสาหกรรมและชุมชน
-                </p>
-            </div>
-        </div>
-        
-    </div>
-</section>
-
-<!-- Slide 6: Sustainability & Resilience -->
-<section>
-    <h2 style="margin-bottom: 20px;">Sustainability & Resilience</h2>
-    <p class="sub-text" style="color: var(--accent); margin-bottom: 40px;">ความยั่งยืนเชิงนิเวศและการปรับตัวต่อความท้าทายในอนาคต</p>
-    
-    <div class="grid-layout" style="grid-template-columns: 1fr 1.2fr; gap: 30px; align-items: stretch;">
-        <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center; text-align: left; background: var(--card-bg);">
-            <i class="fas fa-cloud-sun-rain feature-icon" style="font-size: 3em; color: var(--accent);"></i>
-            <h4 style="font-size: 0.9em; color: var(--text-main); margin: 20px 0 10px 0;">Climate Resilience</h4>
-            <p style="font-size: 0.55em; line-height: 1.6; color: var(--text-main);">
-                ระบบโรงเรือนอัจฉริยะควบคุมอุณหภูมิและสภาพแวดล้อมได้เบ็ดเสร็จ 
-                ทลายข้อจำกัดทางภูมิอากาศเพื่อให้สามารถ <span class="highlight">ผลิตสินค้านอกฤดูกาล (Off-season) ได้ตลอดปี</span>
-            </p>
-        </div>
-        
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-            <div class="stat-card" style="display: flex; align-items: center; gap: 25px; text-align: left; border-left: 5px solid var(--gold);">
-                <i class="fas fa-solar-panel" style="font-size: 2.5em; color: var(--gold);"></i>
-                <div>
-                    <span class="highlight-num" style="font-size: 1.4em; color: var(--text-main);">30 kW Solar Power</span>
-                    <p style="font-size: 0.45em; margin: 5px 0 0 0; color: var(--text-main);">ติดตั้ง Solar Rooftop เพื่อผลิตพลังงานสะอาด ทดแทนการใช้ไฟฟ้าช่วงกลางวันได้ร้อยละ 70-80</p>
-                </div>
-            </div>
-            <div class="stat-card" style="display: flex; align-items: center; gap: 25px; text-align: left; border-left: 5px solid var(--accent);">
-                <i class="fas fa-recycle" style="font-size: 2.5em; color: var(--accent);"></i>
-                <div>
-                    <span class="highlight-num" style="font-size: 1.4em; color: var(--text-main);">80-90% Water Recycle</span>
-                    <p style="font-size: 0.45em; margin: 5px 0 0 0; color: var(--text-main);">ระบบบำบัดและหมุนเวียนน้ำในระบบปิด (Closed-loop) เพื่อประสิทธิภาพสูงสุดในการใช้ทรัพยากร</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stat-card" style="margin-top: 35px; background: rgba(0,0,0,0.02); border: 1px dashed rgba(0,0,0,0.1); padding: 20px;">
-        <div style="display: flex; justify-content: space-around; font-size: 0.55em; font-weight: 600; color: var(--text-main);">
-            <span><i class="fas fa-shield-virus highlight" style="margin-right: 10px;"></i> BIOSECURITY: มาตรฐานความปลอดภัยเกรดอาหาร</span>
-            <span><i class="fas fa-leaf highlight" style="margin-right: 10px;"></i> ZERO WASTE: บริหารจัดการของเสียตามหลักเศรษฐกิจหมุนเวียน</span>
-        </div>
-    </div>
-</section>
-
-<!-- Slide 7: Future Workforce Appeal -->
-<section>
-    <h2 style="margin-bottom: 20px;">Future Workforce Appeal</h2>
-    <p class="sub-text" style="color: var(--accent); margin-bottom: 40px;">เปลี่ยนนิยามอาชีพเกษตรกรรมสู่เส้นทางอาชีพยุคดิจิทัล</p>
-    
-    <div class="grid-layout" style="grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center;">
-        <!-- จุดใส่รูป: ภาพนักศึกษาคนรุ่นใหม่ในฟาร์ม -->
-        <div class="stat-card" style="padding: 0; overflow: hidden; border: none; border-radius: 20px;">
-            <img src="src/IMG_6937.JPG" style="width: 100%; display: block; object-fit: cover; height: 350px;">
-            <div style="padding: 15px; background: var(--text-main); color: white; font-weight: 600; font-size: 0.45em; text-align: center; letter-spacing: 1px;">
-                REDEFINING THE NEXT-GEN AGRI-PRENEUR
-            </div>
-        </div>
-        
-        <div style="text-align: left;">
-            <div class="stat-card" style="margin-bottom: 20px;">
-                <h4 style="font-size: 0.75em; color: var(--text-main); margin-bottom: 10px;">อาชีพใหม่: "Agri-Tech"</h4>
-                <p style="font-size: 0.5em; line-height: 1.6; color: var(--text-main);">
-                    ยกระดับเกษตรกรสู่ <span class="highlight">นักจัดการเทคโนโลยี (Technology Manager)</span> ที่ทำงานในสภาพแวดล้อมที่สะอาด ปลอดภัย และใช้สมองเป็นหลักในการตัดสินใจผ่านข้อมูล
-                </p>
-            </div>
-            <div class="stat-card" style="background: rgba(245, 99, 0, 0.05);">
-                <h4 style="font-size: 0.75em; color: var(--text-main); margin-bottom: 15px;">ศักยภาพรายได้และความมั่นคง</h4>
-                <div style="font-size: 0.5em; line-height: 1.8; color: var(--text-main);">
-                    <p><i class="fas fa-plus-circle" style="color: var(--gold); margin-right: 10px;"></i> <b>Premium Income:</b> รายได้ที่สูงขึ้นอย่างมีนัยสำคัญจากผลิตภัณฑ์พืชพรรณเกรดพรีเมียมและดอกไม้กินได้</p>
-                    <p style="margin-top: 10px;"><i class="fas fa-sync" style="color: var(--gold); margin-right: 10px;"></i> <b>Global Master Skills:</b> ทักษะการจัดการระบบอัตโนมัติที่สามารถประยุกต์ใช้เพื่อปลูกพืชเศรษฐกิจชนิดใหม่ได้ทุกประเภททั่วโลก</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Slide 8: Data-Driven Operations -->
-<section>
-    <h2 style="margin-bottom: 20px;">Data-Driven Operations</h2>
-    <p class="sub-text" style="color: var(--accent); margin-bottom: 40px;">การตัดสินใจบนฐานข้อมูลและเทคโนโลยีอัจฉริยะ</p>
-    
-    <div class="grid-layout" style="grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: stretch;">
-        <div class="stat-card" style="text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <h3 style="font-size: 0.85em; color: var(--text-main); margin-bottom: 20px;">
-                    <i class="fas fa-microchip feature-icon" style="font-size: 1.2em;"></i> Precision Agriculture
-                </h3>
-                <p style="font-size: 0.5em; line-height: 1.6; margin-bottom: 20px; color: var(--text-main);">
-                    ขับเคลื่อนการจัดการฟาร์มด้วยระบบ <span class="highlight">Decision Support System</span> โดยรวบรวมข้อมูลเรียลไทม์จากเครือข่ายเซนเซอร์ IoT ทั่วทั้งโรงเรือน
-                </p>
-                
-                <div style="background: rgba(245,245,247,0.8); padding: 20px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; justify-content: space-between; font-family: monospace; font-size: 0.5em; font-weight: 600; color: var(--text-main);">
-                        <span><i class="fas fa-thermometer-half"></i> Temp: 28.5°C</span>
-                        <span><i class="fas fa-tint"></i> Soil Moist: 65%</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; font-family: monospace; font-size: 0.5em; font-weight: 600; color: var(--text-main); margin-top: 15px;">
-                        <span><i class="fas fa-vial"></i> pH: 6.2 | EC: 1.8</span>
-                        <span><i class="fas fa-sun"></i> PAR: 450 μmol</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.1);">
-                <p style="font-size: 0.45em; color: var(--text-main);">
-                    <i class="fas fa-brain highlight" style="margin-right: 10px;"></i> <b>AI Diagnostics:</b> ประยุกต์ใช้ปัญญาประดิษฐ์ในการพยากรณ์โรคพืชและวิเคราะห์สุขภาพพืชเชิงรุก (IPM)
-                </p>
-            </div>
-        </div>
-        
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-            <div class="stat-card" style="text-align: left; border-left: 5px solid var(--accent);">
-                <h4 style="font-size: 0.7em; color: var(--text-main); margin-bottom: 10px;">
-                    <i class="fas fa-qrcode" style="margin-right: 10px;"></i> 100% Traceability
-                </h4>
-                <p style="font-size: 0.48em; line-height: 1.6; color: var(--text-main);">
-                    ทุกผลิตภัณฑ์มี QR Code เฉพาะ Batch เพื่อให้ลูกค้าตรวจสอบแหล่งผลิต มาตรฐานความปลอดภัย และประวัติการดูแลย้อนกลับได้สมบูรณ์
-                </p>
-            </div>
-            <div class="stat-card" style="background: rgba(0, 113, 227, 0.05); padding: 25px;">
-                <p style="font-size: 0.55em; font-weight: 700; margin-bottom: 15px; color: var(--text-main);">Data Optimization Results</p>
-                <div style="font-size: 0.48em; line-height: 1.8; color: var(--text-main);">
-                    <p><i class="fas fa-caret-down highlight" style="margin-right: 10px;"></i> ลดความสูญเสียผลผลิต (Waste) ลง 20-30%</p>
-                    <p><i class="fas fa-caret-up highlight" style="margin-right: 10px;"></i> เพิ่มความแม่นยำในการเก็บเกี่ยว 95%</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Slide 9: Closing & Call to Action -->
-<section data-transition="zoom">
-    <!-- ลด padding แนวตั้งเหลือ 25px เพื่อไม่ให้ดันเนื้อหาตกขอบ -->
-    <div class="stat-card" style="border-radius: 35px; padding: 25px 40px; background: rgba(255,255,255,0.95); text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.8); max-width: 950px; margin: 0 auto;">
-        
-        <p class="sub-text" style="color: var(--accent); font-weight: 700; letter-spacing: 3px; margin-bottom: 5px;">
-            THE SELF-SUSTAINING EDUCATION-BUSINESS MODEL
-        </p>
-        
-        <!-- ปรับ Font-size เป็น 2.4em เพื่อบังคับให้คำว่า Floratech & FuengFu อยู่ใน 1 บรรทัด ไม่ตกขอบ -->
-        <h1 style="font-size: 2.4em; margin-bottom: 15px; letter-spacing: -0.04em; font-weight: 800; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.3; padding-bottom: 5px;">
-            Floratech & FuengFu
-        </h1>
-
-        <!-- กล่องไฮไลต์ข้อความสำคัญ -->
-        <div style="max-width: 700px; margin: 0 auto; background: rgba(0, 113, 227, 0.05); padding: 15px 30px; border-radius: 20px; border: 1px solid rgba(0, 113, 227, 0.15); margin-bottom: 15px;">
-            <p style="color: var(--accent); font-size: 0.65em; line-height: 1.4; font-weight: 700; margin: 0; padding-bottom: 8px;">
-                "ศูนย์เรียนรู้โรงเรือนอัจฉริยะและการทำฟาร์มเชิงธุรกิจ"
-            </p>
-            <p style="color: var(--text-main); font-size: 0.45em; line-height: 1.5; font-weight: 500; margin: 0;">
-                เพื่อการผลิตและแปรรูปไม้ดอกมูลค่าสูงครบวงจร สร้างผลกำไรที่มั่นคงควบคู่ไปกับการพัฒนาบุคลากรสมรรถนะสูง
-            </p>
-        </div>
-
-        <!-- คำเชิญชวน (Call to Action) -->
-        <div style="margin-bottom: 15px;">
-            <h2 style="color: var(--text-main); border-bottom: none; font-size: 0.9em; margin-bottom: 8px; font-weight: 700;">
-                "ร่วมลงทุนในอนาคตของเกษตรไทยที่ยั่งยืนไปกับเรา"
-            </h2>
-            <p style="color: var(--text-main); font-size: 0.45em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0;">
-                วิทยาลัยเกษตรและเทคโนโลยีเชียงใหม่
-            </p>
-            <p style="color: var(--accent); font-size: 0.35em; font-weight: 600; letter-spacing: 2px; margin-top: 3px;">
-                Smart Premium & Sustainable Enterprise
-            </p>
-        </div>
-
-        <!-- ไอคอนประดับตอนท้าย ปรับขนาดลงเหลือ 1.4em -->
-        <div style="display: flex; justify-content: center; gap: 40px; color: var(--accent); font-size: 1.4em; opacity: 0.9;">
-            <i class="fas fa-seedling" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"></i>
-            <i class="fas fa-microchip" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"></i>
-            <i class="fas fa-handshake" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'"></i>
-        </div>
-        
-    </div>
-</section>
-
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script>
-        Reveal.initialize({
-            width: 1280,
-            height: 720, // ปรับให้เหมาะกับจอ 16:9 มากขึ้น
-            margin: 0.08, // ลดขอบลงเพื่อใช้พื้นที่ได้เต็มที่
-            minScale: 0.2,
-            maxScale: 2.0,
-            hash: true,
-            controls: true,
-            progress: true,
-            center: true,
-            transition: 'slide',
-            backgroundTransition: 'fade', // ให้พื้นหลังเปลี่ยนแบบนุ่มนวล
-            autoAnimateEasing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
-            autoAnimateDuration: 0.8
-        });
-
-        // Chart.js Configuration
-        const ctx = document.getElementById('revenueChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
-                datasets: [{
-                    label: 'Net Profit (Est.)',
-                    data: [512, 553, 597, 643, 691], // Values from ADP
-                    borderColor: '#0071e3', // Apple Blue
-                    tension: 0.4,
-                    fill: true,
-                    backgroundColor: 'rgba(0, 113, 227, 0.1)'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { ticks: { color: '#86868b' }, grid: { color: 'rgba(0,0,0,0.05)' } },
-                    x: { ticks: { color: '#86868b' }, grid: { display: false } }
-                }
-            }
-        });
-    </script>
+<script>
+window.PAGE_EN={partners:"<b>Asian Development Bank (ADB)</b> with the <b>Office of the Vocational Education Commission</b> and <b>Chiang Mai College of Agriculture and Technology</b>",
+ college:"Chiang Mai College of Agriculture and Technology",date:"7 November 2026",occasion:"Progress review and investment-plan consultation with the ADB team",
+ title:"Green smart-farming prototype and high-value cherry tomato value chain for sustainability",
+ lede:"Hybrid cherry tomatoes grown in IoT-controlled greenhouses on solar power, off-grade fruit dried in a solar dome, and sold direct to premium buyers in Chiang Mai. Students from five departments run the chain end to end.",
+ selected:"One of two projects selected at the <strong>Pilot SMART Agriculture Project Pitching Day</strong> (19 Aug 2026) for the High-Level Technology Fund under ADB and OVEC's SATIT project.",
+ planH:"Four growing houses",planSub:"Each 6 × 16 m, 360 grow bags, 2 plants per bag",
+ lgCommercial:"Plants counted for revenue: 1,600",lgReserve:"Variety trials, student plots and reserve capacity: 1,280",
+ planEq:"4 houses × 720 plants = <span class=\"num\">2,880</span> plants per cycle · the financial plan uses <b class=\"num\">1,600 plants × 5 kg × 2 cycles = 16,000 kg/yr</b>",
+ fCapex:"Investment (HLT Fund grant)",mb:"M THB",fCapexN:"THB 2,532,850",fRev:"Revenue, operating year 1",fRevN:"Retail 86%, wholesale 4%, dried 11%",
+ fNp:"Net profit, year 1",baht:"THB",fNpN:"Net margin 36.3%",fBep:"Break-even sales",bahtYr:"THB/yr",fBepN:"53% of target revenue, about 2.7 kg per plant per cycle",
+ fPb:"Payback",yr:"years",fPbN:"Five-year cumulative cash flow THB 4.46 M",
+ figNote:"Even at 3 kg per plant per cycle the project still earns about THB 73,000 a year (retail price THB 100/kg).",
+ chainH:"A complete value chain",chainIntro:"Every kilogram has a destination: good fruit is sold fresh, off-grade fruit goes to the solar dryer, and sensor data both runs production and serves as teaching material.",
+ upH:"Upstream: greenhouse production",upEn:"Grow bags, precision fertigation, IoT, solar",up1:"Grow-bag substrate with precision fertigation",up2:"IoT sensing of EC/pH, temperature, humidity, light and PM2.5",up3:"Solar + battery storage powers the system",upD:"Plant Science · Agricultural Mechanics · Agri-Tech and Innovation",
+ midH:"Midstream: grading and processing",midEn:"Post-harvest",mid1:"Grading, packing and cold storage",mid2:"1,500 kg off-grade fruit → 500 kg dried product",mid3:"QR-code traceability",midD:"Plant Science · Food Products",
+ downH:"Downstream: market and sales",downEn:"Sales",down1:"12,000 kg/yr retail to restaurants, hotels, cafés",down2:"LINE OA and online channels",down3:"1,700 kg/yr surplus sold wholesale",downD:"Agribusiness Management",
+ dayH:"Today's schedule",d1:"Greenhouse visit, then implementation-plan presentation (topics 1–11)",d3:"Lunch",d4:"Investment-plan consultation (topic 12)",d5:"Wrap-up",
+ whoH:"Visiting panel",p3:"Asst. Prof. Dr. Suwaluk Asavasanti, ADB",p4:"Ms. Orathai Rattanachan, ADB Thailand",p5:"Assoc. Prof. Dr. Siriwat Sakhonwasee, Maejo University",
+ idxH:"Presentation topics",idxIntro:"In presentation order. Select a topic to open it.",
+ chg:"<b>Summary of business-plan revisions</b>: 16 changes since Pitching Day",open:"Open",soon:"In progress",
+ foot1:"Sustainable Agriculture Transformation through Innovative TVET (SATIT) · ADB × OVEC",foot2:"All figures from the revised business plan, November 2026"
+};
+function renderTopics(lang){
+  const box=document.getElementById('topics');box.innerHTML='';
+  SG.PAGES.slice(1,13).forEach((t,idx)=>{
+    const i=idx+1, ready=SG.READY.has(i);
+    const el=document.createElement(ready?'a':'div');
+    if(ready)el.href=t.f;
+    el.className='topic'+(t.key?' key':'')+(t.ask?' ask':'');
+    el.innerHTML=`<span class="no">${i}</span><div><h3></h3><p></p></div><span class="st${ready?' ready':''}"></span>`;
+    el.querySelector('h3').textContent=lang==='en'?t.en:t.th;
+    el.querySelector('p').textContent=t.d[lang==='en'?1:0];
+    el.querySelector('.st').textContent=ready?(lang==='en'?'Open':'เปิดดู'):(lang==='en'?'In progress':'กำลังจัดทำ');
+    box.appendChild(el);
+  });
+}
+/* Greenhouse plan: each house 6 m wide × 16 m long, 360 bags drawn as 8 lines × 45 positions.
+   Commercial plants (800 bags = 1,600 plants) shown in tomato red; proportion only, not the real allocation. */
+function renderHouses(lang){
+  const box=document.getElementById('houses');box.innerHTML='';
+  const W=60,H=160,ns='http://www.w3.org/2000/svg';
+  let commercialBags=800;
+  const xs=[8,13,23,28,37,42,51,56].map(x=>x-1.5);
+  for(let h=0;h<4;h++){
+    const wrap=document.createElement('div');wrap.className='house';
+    const svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+    svg.setAttribute('role','img');
+    svg.setAttribute('aria-label',lang==='en'?`House ${h+1}, 360 bags`:`โรงเรือน ${h+1} 360 ถุง`);
+    const r=document.createElementNS(ns,'rect');
+    r.setAttribute('x',1);r.setAttribute('y',1);r.setAttribute('width',W-2);r.setAttribute('height',H-2);r.setAttribute('rx',3);
+    r.setAttribute('fill','none');r.setAttribute('stroke','var(--line)');r.setAttribute('stroke-width',1.5);
+    if(h===3)r.setAttribute('stroke-dasharray','4 3');
+    svg.appendChild(r);
+    for(let c=0;c<8;c++){
+      for(let k=0;k<45;k++){
+        const dot=document.createElementNS(ns,'circle');
+        dot.setAttribute('cx',xs[c]);dot.setAttribute('cy',8+k*(H-16)/44);dot.setAttribute('r',1.55);
+        dot.setAttribute('class','bag');
+        dot.setAttribute('fill',commercialBags>0?'var(--tomato)':'var(--unripe)');
+        if(commercialBags>0)commercialBags--;
+        svg.appendChild(dot);
+      }
+    }
+    const lbl=document.createElement('div');lbl.className='lbl';
+    lbl.innerHTML=`<b>${lang==='en'?'House':'โรงที่'} ${h+1}</b>${h===3?(lang==='en'?'existing':'โรงเรือนเดิม'):(lang==='en'?'new build':'สร้างใหม่')}`;
+    wrap.appendChild(svg);wrap.appendChild(lbl);box.appendChild(wrap);
+  }
+}
+window.onLang=function(lang){renderTopics(lang);renderHouses(lang);};
+</script>
+<script src="assets/site.js"></script>
 </body>
 </html>

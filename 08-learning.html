@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8. การเรียนรู้ 5 สาขาวิชา · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.matrix{width:100%;border-collapse:separate;border-spacing:6px;font-size:14.5px;min-width:820px}
+.matrix th{font-weight:600;text-align:left;padding:6px 8px;font-size:14px;color:var(--muted)}
+.matrix th.dept{color:var(--ink);font-size:15px;width:19%}
+.matrix td{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;vertical-align:top;line-height:1.5}
+.matrix td.empty{background:transparent;border:1px dashed var(--line)}
+.matrix td b{display:block;font-weight:600;margin-bottom:2px}
+.matrix td .kpi{display:block;margin-top:6px;font-size:13px;color:var(--leaf)}
+.matrix thead th.s1{border-bottom:4px solid var(--leaf)}
+.matrix thead th.s2{border-bottom:4px solid var(--unripe)}
+.matrix thead th.s3{border-bottom:4px solid var(--tomato)}
+.photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:980px){.photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body data-page="8" data-art="img:transplant">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">8</span>
+    <h1 data-i18n="h1">การเรียนรู้ 5 สาขาวิชา</h1>
+    <p data-i18n="lead">นักศึกษา 5 สาขาวิชาบริหารโครงการเหมือนธุรกิจจริง แต่ละสาขารับผิดชอบช่วงหนึ่งของห่วงโซ่ และส่งต่องานให้กัน ใช้การเรียนรู้แบบโครงงานเป็นฐาน (PBL) ร่วมกับการเรียนรู้จากการทำงานจริง (WBL)</p>
+  </div>
+
+  <section class="block" aria-labelledby="mx-h">
+    <h2 id="mx-h" data-i18n="mxH">ใครทำอะไรในห่วงโซ่</h2>
+    <p class="intro" data-i18n="mxIntro">พร้อมตัวชี้วัดความสำเร็จของแต่ละบทบาท</p>
+    <div style="overflow-x:auto"><table class="matrix" id="mx"></table></div>
+  </section>
+
+  <section class="block" aria-labelledby="sk-h">
+    <h2 id="sk-h" data-i18n="skH">ทักษะที่นักศึกษาได้</h2>
+    <div class="g3" id="skills" style="margin-top:12px"></div>
+  </section>
+
+  <section class="block" aria-labelledby="ph-h">
+    <h2 id="ph-h" data-i18n="phH">นักศึกษาในโรงเรือนเดิมของวิทยาลัย</h2>
+    <div class="photos" style="margin-top:12px">
+      <figure class="ph crop"><img src="img/transplant.jpg" alt="" loading="lazy"><figcaption data-i18n="p1">ย้ายกล้าลงถุงปลูก</figcaption></figure>
+      <figure class="ph crop"><img src="img/trellis.jpg" alt="" loading="lazy"><figcaption data-i18n="p2">ทำค้างและพันเถา</figcaption></figure>
+      <figure class="ph crop"><img src="img/pruning.jpg" alt="" loading="lazy"><figcaption data-i18n="p3">ตัดแต่งกิ่งแขนง</figcaption></figure>
+      <figure class="ph crop"><img src="img/event1.jpg" alt="" loading="lazy"><figcaption data-i18n="p4">นำเสนอผลงานต่อผู้เยี่ยมชม</figcaption></figure>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">ที่มา: แผนธุรกิจ ข้อ 4 และ 5</span></div></footer>
+<script>
+window.PAGE_EN={h1:"Learning across 5 departments",lead:"Students from five departments run the project as a real business. Each department owns one part of the chain and hands work on to the next, combining project-based (PBL) and work-based (WBL) learning.",
+ mxH:"Who does what along the chain",mxIntro:"With a success measure for each role.",skH:"Skills students gain",phH:"Students in the college's existing greenhouse",
+ p1:"Transplanting into grow bags",p2:"Trellising and training vines",p3:"Removing side shoots",p4:"Presenting to visitors",foot:"Source: business plan sections 4 and 5"};
+function render(){
+  const t=SG.t;
+  document.querySelectorAll(".photos img").forEach((im,i)=>im.alt=document.querySelectorAll(".photos figcaption")[i].textContent);
+  const D=[
+   {d:t("พืชศาสตร์","Plant Science"),
+    u:[t("ปลูกระบบไร้ดิน","Soilless growing"),t("คัดเลือกพันธุ์ จัดทรงพุ่ม ผสมเกสร จัดการสารละลายปุ๋ยตาม GAP","Variety choice, canopy, pollination, nutrient solution to GAP"),t("ผลผลิตต่อต้นตามเป้า","Yield per plant on target")],
+    m:[t("คัดเกรดและบรรจุ","Grading and packing"),t("คัดแยก ทำความสะอาด บรรจุผลสด เก็บห้องเย็น","Sort, clean, pack, cold-store fresh fruit"),t("ผลเสียหายหลังเก็บเกี่ยวต่ำ","Low post-harvest loss")]},
+   {d:t("ช่างกลเกษตร","Agricultural Mechanics"),
+    u:[t("ระบบน้ำ-ปุ๋ยและพลังงาน","Fertigation and power"),t("ติดตั้งและบำรุงรักษาระบบน้ำหยด โครงสร้างโรงเรือน และ Solar","Install and maintain drip, structures and solar"),t("Solar จ่ายไฟครอบคลุมระบบ","Solar covers system load")],
+    m:[t("เครื่องอบและห้องเย็น","Dryer and cold room"),t("ดูแลโซล่าโดมอบแห้งและห้องเย็น","Maintain the solar dome and cold room"),t("เครื่องทำงานเต็มประสิทธิภาพ","Equipment at full performance")]},
+   {d:t("เทคโนโลยีและนวัตกรรมเกษตร","Agri-Tech and Innovation"),
+    u:[t("IoT และแดชบอร์ด","IoT and dashboard"),t("ดูแลเซ็นเซอร์ EC/pH อุณหภูมิ ความชื้น พัฒนาแดชบอร์ดและระบบทำนายผลผลิต","Run EC/pH, temperature and humidity sensors; build dashboard and yield prediction"),t("ความแม่นยำของเซ็นเซอร์และข้อมูล","Sensor and data accuracy")],
+    m:[t("ตรวจสอบย้อนกลับ","Traceability"),t("ระบบ QR Code บนบรรจุภัณฑ์ เชื่อมข้อมูลบนคลาวด์","QR codes on packs linked to cloud data"),t("ข้อมูลย้อนกลับถูกต้อง","Accurate trace records")]},
+   {d:t("ผลิตภัณฑ์อาหาร","Food Products"),
+    m:[t("แปรรูป","Processing"),t("ทำมะเขือเทศเชอรี่อบแห้งพลังงานแสงอาทิตย์ ออกแบบบรรจุภัณฑ์ที่ถนอมอาหารและเป็นมิตรต่อสิ่งแวดล้อม","Solar-dried cherry tomatoes; food-safe, eco-friendly packaging"),t("ผลิตภัณฑ์ได้มาตรฐานความปลอดภัย","Product meets food-safety standards")]},
+   {d:t("เทคโนโลยีการจัดการธุรกิจเกษตร","Agribusiness Management"),
+    s:[t("การตลาดและบัญชี","Marketing and accounts"),t("คำนวณต้นทุน ตั้งราคา ทำบัญชีรายรับ-รายจ่าย ทำการตลาดดิจิทัล และกระจายสินค้า","Costing, pricing, bookkeeping, digital marketing and distribution"),t("กำไรสุทธิและความพึงพอใจลูกค้าตามเป้า","Net profit and customer satisfaction on target")]}];
+  const cell=c=>c?`<td><b>${c[0]}</b>${c[1]}<span class="kpi">KPI: ${c[2]}</span></td>`:`<td class="empty"></td>`;
+  document.getElementById("mx").innerHTML=`<thead><tr><th class="dept">${t("สาขาวิชา","Department")}</th><th class="s1">${t("ต้นน้ำ: ผลิต","Upstream: production")}</th><th class="s2">${t("กลางน้ำ: หลังเก็บเกี่ยวและแปรรูป","Midstream: post-harvest and processing")}</th><th class="s3">${t("ปลายน้ำ: ตลาดและการขาย","Downstream: market and sales")}</th></tr></thead><tbody>`+
+   D.map(r=>`<tr><th class="dept">${r.d}</th>${cell(r.u)}${cell(r.m)}${cell(r.s)}</tr>`).join("")+"</tbody>";
+  const K=[
+   [t("ทักษะวิชาชีพ","Technical skills"),[t("ปลูกพืชระบบไร้ดินตาม GAP","Soilless growing to GAP"),t("ควบคุม IoT, Solar และระบบอัตโนมัติ","Running IoT, solar and automation"),t("แปรรูปและบรรจุภัณฑ์อาหาร","Food processing and packaging"),t("วิเคราะห์ข้อมูลและทำนายผลผลิต","Data analysis and yield prediction"),t("ต้นทุน บัญชี และการตลาดดิจิทัล","Costing, accounts, digital marketing")]],
+   [t("ทักษะการทำงานร่วมกัน","Teamwork skills"),[t("ทำงานข้ามสาขาวิชา","Working across departments"),t("ประสานงานในห่วงโซ่อุปทาน","Coordinating along the supply chain"),t("คิดวิเคราะห์และแก้ปัญหาจริง","Analysing and solving real problems")],t("ประชุมวางแผนร่วมกันระหว่างสาขา และส่งมอบงานระหว่างต้นน้ำ-กลางน้ำ-ปลายน้ำ","Joint planning meetings and hand-offs between stages")],
+   [t("ทักษะดิจิทัลและสีเขียว","Digital and green skills"),[t("ใช้แดชบอร์ดและแอปเพื่อการเกษตร","Using farm dashboards and apps"),t("ใช้พลังงานสะอาด","Working with clean energy"),t("บรรจุภัณฑ์ที่เป็นมิตรต่อสิ่งแวดล้อม","Eco-friendly packaging")]]];
+  document.getElementById("skills").innerHTML=K.map(k=>`<div class="card"><h3>${k[0]}</h3><ul>${k[1].map(x=>`<li>${x}</li>`).join("")}</ul>${k[2]?`<p class="tag" style="margin-top:8px">${k[2]}</p>`:""}</div>`).join("");
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6. แผนการลงทุน · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.split{display:flex;height:56px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.split button{all:unset;cursor:pointer;display:flex;flex-direction:column;justify-content:center;padding:0 12px;color:#fff;font-size:13.5px;line-height:1.3;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.split button b{font-family:var(--font-display);font-size:16px}
+.split button:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.split button[aria-pressed="true"]{box-shadow:inset 0 -5px 0 rgba(0,0,0,.35)}
+.keys-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.keyc{font-size:14px;line-height:1.45;display:flex;gap:8px}
+.keyc i{flex:none;width:12px;height:12px;border-radius:3px;margin-top:4px}
+.keyc span b{display:block;font-weight:600;font-size:15px}
+table.data tr.grp td{background:var(--bg);font-weight:600;font-size:15px}
+table.data tr.grp td:first-child{border-left:5px solid var(--c)}
+table.data tbody tr.dim{opacity:.35}
+table.data td.no{color:var(--muted);width:3em;font-variant-numeric:tabular-nums}
+table.data td.stage{font-size:13.5px;color:var(--muted);white-space:nowrap}
+.twocol{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:36px;align-items:start}
+.facts{display:flex;flex-direction:column;gap:0;border-top:2px solid var(--ink)}
+.facts > div{padding:14px 0;border-bottom:1px solid var(--line)}
+.facts .k{font-size:14px;color:var(--muted)}
+.facts .v{font-family:var(--font-display);font-weight:700;font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums}
+.facts .n{font-size:14px;color:var(--muted)}
+@media (max-width:980px){.twocol{grid-template-columns:1fr}.keys-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body data-page="6" data-art="svg:invest">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">6</span>
+    <h1 data-i18n="h1">แผนการลงทุน</h1>
+    <p data-i18n="lead">เงินลงทุน 2,532,850 บาท จากทุนให้เปล่า High-Level Technology Fund แบ่งเป็น 22 รายการ จัดได้ 4 กลุ่มตามตำแหน่งในห่วงโซ่คุณค่า</p>
+  </div>
+
+  <section class="block" aria-labelledby="split-h">
+    <h2 id="split-h" data-i18n="splitH">เงินลงทุนแยกตามกลุ่ม</h2>
+    <p class="intro" data-i18n="splitIntro">กดที่แถบสีเพื่อเน้นรายการของกลุ่มนั้นในตาราง กดซ้ำเพื่อแสดงทั้งหมด</p>
+    <div class="split" id="split"></div>
+    <div class="keys-row" id="keys"></div>
+  </section>
+
+  <div class="twocol">
+    <section class="block" aria-labelledby="tbl-h">
+      <h2 id="tbl-h" data-i18n="tblH">รายการลงทุนทั้งหมด</h2>
+      <p class="intro" data-i18n="tblIntro">ลำดับที่ตรงกับภาคผนวก ตาราง 1 รายละเอียดการลงทุน</p>
+      <div class="tbl-wrap"><table class="data" id="capex"></table></div>
+    </section>
+
+    <aside class="block" aria-labelledby="facts-h">
+      <h2 id="facts-h" style="font-size:20px;margin-bottom:10px" data-i18n="factsH">เงื่อนไขและการบริหารสินทรัพย์</h2>
+      <div class="facts">
+        <div><div class="k" data-i18n="f1k">แหล่งเงิน</div><div class="v" data-i18n="f1v">ทุนให้เปล่า</div><div class="n" data-i18n="f1n">ไม่มีดอกเบี้ยและการชำระคืน มีเงื่อนไขให้ธุรกิจยั่งยืนภายใน 5 ปี</div></div>
+        <div><div class="k" data-i18n="f2k">จัดซื้อจัดจ้าง</div><div class="v" data-i18n="f2v">ม.ค. – มี.ค. 2570</div><div class="n" data-i18n="f2n">ไตรมาสที่ 2 ปีงบประมาณ 2570 ติดตั้งและทดสอบระบบ เม.ย. 2570</div></div>
+        <div><div class="k" data-i18n="f3k">ค่าเสื่อมราคา</div><div class="v num" data-i18n="f3v">253,285 บาท/ปี</div><div class="n" data-i18n="f3n">วิธีเส้นตรง 10 ปี รวมในต้นทุนการผลิต</div></div>
+        <div><div class="k" data-i18n="f4k">เงินสำรองทดแทนสินทรัพย์ เมื่อครบ 5 ปี</div><div class="v num" data-i18n="f4v">≈ 1.27 ล้านบาท</div><div class="n" data-i18n="f4n">กันจากกระแสเงินสดเท่าค่าเสื่อมทุกปี ใช้เปลี่ยนพลาสติกโรงเรือน แบตเตอรี่ และอุปกรณ์ IoT</div></div>
+        <div><div class="k" data-i18n="f5k">สิ่งที่วิทยาลัยมีอยู่แล้ว</div><div class="v" data-i18n="f5v">โรงเรือนเดิม 1 โรง</div><div class="n" data-i18n="f5n">ไม่อยู่ในงบลงทุน ใช้ทดสอบพันธุ์ระหว่างรอติดตั้ง</div></div>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">ที่มา: แผนธุรกิจและภาคผนวกฉบับแก้ไข พฤศจิกายน 2569</span></div></footer>
+
+<script>
+window.PAGE_EN={
+ h1:"Investment plan",
+ lead:"THB 2,532,850 from the High-Level Technology Fund grant, spread over 22 items in four groups along the value chain.",
+ splitH:"Investment by group",splitIntro:"Select a coloured segment to highlight its items in the table. Select it again to show all.",
+ tblH:"All investment items",tblIntro:"Numbering matches Appendix table 1, investment details.",
+ factsH:"Terms and asset management",
+ f1k:"Funding",f1v:"Grant",f1n:"No interest or repayment; the business must be sustainable within 5 years",
+ f2k:"Procurement",f2v:"Jan – Mar 2027",f2n:"Q2 of fiscal year 2027; installation and testing in Apr 2027",
+ f3k:"Depreciation",f3v:"THB 253,285/yr",f3n:"Straight line over 10 years, included in cost of production",
+ f4k:"Replacement reserve after 5 years",f4v:"≈ THB 1.27 M",f4n:"Set aside from cash flow each year, equal to depreciation, for greenhouse film, batteries and IoT devices",
+ f5k:"Already owned by the college",f5v:"1 existing greenhouse",f5n:"Not in the budget; used for variety trials before installation",
+ foot:"Source: revised business plan and appendix, November 2026"
+};
+const GROUPS=[
+ {id:"build",c:"#2E5E3B",th:"โครงสร้างและอาคาร",en:"Structures and buildings",stTh:"ต้นน้ำ–กลางน้ำ",stEn:"Up–midstream",items:[[1,"โครงสร้างโรงเรือน 3 โรง","Greenhouse structures (3 houses)",201000],[6,"เทพื้นคอนกรีตโรงเรือน 755 ตร.ม.","Concrete floor, 755 m²",369950],[7,"อาคารก่อสร้าง ห้องเก็บอุปกรณ์","Equipment storage building",410000],[8,"อาคารคัดแยกผลผลิต","Grading and packing building",80000]]},
+ {id:"energy",c:"#5C8A4E",th:"พลังงาน น้ำ และ IoT",en:"Energy, water and IoT",stTh:"ต้นน้ำ",stEn:"Upstream",items:[[2,"ระบบไฟฟ้า","Electrical system",49500],[3,"ระบบน้ำพื้นฐาน","Basic water system",58500],[4,"ระบบ IoT","IoT system",100500],[5,"ระบบ Solar + BESS","Solar + battery storage",260000],[20,"เครื่องกรองน้ำ RO","RO water filter",58000]]},
+ {id:"post",c:"#C8352A",th:"หลังเก็บเกี่ยวและแปรรูป",en:"Post-harvest and processing",stTh:"กลางน้ำ",stEn:"Midstream",items:[[9,"ห้องเย็น","Cold room",263500],[10,"โซล่าโดมอบแห้ง","Solar drying dome",285000],[13,"เครื่องซีลสูญญากาศ","Vacuum sealer",30000],[17,"ถาดสแตนเลส","Stainless trays",30000],[18,"ถังสแตนเลส","Stainless tanks",84000],[19,"ถังผสม","Mixing tanks",52000],[21,"ถาดพลาสติก","Plastic trays",8700],[22,"ลังพลาสติก","Plastic crates",8700]]},
+ {id:"qc",c:"#B7791F",th:"เครื่องมือวัดคุณภาพ",en:"Quality instruments",stTh:"กลางน้ำ",stEn:"Midstream",items:[[11,"เครื่องวัดเนื้อสัมผัส","Texture analyser",100000],[12,"เครื่องวัด pH","pH meter",25000],[14,"เครื่องวัดความเค็มแบบดิจิตอล","Digital salinity meter",14000],[15,"เครื่องวัดบริกซ์แบบดิจิตอล","Digital Brix meter",4500],[16,"เครื่องวัดสี (Colorimeter) 3nh NR110","Colorimeter 3nh NR110",40000]]}
+];
+const TOTAL=2532850;
+GROUPS.forEach(g=>g.sum=g.items.reduce((a,i)=>a+i[3],0));
+console.assert(GROUPS.reduce((a,g)=>a+g.sum,0)===TOTAL,"CAPEX total mismatch");
+let active=null;
+function render(lang){
+  const en=lang==="en",f=SG.fmt;
+  const split=document.getElementById("split");split.innerHTML="";
+  const keys=document.getElementById("keys");keys.innerHTML="";
+  GROUPS.forEach(g=>{
+    const pct=g.sum/TOTAL*100;
+    const b=document.createElement("button");b.type="button";
+    b.style.flex=`${pct} 1 0`;b.style.background=g.c;
+    b.setAttribute("aria-pressed",active===g.id);
+    b.setAttribute("aria-label",`${en?g.en:g.th} ${f(g.sum)} (${pct.toFixed(1)}%)`);
+    b.innerHTML=`<b>${pct.toFixed(0)}%</b><span>${en?g.en:g.th}</span>`;
+    b.onclick=()=>{active=active===g.id?null:g.id;render(SG.lang())};
+    split.appendChild(b);
+    const k=document.createElement("div");k.className="keyc";
+    k.innerHTML=`<i style="background:${g.c}"></i><span><b>${en?g.en:g.th}</b><span class="num">${f(g.sum)} ${en?"THB":"บาท"} · ${g.items.length} ${en?"items":"รายการ"}</span></span>`;
+    keys.appendChild(k);
+  });
+  const t=document.getElementById("capex");
+  let h=`<thead><tr><th>${en?"No.":"ลำดับ"}</th><th>${en?"Item":"รายการ"}</th><th>${en?"Stage":"ห่วงโซ่"}</th><th class="r">${en?"THB":"บาท"}</th></tr></thead><tbody>`;
+  GROUPS.forEach(g=>{
+    const dim=active&&active!==g.id?" dim":"";
+    h+=`<tr class="grp${dim}" style="--c:${g.c}"><td colspan="3">${en?g.en:g.th}</td><td class="r">${f(g.sum)}</td></tr>`;
+    g.items.forEach(i=>{h+=`<tr class="${dim}"><td class="no">${i[0]}</td><td>${en?i[2]:i[1]}</td><td class="stage">${en?g.stEn:g.stTh}</td><td class="r">${f(i[3])}</td></tr>`});
+  });
+  h+=`<tr class="total"><td></td><td colspan="2">${en?"Total":"รวม"}</td><td class="r">${f(TOTAL)}</td></tr></tbody>`;
+  t.innerHTML=h;
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

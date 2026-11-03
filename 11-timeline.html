@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11. กรอบเวลา · SmartGrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.gantt-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.gantt{display:grid;grid-template-columns:230px repeat(18,minmax(34px,1fr));row-gap:8px;min-width:900px;align-items:center}
+.gantt .mh{font-size:12px;color:var(--muted);text-align:center;border-left:1px solid var(--line);padding:2px 0}
+.gantt .yh{font-size:12.5px;font-weight:600;color:var(--ink);border-left:1px solid var(--line);padding-left:6px}
+.gantt .lab{font-size:14.5px;line-height:1.35;padding-right:10px}
+.gantt .lab small{display:block;color:var(--muted);font-size:12.5px}
+.gantt .b{height:26px;border-radius:6px;font-size:12px;color:#fff;display:flex;align-items:center;padding:0 8px;white-space:nowrap;overflow:hidden}
+.gantt .ms{width:16px;height:16px;transform:rotate(45deg);background:var(--tomato);justify-self:center;border-radius:2px}
+.gantt .today{grid-row:1/-1;border-left:2px dashed var(--tomato);height:100%;justify-self:start}
+.legend2{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin-top:12px}
+.legend2 i{display:inline-block;width:14px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
+</style>
+</head>
+<body data-page="11" data-art="svg:timeline">
+<main class="wrap">
+  <div class="page-head">
+    <span class="big">11</span>
+    <h1 data-i18n="h1">กรอบเวลา</h1>
+    <p data-i18n="lead">จากการประชุมสรุปแผนวันนี้ ถึงการรายงานผลปีดำเนินงานที่ 1 รวม 18 เดือน จัดซื้อจัดจ้างในไตรมาสที่ 2 ปีงบประมาณ 2570 และเริ่มรอบผลิตแรก พ.ค. 2570</p>
+  </div>
+  <section class="block" aria-labelledby="g-h">
+    <h2 id="g-h" data-i18n="gH">แผนงาน พ.ย. 2569 – เม.ย. 2571</h2>
+    <p class="intro" data-i18n="gIntro">เส้นประสีแดงคือวันประชุม 7 พ.ย. 2569 ปีดำเนินงานที่ 1 ในประมาณการทางการเงินนับตั้งแต่ พ.ค. 2570</p>
+    <div class="gantt-wrap"><div class="gantt" id="gantt" role="img"></div></div>
+    <div class="legend2" id="lg"></div>
+  </section>
+  <section class="block" aria-labelledby="m-h">
+    <h2 id="m-h" data-i18n="mH">จุดตรวจสำคัญ</h2>
+    <div class="tbl-wrap" style="margin-top:12px"><table class="data" id="ms"></table></div>
+  </section>
+</main>
+<footer><div class="wrap"><span data-i18n="foot">ที่มา: แผนธุรกิจ ข้อ 11 (ฉบับแก้ไข) วันที่เป็นร่าง อาจปรับตามระยะเวลาจัดซื้อจัดจ้างจริง</span></div></footer>
+<script>
+window.PAGE_EN={h1:"Timeline",lead:"Eighteen months from today's planning meeting to the year-1 report. Procurement in Q2 of fiscal 2027 and the first cycle from May 2027.",
+ gH:"Plan, Nov 2026 – Apr 2028",gIntro:"The red dashed line is the 7 Nov 2026 meeting. Operating year 1 in the financial projections starts May 2027.",mH:"Key checkpoints",foot:"Source: business plan section 11 (revised). Dates are a draft and may shift with actual procurement."};
+function render(){
+  const t=SG.t;
+  const th="พ.ย. ธ.ค. ม.ค. ก.พ. มี.ค. เม.ย. พ.ค. มิ.ย. ก.ค. ส.ค. ก.ย. ต.ค. พ.ย. ธ.ค. ม.ค. ก.พ. มี.ค. เม.ย.".split(" ");
+  const en="Nov Dec Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Jan Feb Mar Apr".split(" ");
+  const M=SG.lang()==="en"?en:th;
+  const C={prep:"#6B7B70",proc:"#B7791F",build:"#2E5E3B",grow:"#C8352A",out:"#5C8A4E"};
+  // [label, sub, startIdx, endIdx(inclusive), color, text]
+  const rows=[
+   [t("สรุปแผนการลงทุนกับ ADB","Finalise investment plan with ADB"),"",0,0,C.prep,""],
+   [t("จัดทำ TOR และรวบรวม LOI","TOR and buyer LOIs"),t("หลังอนุมัติงบประมาณ","after budget approval"),0,1,C.prep,"TOR · LOI ≥ 3"],
+   [t("จัดซื้อจัดจ้าง","Procurement"),t("ไตรมาส 2 ปีงบ 2570","Q2 FY2027"),2,4,C.proc,t("ม.ค.–มี.ค. 2570","Jan–Mar 2027")],
+   [t("ติดตั้งและทดสอบระบบ เพาะกล้า","Install, test, seedlings"),t("น้ำ-ปุ๋ยและ IoT ก่อน","fertigation and IoT first"),5,5,C.build,""],
+   [t("รอบผลิตที่ 1 (ฤดูร้อน)","Cycle 1 (hot season)"),t("เริ่มขายและแปรรูป","sales and drying start"),6,10,C.grow,t("≈ 4 กก./ต้น","≈ 4 kg/plant")],
+   [t("พักแปลง ถอดบทเรียน","Rest and review"),"",11,11,C.prep,""],
+   [t("รอบผลิตที่ 2 (ฤดูหนาว)","Cycle 2 (cool season)"),t("Field Day และอบรมเกษตรกร","Field Day, farmer training"),12,16,C.grow,t("≈ 6 กก./ต้น","≈ 6 kg/plant")],
+   [t("รายงานผลปีที่ 1","Year-1 report"),t("ต่อ ADB และ สอศ.","to ADB and OVEC"),17,17,C.out,""]];
+  let h=`<div class="yh" style="grid-row:1;grid-column:2/4">2569</div><div class="yh" style="grid-row:1;grid-column:4/16">2570</div><div class="yh" style="grid-row:1;grid-column:16/20">2571</div>`;
+  if(SG.lang()==="en") h=h.replace(">2569<",">2026<").replace(">2570<",">2027<").replace(">2571<",">2028<");
+  h+=M.map((m,i)=>`<div class="mh" style="grid-row:2;grid-column:${i+2}">${m}</div>`).join("");
+  rows.forEach((r,i)=>{
+    const rowN=i+3;
+    h+=`<div class="lab" style="grid-row:${rowN}">${r[0]}${r[1]?`<small>${r[1]}</small>`:""}</div>`;
+    h+=`<div class="b" style="grid-row:${rowN};grid-column:${r[2]+2}/${r[3]+3};background:${r[4]}">${r[5]}</div>`;
+  });
+  // operating-year band label
+  h+=`<div class="b" style="grid-row:${rows.length+3};grid-column:8/20;background:transparent;color:var(--leaf);border:1.5px solid var(--leaf);justify-content:center;font-weight:600">${t("ปีดำเนินงานที่ 1 ในประมาณการการเงิน (พ.ค. 2570 – เม.ย. 2571)","Operating year 1 in the financial projections (May 2027 – Apr 2028)")}</div>`;
+  h+=`<div class="today" style="grid-column:2;grid-row:2/${rows.length+4};margin-left:${(6/30*100).toFixed(0)}%"></div>`;
+  const g=document.getElementById("gantt");g.innerHTML=h;g.setAttribute("aria-label",t("แผนภูมิแกนต์กรอบเวลาโครงการ","Project timeline Gantt chart"));
+  document.getElementById("lg").innerHTML=[[C.prep,t("เตรียมการ","Preparation")],[C.proc,t("จัดซื้อจัดจ้าง","Procurement")],[C.build,t("ติดตั้ง","Installation")],[C.grow,t("รอบการผลิต","Production cycle")],[C.out,t("รายงาน","Reporting")]].map(l=>`<span><i style="background:${l[0]}"></i>${l[1]}</span>`).join("");
+  const MS=[
+   [t("ธ.ค. 2569","Dec 2026"),t("TOR พร้อม (เมื่องบได้รับอนุมัติ) และมีผู้ซื้อ B2B ≥ 3 ราย","TOR ready (once the budget is approved); ≥ 3 B2B buyers")],
+   [t("มี.ค. 2570","Mar 2027"),t("ลงนามสัญญาผู้รับจ้าง/ผู้ขายครบทุกรายการ","Contracts signed for all items")],
+   [t("เม.ย. 2570","Apr 2027"),t("ระบบน้ำ-ปุ๋ย IoT และ Solar ใช้งานได้ กล้าพร้อมย้ายปลูก","Fertigation, IoT and solar working; seedlings ready")],
+   [t("ก.ย. 2570","Sep 2027"),t("สรุปผลผลิตจริงรอบที่ 1 เทียบเป้า 4 กก./ต้น","Cycle-1 yield reviewed against 4 kg/plant")],
+   [t("มี.ค. 2571","Mar 2028"),t("สรุปผลผลิตรอบที่ 2 เทียบเป้า 6 กก./ต้น และผู้เข้าอบรม ≥ 100 คน","Cycle-2 yield vs 6 kg/plant; ≥ 100 trainees")],
+   [t("เม.ย. 2571","Apr 2028"),t("รายงานผลการดำเนินงานและการเงินปีที่ 1 ต่อ ADB/สอศ.","Year-1 operating and financial report to ADB/OVEC")]];
+  document.getElementById("ms").innerHTML=`<thead><tr><th>${t("เมื่อไร","When")}</th><th>${t("ต้องเสร็จอะไร","What must be done")}</th></tr></thead><tbody>`+MS.map(m=>`<tr><td style="white-space:nowrap;font-weight:600">${m[0]}</td><td>${m[1]}</td></tr>`).join("")+"</tbody>";
+}
+window.onLang=render;
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>
